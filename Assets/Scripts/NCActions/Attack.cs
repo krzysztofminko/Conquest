@@ -21,6 +21,7 @@ namespace NodeCanvas.Tasks.Actions{
 
 		private OverrideAnimator overrideAnimator;
 		private Animator animator;
+		private ParticleSystem trail;
 
 
 		protected override string OnInit()
@@ -48,12 +49,23 @@ namespace NodeCanvas.Tasks.Actions{
 			if (!attack.animation)
 				Debug.LogError($"Weapon ({agent.RightHandItem}) attack has no animation assigned.", agent.RightHandItem);
 
+			//Start animation
 			overrideAnimator.ChangeStateAnimationClip("EmptyAction", attack.animation);
 			animator.SetTrigger("Action");
+
+			trail = agent.RightHandItemEntity? agent.RightHandItemEntity.GetComponentInChildren<ParticleSystem>() : null;
 		}
 
 		protected override void OnUpdate()
 		{
+			//Swing trail
+			if (trail)
+			{
+				if (trail.isPlaying && elapsedTime > attack.trailEnd)
+					trail.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+				else if (!trail.isPlaying && elapsedTime > attack.trailStart && elapsedTime < attack.trailEnd)
+					trail.Play();
+			}
 
 			if (!damageProcessed && elapsedTime > attack.damageDelay)
 			{
@@ -100,7 +112,9 @@ namespace NodeCanvas.Tasks.Actions{
 			}
 
 			if (elapsedTime > attack.animation.length)
+			{
 				EndAction(true);
+			}
 		}
 	}
 }

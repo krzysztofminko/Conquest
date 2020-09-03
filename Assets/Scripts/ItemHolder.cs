@@ -22,6 +22,7 @@ public class ItemHolder : MonoBehaviour
 
 	[SerializeField, ReadOnly]
 	private ItemEntity _rightHandItemEntity;
+	public ItemEntity RightHandItemEntity { get => _rightHandItemEntity; }
 
 	private void Awake()
 	{

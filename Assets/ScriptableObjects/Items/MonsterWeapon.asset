@@ -35,7 +35,7 @@ MonoBehaviour:
           projectile: {fileID: 0}
           damageDelay: 0.47
           targetOnly: 1
-          range: 1
+          range: 2
           damage:
           - type: 2
             value: 10

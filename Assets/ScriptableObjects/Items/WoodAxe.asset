@@ -33,7 +33,9 @@ MonoBehaviour:
           animation: {fileID: 7077595696610324089, guid: 804af31956ddf514f8d76c747584371b,
             type: 3}
           projectile: {fileID: 0}
-          damageDelay: 0.2
+          trailStart: 0.22
+          trailEnd: 0.33
+          damageDelay: 0.3
           targetOnly: 0
           range: 2
           damage:

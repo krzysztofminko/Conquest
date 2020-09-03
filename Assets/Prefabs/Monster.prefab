@@ -561,7 +561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8155495239248651876}
   - component: {fileID: 2868246923506351134}
-  - component: {fileID: 70843988150985097}
+  - component: {fileID: 1294507725181237944}
   - component: {fileID: 4261691127953231443}
   - component: {fileID: 5800774329953492864}
   - component: {fileID: 5951822802611319334}
@@ -612,7 +612,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &70843988150985097
+--- !u!114 &1294507725181237944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -621,14 +621,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8819722735123856606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0117e42960d6564ba467176fec6b7fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 328de471fdf44634d8061b2333b4ce17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  list:
-  - _id: 1
-    _value: 100
-    _max: 100
-  HealthBar: {fileID: 4125415055838417676}
+  _value: 100
+  _max: 100
+  healthBar: {fileID: 4125415055838417676}
 --- !u!114 &4261691127953231443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +721,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8819722735123856606}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}

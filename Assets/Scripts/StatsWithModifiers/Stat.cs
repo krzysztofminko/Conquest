@@ -5,18 +5,12 @@ using UnityEngine;
 
 namespace StatsWithModifiers
 {
-	public enum StatId { None, Health, Stamina, Food }
-
-	[Serializable]
-	public class Stat
+	[HideMonoScript]
+	public abstract class Stat : MonoBehaviour
 	{
 		//TODO: Implement timed modifiers
 
-		[SerializeField, HideLabel, HorizontalGroup("Stat"), ReadOnly]
-		private StatId _id;
-		public StatId Id { get => _id; private set => _id = value; }
-
-		[SerializeField, HideLabel, ProgressBar(0, "Max"), HorizontalGroup("Value")]
+		[SerializeField, HideLabel, ProgressBar(0, "Max", Height = 16), HorizontalGroup()]
 		private float _value = 100;
 		public float Value 
 		{ 
@@ -31,7 +25,7 @@ namespace StatsWithModifiers
 			}
 		}
 
-		[SerializeField, Min(0), HideLabel, HorizontalGroup("Max")]
+		[SerializeField, Min(0), LabelWidth(30), HorizontalGroup()]
 		private float _max = 100;
 		public float Max
 		{
@@ -53,9 +47,28 @@ namespace StatsWithModifiers
 		public delegate void OnMaxChange(Stat stat);
 		public event OnMaxChange onMaxChange;
 
-		public Stat(StatId Id)
+
+		public void ApplyModifier(StatModifier modifier)
 		{
-			this.Id = Id;
+			if (modifier.AffectMax)
+				Max += modifier.Value;
+			else
+				Value += modifier.Value;
+		}
+
+		public void RemoveModifier(StatModifier modifier)
+		{
+			if (modifier.Type == StatModifier.ModifierType.Permanent)
+			{
+				Debug.Log($"Removing permanent modifier ({this}) is impossible.", this);
+			}
+			else
+			{
+				if (modifier.AffectMax)
+					Max -= modifier.Value;
+				else
+					Value -= modifier.Value;
+			}
 		}
 	}
 }

@@ -12,8 +12,8 @@ namespace StatsWithModifiers
 		public enum ModifierType { Permanent, Timed, Equipable }
 
 		[SerializeField, HorizontalGroup()]
-		private StatId _statId;
-		public StatId StatId { get => _statId;}
+		private ClassTypeReference _stat;
+		public ClassTypeReference Stat { get => _stat;}
 
 		[SerializeField, HorizontalGroup(50), LabelText("Max"), LabelWidth(30)]
 		private bool _affectMax;

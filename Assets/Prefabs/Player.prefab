@@ -337,9 +337,8 @@ GameObject:
   - component: {fileID: 381120093467076887}
   - component: {fileID: 1546276180479027860}
   - component: {fileID: 381120093467076884}
-  - component: {fileID: 955140866705922332}
   - component: {fileID: 4531052108453884077}
-  - component: {fileID: 6135229161024159461}
+  - component: {fileID: 6605535438349958707}
   - component: {fileID: 7884576315302681306}
   - component: {fileID: 2934355977181283184}
   - component: {fileID: 2642321937387842587}
@@ -408,20 +407,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &955140866705922332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 381120093467076882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65be837d5a65d9b49ae53c62486bad88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tags:
-  - {fileID: 11400000, guid: 0c94bfae2876c604abbbd7fa9341a859, type: 2}
 --- !u!114 &4531052108453884077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf3e67610c557a47b449d4ba691ed3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6135229161024159461
+--- !u!114 &6605535438349958707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -443,20 +428,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 381120093467076882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d237ce7f3e731b40ac3df5cc494a7e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 328de471fdf44634d8061b2333b4ce17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  list:
-  - _id: 1
-    _value: 100
-    _max: 100
-  - _id: 2
-    _value: 100
-    _max: 100
-  - _id: 3
-    _value: 100
-    _max: 100
-  HealthBar: {fileID: 3821467289372621862}
+  _value: 100
+  _max: 100
+  healthBar: {fileID: 3821467289372621862}
 --- !u!114 &7884576315302681306
 MonoBehaviour:
   m_ObjectHideFlags: 0

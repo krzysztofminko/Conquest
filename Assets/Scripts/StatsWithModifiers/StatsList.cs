@@ -9,7 +9,7 @@ namespace StatsWithModifiers
 {
 	[HideMonoScript]
 	public abstract class StatsList : MonoBehaviour
-	{
+	{/*
 		[SerializeField, HideLabel, TableList(AlwaysExpanded = true), ListDrawerSettings(DraggableItems = true)]
 		protected List<Stat> list = new List<Stat>();
 		
@@ -39,6 +39,6 @@ namespace StatsWithModifiers
 				else
 					this[modifier.StatId].Value -= modifier.Value;
 			}
-		}
+		}*/
 	}
 }

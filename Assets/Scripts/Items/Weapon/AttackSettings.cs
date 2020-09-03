@@ -19,7 +19,6 @@ public class AttackSettings
 	[PropertyRange(0, "GetAnimationLength")]
 	public float damageDelay = 0;
 	public bool targetOnly;
-	[HideIf("targetOnly")]
 	public float range = 1;
 	[ListDrawerSettings(Expanded = true)]
 	public List<Damage> damage = new List<Damage>();

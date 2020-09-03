@@ -10,8 +10,8 @@ namespace NodeCanvas.Tasks.Actions{
 	[Category("ItemHolder")]
 	public class Attack : ActionTask<ItemHolder>
 	{
-		public BBParameter<IDamageable> _target;
-		private IDamageable target;
+		public BBParameter<GameObject> _target;
+		private GameObject target;
 		public LayerMask layerMask;
 
 		private bool damageProcessed;
@@ -61,8 +61,12 @@ namespace NodeCanvas.Tasks.Actions{
 				targets.Clear();
 				if (attack.targetOnly)
 				{
-					if (target != null)
-						targets.Add(target);
+					if (target && (target.transform.position - agent.transform.position).sqrMagnitude < attack.range * attack.range)
+					{
+						IDamageable[] damageables = target.GetComponents<IDamageable>();
+						for (int d = 0; d < damageables.Length; d++)
+							targets.Add(damageables[d]);
+					}
 				}
 				else
 				{
@@ -73,17 +77,13 @@ namespace NodeCanvas.Tasks.Actions{
 						{
 							if (Vector3.Angle(colliders[c].transform.position - agent.transform.position, agent.transform.forward) < 90)
 							{
-								IDamageable target = colliders[c].gameObject.GetComponent<IDamageable>();
-								if (target != null)
-									targets.Add(target);
+								IDamageable[] damageables = colliders[c].gameObject.GetComponents<IDamageable>();
+								for (int d = 0; d < damageables.Length; d++)
+									targets.Add(damageables[d]);
 							}
 						}
 					}
 				}
-
-				Debug.Log(targets.Count);
-				foreach (var t in targets)
-					Debug.Log(t);
 
 				//Hit something
 				if (targets.Count > 0)

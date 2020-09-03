@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb45f59f32d1cb44ae5ccdb041734f2, type: 3}
+  m_Name: WoodAxe
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 578275136934914593, guid: d443c60b6ff654c4e82a63f4e8f09f7f, type: 3}
+  consumable:
+    id: 0
+  equipable:
+    id: 0
+  weapon:
+    id: 1
+  tool:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
+    00000001:
+      type: {class: Weapon, ns: Items, asm: Assembly-CSharp}
+      data:
+        attacks:
+        - name: Hit
+          animation: {fileID: 7077595696610324089, guid: 804af31956ddf514f8d76c747584371b,
+            type: 3}
+          projectile: {fileID: 0}
+          damageDelay: 0.2
+          targetOnly: 0
+          range: 2
+          damage:
+          - type: 32
+            value: 50

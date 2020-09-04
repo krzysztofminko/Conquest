@@ -2,11 +2,18 @@
 using System.Collections;
 using StatsWithModifiers;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 public class Health : Stat, IDamageable
 {
-	[SerializeField]
+	[SerializeField, DisableInPlayMode]
 	private Slider healthBar;
+	private Canvas healthBarCanvas;
+
+	private void Awake()
+	{
+		healthBarCanvas = healthBar.transform.parent.GetComponent<Canvas>();
+	}
 
 	private void OnEnable()
 	{
@@ -23,7 +30,10 @@ public class Health : Stat, IDamageable
 	private void Health_onValueChange(Stat stat)
 	{
 		if (healthBar)
+		{
+			healthBarCanvas.gameObject.SetActive(Value < Max);
 			healthBar.value = Value;
+		}
 		if (Value <= 0)
 			Destroy(gameObject);
 	}

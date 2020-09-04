@@ -230,9 +230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8cce1a181a5a94996534caa034067a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandParent: {fileID: 5857014292960169189}
-  _rightHandItem: {fileID: 11400000, guid: 544c2bfa8dca1d140aae02f7883b4480, type: 2}
-  _rightHandItemEntity: {fileID: 0}
+  spawnItem: {fileID: 11400000, guid: 544c2bfa8dca1d140aae02f7883b4480, type: 2}
+  _itemEntity: {fileID: 0}
+  parent: {fileID: 0}
 --- !u!114 &5951822802611319334
 MonoBehaviour:
   m_ObjectHideFlags: 0

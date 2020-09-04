@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [HideMonoScript]
@@ -15,8 +16,9 @@ public class Equipment : MonoBehaviour
     {
         [ReadOnly]
         public SlotType type;
+        public Transform parent;
         [ReadOnly]
-        public Item item;
+        public ItemEntity itemEntity;
     }
 
     [SerializeField, TableList(AlwaysExpanded = true, IsReadOnly = true)]
@@ -31,28 +33,49 @@ public class Equipment : MonoBehaviour
             _slots.Add(new Slot { type = (SlotType)values.GetValue(i) });
     }
 
-    public void Equip(Item item, SlotType slot)
+    public Slot this [SlotType slotType]
     {
-        if (item)
+        get => _slots.Find(s => s.type == slotType);
+    }
+
+    public bool IsEquiped(ItemEntity itemEntity) => _slots.Find(s => s.itemEntity == itemEntity) != null;
+
+    public void Equip(ItemEntity itemEntity, SlotType slotType)
+    {
+        if (!itemEntity)
         {
             Debug.LogError("Can not Equip null object.", this);
         }
-        if(item.equipable == null)
+        if(itemEntity.item.equipable == null)
         {
-            Debug.LogError($"Item ({item}) is not equipable.", item);
+            Debug.LogError($"Item ({itemEntity.item}) is not equipable.", itemEntity);
         }
         else
         {
-            if (_slots.Find(s => s.type == slot).item)
-                Unequip(slot);
-            _slots.Find(s => s.type == slot).item = item;
+            Slot slot = this[slotType];
+            if (slot.itemEntity)
+                Unequip(slot.itemEntity);
+            slot.itemEntity = itemEntity;
+            itemEntity.SetParent(slot.parent);
             //TODO: add equipable modifiers
         }
     }
 
-    public void Unequip(SlotType slot)
+    public void Unequip(ItemEntity itemEntity)
     {
         //TODO: remove equipable modifiers
-        _slots.Find(s => s.type == slot).item = null;
+        if (!itemEntity)
+            Debug.LogError("Item entity can't be null.", this);
+        
+        Slot slot = _slots.Find(s => s.itemEntity == itemEntity);
+        if (slot == null)
+        {
+            Debug.LogError($"Trying to Unequip already not equiped item {itemEntity}", this);
+        }
+        else
+        {
+            slot.itemEntity.SetParent(null);
+            slot.itemEntity = null;
+        }
     }
 }

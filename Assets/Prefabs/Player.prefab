@@ -465,9 +465,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8cce1a181a5a94996534caa034067a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandParent: {fileID: 7687365236782095495}
-  _rightHandItem: {fileID: 11400000, guid: b509b404acc3b094d96e405d89650d00, type: 2}
-  _rightHandItemEntity: {fileID: 0}
+  spawnItem: {fileID: 11400000, guid: b509b404acc3b094d96e405d89650d00, type: 2}
+  _itemEntity: {fileID: 0}
+  parent: {fileID: 7687365236782095495}
 --- !u!114 &2642321937387842587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,11 +482,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slots:
   - type: 0
-    item: {fileID: 0}
+    parent: {fileID: 0}
+    itemEntity: {fileID: 0}
   - type: 1
-    item: {fileID: 0}
+    parent: {fileID: 0}
+    itemEntity: {fileID: 0}
   - type: 2
-    item: {fileID: 0}
+    parent: {fileID: 0}
+    itemEntity: {fileID: 0}
 --- !u!114 &1399189800368072059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,7 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2644b03d3e586964abb6f57ff962bf83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slots: []
+  items: []
 --- !u!114 &6840365053835965599
 MonoBehaviour:
   m_ObjectHideFlags: 0

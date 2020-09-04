@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb45f59f32d1cb44ae5ccdb041734f2, type: 3}
   m_Name: MonsterWeapon
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 3642268760297068100, guid: 19fc59d5865ba4d43a8577dea64bf463, type: 3}
+  damageable: 0
+  condition: 100
   consumable:
     id: 0
   equipable:
@@ -33,6 +35,8 @@ MonoBehaviour:
           animation: {fileID: 4723146814002874508, guid: 111c9eea53bd88740a709aab1b12067d,
             type: 3}
           projectile: {fileID: 0}
+          trailStart: 0
+          trailEnd: 0
           damageDelay: 0.47
           targetOnly: 1
           range: 2

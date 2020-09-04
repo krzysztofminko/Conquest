@@ -37,23 +37,23 @@ namespace NodeCanvas.Tasks.Actions{
 		}
 		protected override void OnExecute()
 		{
-			if (!agent.RightHandItem ||
-				agent.RightHandItem.weapon == null ||
-				agent.RightHandItem.weapon.attacks.Count == 0)
+			if (!agent.ItemEntity ||
+				agent.ItemEntity.item.weapon == null ||
+				agent.ItemEntity.item.weapon.attacks.Count == 0)
 				EndAction(false);
 
 			damageProcessed = false;
 			target = _target.value;
-			attack = agent.RightHandItem.weapon.attacks[0];//TODO: other attacks
+			attack = agent.ItemEntity.item.weapon.attacks[0];//TODO: other attacks
 
 			if (!attack.animation)
-				Debug.LogError($"Weapon ({agent.RightHandItem}) attack has no animation assigned.", agent.RightHandItem);
+				Debug.LogError($"Weapon ({agent.ItemEntity}) attack has no animation assigned.", agent.ItemEntity);
 
 			//Start animation
 			overrideAnimator.ChangeStateAnimationClip("EmptyAction", attack.animation);
 			animator.SetTrigger("Action");
 
-			trail = agent.RightHandItemEntity? agent.RightHandItemEntity.GetComponentInChildren<ParticleSystem>() : null;
+			trail = agent.ItemEntity ? agent.ItemEntity.GetComponentInChildren<ParticleSystem>() : null;
 		}
 
 		protected override void OnUpdate()

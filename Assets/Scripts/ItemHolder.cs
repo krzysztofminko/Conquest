@@ -3,52 +3,32 @@ using System.Collections;
 using Sirenix.OdinInspector;
 using Items;
 
+[HideMonoScript]
 public class ItemHolder : MonoBehaviour
 {
-	[SerializeField, Required, DisableInPlayMode]
-	private Transform rightHandParent;
-
-	[SerializeField, DisableInPlayMode]
-	private Item _rightHandItem;
-	public Item RightHandItem
-	{
-		get => _rightHandItem;
-		set
-		{
-			if (_rightHandItem != value)
-				SetRightHandItem(value);
-		}
-	}
+	[SerializeField]
+	private Item spawnItem;
 
 	[SerializeField, ReadOnly]
-	private ItemEntity _rightHandItemEntity;
-	public ItemEntity RightHandItemEntity { get => _rightHandItemEntity; }
+	private ItemEntity _itemEntity;
+	public ItemEntity ItemEntity
+	{
+		get => _itemEntity;
+		set
+		{
+			if(_itemEntity != value)
+			{
+				_itemEntity?.SetParent(null);
+				value?.SetParent(parent);
+				_itemEntity = value;
+			}
+		}
+	}
+	public Transform parent;
 
 	private void Awake()
 	{
-		SetRightHandItem(_rightHandItem);
-	}
-
-	private void SetRightHandItem(Item item)
-	{
-		if (_rightHandItem)
-		{
-			if (_rightHandItemEntity)
-				Destroy(_rightHandItemEntity);
-			_rightHandItemEntity = null;
-			_rightHandItem = null;
-		}
-
-		if (item)
-		{
-			_rightHandItem = item;
-			if (_rightHandItem.prefab)
-			{
-				_rightHandItemEntity = Instantiate(_rightHandItem.prefab, rightHandParent.position, rightHandParent.rotation, rightHandParent);
-				_rightHandItemEntity.item = _rightHandItem;
-			}
-		}
-
-		_rightHandItem = item;
+		if(spawnItem)
+			ItemEntity = ItemEntity.Spawn(spawnItem, parent? parent.position : transform.position + transform.forward, parent? parent.rotation : Quaternion.identity);
 	}
 }

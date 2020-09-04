@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 1066987829107772990}
   - component: {fileID: 3724229432625409279}
   - component: {fileID: 1340641698285262166}
-  - component: {fileID: 5704442418411259886}
+  - component: {fileID: 4541728609582689636}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -273,7 +273,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3924914059886609339}
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
+  m_LocalRotation: {x: 0.45632148, y: -0, z: -0, w: 0.889815}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.026664777, y: 0.026664777, z: 0.026664777}
   m_Children:
@@ -346,25 +346,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 55
---- !u!1818360609 &5704442418411259886
-RotationConstraint:
+--- !u!114 &4541728609582689636
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3924914059886609339}
   m_Enabled: 1
-  m_Weight: 1
-  m_RotationAtRest: {x: 45.000004, y: 0, z: 0}
-  m_RotationOffset: {x: 0, y: 0, z: 0}
-  m_AffectRotationX: 0
-  m_AffectRotationY: 1
-  m_AffectRotationZ: 0
-  m_IsContraintActive: 1
-  m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 0}
-    weight: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a102ff184173241ae4fc8a253668ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5006860777796089915
 GameObject:
   m_ObjectHideFlags: 0

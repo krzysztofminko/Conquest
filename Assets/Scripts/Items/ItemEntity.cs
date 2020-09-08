@@ -12,6 +12,8 @@ public class ItemEntity : MonoBehaviour
 	[ReadOnly]
 	public float condition;
 
+	//TODO: ItemEntity state? Ground, Holder, Equipment, Storage
+
 
 	public static ItemEntity Spawn(Item item, Vector3 position, Quaternion rotation)
 	{
@@ -20,7 +22,7 @@ public class ItemEntity : MonoBehaviour
 
 		ItemEntity entity = Instantiate(item.prefab, position, rotation);
 		entity.item = item;
-		entity.condition = item.condition;
+		entity.condition = item.damageable != null ? item.damageable.condition : 0;
 		return entity;
 	}
 

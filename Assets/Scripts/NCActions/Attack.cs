@@ -26,6 +26,7 @@ namespace NodeCanvas.Tasks.Actions{
 
 		protected override string OnInit()
 		{
+			//Cache agent components
 			overrideAnimator = agent.GetComponent<OverrideAnimator>();
 			animator = agent.GetComponent<Animator>();
 
@@ -37,28 +38,32 @@ namespace NodeCanvas.Tasks.Actions{
 		}
 		protected override void OnExecute()
 		{
+			//Check ItemEntity hold by agent
 			if (!agent.ItemEntity ||
 				agent.ItemEntity.item.weapon == null ||
 				agent.ItemEntity.item.weapon.attacks.Count == 0)
 				EndAction(false);
 
+			//Init
 			damageProcessed = false;
-			target = _target.value;
+			target = _target.value;	//Save inital Target value to prevent from changes before the end of action
 			attack = agent.ItemEntity.item.weapon.attacks[0];//TODO: other attacks
 
-			if (!attack.animation)
-				Debug.LogError($"Weapon ({agent.ItemEntity}) attack has no animation assigned.", agent.ItemEntity);
+			//Check for attack animation - not needed?
+			//if (!attack.animation)
+				//Debug.LogError($"Weapon ({agent.ItemEntity}) attack has no animation assigned.", agent.ItemEntity);
 
 			//Start animation
 			overrideAnimator.ChangeStateAnimationClip("EmptyAction", attack.animation);
 			animator.SetTrigger("Action");
 
+			//Get trail particle
 			trail = agent.ItemEntity ? agent.ItemEntity.GetComponentInChildren<ParticleSystem>() : null;
 		}
 
 		protected override void OnUpdate()
 		{
-			//Swing trail
+			//Control trail
 			if (trail)
 			{
 				if (trail.isPlaying && elapsedTime > attack.trailEnd)
@@ -67,6 +72,7 @@ namespace NodeCanvas.Tasks.Actions{
 					trail.Play();
 			}
 
+			//Damage frame
 			if (!damageProcessed && elapsedTime > attack.damageDelay)
 			{
 				//Collect targets
@@ -97,10 +103,9 @@ namespace NodeCanvas.Tasks.Actions{
 					}
 				}
 
-				//Hit something
+				//Deal damage
 				if (targets.Count > 0)
 				{
-					//Deal damage
 					if (attack.damage.Count > 0)
 						for (int t = 0; t < targets.Count; t++)
 							if (targets[t] != null)
@@ -108,9 +113,11 @@ namespace NodeCanvas.Tasks.Actions{
 									targets[t].ReceiveDamage(attack.damage[d].value, attack.damage[d].type);
 				}
 
+				//End damage frame
 				damageProcessed = true;
 			}
 
+			//End action
 			if (elapsedTime > attack.animation.length)
 			{
 				EndAction(true);

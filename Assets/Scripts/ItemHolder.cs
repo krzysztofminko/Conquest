@@ -11,6 +11,9 @@ public class ItemHolder : MonoBehaviour
 
 	[SerializeField, ReadOnly]
 	private ItemEntity _itemEntity;
+	/// <summary>
+	/// On value change, also ItemEntity's parent is changed.
+	/// </summary>
 	public ItemEntity ItemEntity
 	{
 		get => _itemEntity;
@@ -24,7 +27,9 @@ public class ItemHolder : MonoBehaviour
 			}
 		}
 	}
-	public Transform parent;
+
+	[SerializeField]
+	private Transform parent;
 
 	private void Awake()
 	{

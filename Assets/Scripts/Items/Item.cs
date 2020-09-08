@@ -9,12 +9,16 @@ namespace Items
 		[Required]
 		public ItemEntity prefab;
 
-		//TODO: SerializeReference as in consumable etc..
-		[HorizontalGroup("damageable")]
-		public bool damageable;
-		[HorizontalGroup("damageable"), EnableIf("damageable")]
-		public float condition = 100;
+		public AnimationClip pickAnimation;
+		[PropertyRange(0, "pickAnimationLenght")]
+		public float pickDelay;
+		public AnimationClip putAnimation;
+		[PropertyRange(0, "putAnimationLenght")]
+		public float putDelay;
+		public AnimationClip carryAnimation;
 
+		[SerializeReference, HideLabel]
+		public Damageable damageable = null;
 		[SerializeReference, HideLabel]
 		public Consumable consumable = null;
 		[SerializeReference, HideLabel]
@@ -23,5 +27,8 @@ namespace Items
 		public Weapon weapon = null;
 		[SerializeReference, HideLabel]
 		public Tool tool = null;
+
+		private float pickAnimationLenght() => pickAnimation ? pickAnimation.length : 0;
+		private float putAnimationLenght() => putAnimation ? putAnimation.length : 0;
 	}
 }

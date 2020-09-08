@@ -2560,10 +2560,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
         type: 3}
+      propertyPath: _serializedVariables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
+        type: 3}
       propertyPath: _serializedBlackboard
       value: '{"_variables":{"Target":{"_value":1,"_name":"Target","_id":"2e084a07-c5df-4e04-b749-09e45d1fe538","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"RepeatAttack":{"_name":"RepeatAttack","_id":"a68a20fb-0d59-45f4-bb55-1ff9dd243301","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
         type: 3}

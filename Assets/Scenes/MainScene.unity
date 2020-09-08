@@ -232,8 +232,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _serializedBlackboard
       value: '{"_variables":{"Target":{"_value":1,"_name":"Target","_id":"2e084a07-c5df-4e04-b749-09e45d1fe538","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"RepeatAttack":{"_name":"RepeatAttack","_id":"a68a20fb-0d59-45f4-bb55-1ff9dd243301","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
         type: 3}
@@ -492,8 +491,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _serializedBlackboard
       value: '{"_variables":{"Target":{"_value":1,"_name":"Target","_id":"2e084a07-c5df-4e04-b749-09e45d1fe538","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"RepeatAttack":{"_name":"RepeatAttack","_id":"a68a20fb-0d59-45f4-bb55-1ff9dd243301","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
         type: 3}
@@ -911,8 +909,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _serializedBlackboard
       value: '{"_variables":{"Target":{"_value":1,"_name":"Target","_id":"2e084a07-c5df-4e04-b749-09e45d1fe538","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"RepeatAttack":{"_name":"RepeatAttack","_id":"a68a20fb-0d59-45f4-bb55-1ff9dd243301","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
         type: 3}
@@ -1132,8 +1129,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _serializedBlackboard
       value: '{"_variables":{"Target":{"_value":1,"_name":"Target","_id":"2e084a07-c5df-4e04-b749-09e45d1fe538","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"RepeatAttack":{"_name":"RepeatAttack","_id":"a68a20fb-0d59-45f4-bb55-1ff9dd243301","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
         type: 3}
@@ -1254,8 +1250,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _serializedBlackboard
       value: '{"_variables":{"Target":{"_value":1,"_name":"Target","_id":"2e084a07-c5df-4e04-b749-09e45d1fe538","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"RepeatAttack":{"_name":"RepeatAttack","_id":"a68a20fb-0d59-45f4-bb55-1ff9dd243301","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
         type: 3}
@@ -1445,8 +1440,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _serializedBlackboard
       value: '{"_variables":{"Target":{"_value":1,"_name":"Target","_id":"2e084a07-c5df-4e04-b749-09e45d1fe538","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"RepeatAttack":{"_name":"RepeatAttack","_id":"a68a20fb-0d59-45f4-bb55-1ff9dd243301","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
         type: 3}
@@ -1636,8 +1630,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _serializedBlackboard
       value: '{"_variables":{"Target":{"_value":1,"_name":"Target","_id":"2e084a07-c5df-4e04-b749-09e45d1fe538","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"RepeatAttack":{"_name":"RepeatAttack","_id":"a68a20fb-0d59-45f4-bb55-1ff9dd243301","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
         type: 3}
@@ -1896,8 +1889,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _serializedBlackboard
       value: '{"_variables":{"Target":{"_value":1,"_name":"Target","_id":"2e084a07-c5df-4e04-b749-09e45d1fe538","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"RepeatAttack":{"_name":"RepeatAttack","_id":"a68a20fb-0d59-45f4-bb55-1ff9dd243301","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
         type: 3}
@@ -2087,8 +2079,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _serializedBlackboard
       value: '{"_variables":{"Target":{"_value":1,"_name":"Target","_id":"2e084a07-c5df-4e04-b749-09e45d1fe538","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"RepeatAttack":{"_name":"RepeatAttack","_id":"a68a20fb-0d59-45f4-bb55-1ff9dd243301","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
         type: 3}
@@ -2469,8 +2460,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4317207375666559455, guid: 12e45f324b26aee49a928db11de340fd, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12e45f324b26aee49a928db11de340fd, type: 3}
 --- !u!1001 &1244651676564494964
 PrefabInstance:
@@ -2557,11 +2547,6 @@ PrefabInstance:
         type: 3}
       propertyPath: _serializedVariables.Array.data[0]._references.Array.size
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
-        type: 3}
-      propertyPath: _serializedVariables.Array.size
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5951822802611319334, guid: 82296cd865043a040865e5fa9a0b2301,
         type: 3}

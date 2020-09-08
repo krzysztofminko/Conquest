@@ -42,23 +42,26 @@ namespace NodeCanvas.Tasks.Actions{
 			if (!agent.ItemEntity ||
 				agent.ItemEntity.item.weapon == null ||
 				agent.ItemEntity.item.weapon.attacks.Count == 0)
+			{
 				EndAction(false);
+			}
+			else
+			{
+				//Init
+				damageProcessed = false;
+				target = _target.value; //Save inital Target value to prevent from changes before the end of action
+				attack = agent.ItemEntity.item.weapon.attacks[0];//TODO: other attacks
 
-			//Init
-			damageProcessed = false;
-			target = _target.value;	//Save inital Target value to prevent from changes before the end of action
-			attack = agent.ItemEntity.item.weapon.attacks[0];//TODO: other attacks
+				//Start animation if it exists
+				if (attack.animation)
+				{
+					overrideAnimator.ChangeStateAnimationClip("EmptyAction", attack.animation);
+					animator.SetTrigger("Action");
+				}
 
-			//Check for attack animation - not needed?
-			//if (!attack.animation)
-				//Debug.LogError($"Weapon ({agent.ItemEntity}) attack has no animation assigned.", agent.ItemEntity);
-
-			//Start animation
-			overrideAnimator.ChangeStateAnimationClip("EmptyAction", attack.animation);
-			animator.SetTrigger("Action");
-
-			//Get trail particle
-			trail = agent.ItemEntity ? agent.ItemEntity.GetComponentInChildren<ParticleSystem>() : null;
+				//Get trail particle
+				trail = agent.ItemEntity ? agent.ItemEntity.GetComponentInChildren<ParticleSystem>() : null;
+			}
 		}
 
 		protected override void OnUpdate()
@@ -118,7 +121,7 @@ namespace NodeCanvas.Tasks.Actions{
 			}
 
 			//End action
-			if (elapsedTime > attack.animation.length)
+			if (elapsedTime > (attack.animation ? attack.animation.length : 0))
 			{
 				EndAction(true);
 			}

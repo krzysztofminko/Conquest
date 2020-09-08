@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 5800774329953492871}
   - component: {fileID: 7891190793851514529}
   - component: {fileID: 8052392895448903636}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,15 +246,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedBlackboard: '{"_variables":{"Target":{"_name":"Target","_id":"2e084a07-c5df-4e04-b749-09e45d1fe538","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"RepeatAttack":{"_name":"RepeatAttack","_id":"a68a20fb-0d59-45f4-bb55-1ff9dd243301","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences: []
   _serializedVariables:
   - _json: '{"_name":"Target","_id":"2e084a07-c5df-4e04-b749-09e45d1fe538","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references: []
-  - _json: '{"_name":"RepeatAttack","_id":"a68a20fb-0d59-45f4-bb55-1ff9dd243301","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
 --- !u!114 &5800774329953492865
 MonoBehaviour:

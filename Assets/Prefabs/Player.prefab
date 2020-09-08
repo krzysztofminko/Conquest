@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 6840365053835965599}
   - component: {fileID: 2944363913402068567}
   - component: {fileID: 3055680593888140716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -546,7 +546,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedBlackboard: '{"_variables":{"movementEnabled":{"_name":"movementEnabled","_id":"5f149423-594f-4d1f-b3e5-b7e0800c027b","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Target":{"_name":"Target","_id":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"ItemEntity":{"_propertyPath":"ItemHolder.ItemEntity","_name":"ItemEntity","_id":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02","$type":"NodeCanvas.Framework.Variable`1[[ItemEntity,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences: []
   _serializedVariables:
   - _json: '{"_name":"movementEnabled","_id":"5f149423-594f-4d1f-b3e5-b7e0800c027b","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
@@ -554,6 +555,9 @@ MonoBehaviour:
     _references: []
   - _json: '{"_name":"Target","_id":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references: []
+  - _json: '{"_propertyPath":"ItemHolder.ItemEntity","_name":"ItemEntity","_id":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02","$type":"NodeCanvas.Framework.Variable`1[[ItemEntity,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
 --- !u!114 &3055680593888140716
 MonoBehaviour:

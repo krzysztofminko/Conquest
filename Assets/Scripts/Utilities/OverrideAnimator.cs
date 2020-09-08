@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Animator))]
 public class OverrideAnimator : MonoBehaviour
@@ -14,11 +15,11 @@ public class OverrideAnimator : MonoBehaviour
 
 		animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
 		animator.runtimeAnimatorController = animatorOverrideController;
+		
 	}
 
 	public void ChangeStateAnimationClip(string stateName, AnimationClip animationClip)
 	{
-		//TODO: remembering original clip?
 		animatorOverrideController[stateName] = animationClip;
 	}
 }

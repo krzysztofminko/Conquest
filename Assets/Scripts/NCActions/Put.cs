@@ -1,19 +1,20 @@
-using Items;
+﻿using Items;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace NodeCanvas.Tasks.Actions{
+namespace NodeCanvas.Tasks.Actions
+{
 
 	[Category("ItemHolder")]
-	public class Pick : ActionTask<ItemHolder>
+	public class Put : ActionTask<ItemHolder>
 	{
 		public BBParameter<ItemEntity> _itemEntity;
 
 		private ItemEntity itemEntity;
 		private bool processed;
-		
+
 		private OverrideAnimator overrideAnimator;
 		private Animator animator;
 
@@ -31,14 +32,18 @@ namespace NodeCanvas.Tasks.Actions{
 
 		protected override void OnExecute()
 		{
+			//Check if item entity exists
+			if (!agent.ItemEntity)
+				Debug.LogError("agent.ItemEntity == null, can't Put it.", agent);
+
 			//Init
 			itemEntity = _itemEntity.value;
 			processed = false;
 
 			//Start animation if it exists
-			if (itemEntity.item.pickAnimation)
+			if (itemEntity.item.putAnimation)
 			{
-				overrideAnimator.ChangeStateAnimationClip("EmptyAction", itemEntity.item.pickAnimation);
+				overrideAnimator.ChangeStateAnimationClip("EmptyAction", itemEntity.item.putAnimation);
 				animator.SetTrigger("Action");
 			}
 		}
@@ -52,18 +57,17 @@ namespace NodeCanvas.Tasks.Actions{
 			}
 			else
 			{
-				if (!processed && elapsedTime > itemEntity.item.pickDelay)
+				if (!processed && elapsedTime > itemEntity.item.putDelay)
 				{
-					if (!itemEntity.transform.parent)
-						agent.ItemEntity = itemEntity;
+					agent.ItemEntity = null;
 
 					if (itemEntity.item.carryAnimation)
-						overrideAnimator.ChangeStateAnimationClip("EmptyUpperIdle", itemEntity.item.carryAnimation);
+						overrideAnimator.ChangeStateAnimationClip("EmptyUpperIdle", null);
 
 					processed = true;
 				}
 
-				if(elapsedTime > (itemEntity.item.pickAnimation ? itemEntity.item.pickAnimation.length : 0))
+				if (elapsedTime > (itemEntity.item.putAnimation ? itemEntity.item.putAnimation.length : 0))
 				{
 					EndAction(true);
 				}

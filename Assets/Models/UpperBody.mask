@@ -42,7 +42,7 @@ AvatarMask:
   - m_Path: Armature/Spine1/Spine2/Head1/Head2
     m_Weight: 1
   - m_Path: Armature/Spine1/Spine2/Head1/Head2/Head2_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Spine1/Spine2/Upperarm.L
     m_Weight: 1
   - m_Path: Armature/Spine1/Spine2/Upperarm.L/Forearm.L

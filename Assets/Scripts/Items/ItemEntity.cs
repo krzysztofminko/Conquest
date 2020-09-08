@@ -5,15 +5,24 @@ using Sirenix.OdinInspector;
 using UnityEngine.AI;
 using StatsWithModifiers;
 
+[RequireComponent(typeof(Collider), typeof(Rigidbody)), HideMonoScript]
 public class ItemEntity : MonoBehaviour
 {
-	[ReadOnly]
+	[DisableInPlayMode]
 	public Item item;
 	[ReadOnly]
 	public float condition;
 
 	//TODO: ItemEntity state? Ground, Holder, Equipment, Storage
 
+	private new Collider collider;
+	private new Rigidbody rigidbody;
+
+	private void Awake()
+	{
+		collider = GetComponent<Collider>();
+		rigidbody = GetComponent<Rigidbody>();
+	}
 
 	public static ItemEntity Spawn(Item item, Vector3 position, Quaternion rotation)
 	{
@@ -29,6 +38,8 @@ public class ItemEntity : MonoBehaviour
 	public void SetParent(Transform parent)
 	{
 		transform.parent = parent;
+		collider.enabled = !parent;
+		rigidbody.isKinematic = parent;
 		if (parent)
 		{
 			transform.localPosition = Vector3.zero;
@@ -36,8 +47,8 @@ public class ItemEntity : MonoBehaviour
 		}
 		else
 		{
-			if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 5, NavMesh.AllAreas))
-				transform.position = hit.position;
+			//if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 5, NavMesh.AllAreas))
+				//transform.position = hit.position;
 		}
 	}
 }

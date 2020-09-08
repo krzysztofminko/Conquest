@@ -13,10 +13,10 @@ namespace NodeCanvas.Tasks.Actions{
 
 		protected override void OnUpdate()
 		{
-			target.SetValue(Physics.OverlapSphere(agent.transform.position + Vector3.up + agent.transform.forward, 1, layerMask, QueryTriggerInteraction.Collide)
+			target.value = Physics.OverlapSphere(agent.transform.position + Vector3.up + agent.transform.forward, 2, layerMask, QueryTriggerInteraction.Collide)
 				.OrderBy(c => Distance.Manhattan2D(agent.transform.position, c.transform.position))
-				.FirstOrDefault(c => c.GetComponent<GameObject>())?
-				.GetComponent<GameObject>());
+				.FirstOrDefault(c => c.gameObject != agent.gameObject)?
+				.gameObject;
 		}
 	}
 }

@@ -13,19 +13,30 @@ MonoBehaviour:
   m_Name: WoodAxe
   m_EditorClassIdentifier: 
   prefab: {fileID: 578275136934914593, guid: d443c60b6ff654c4e82a63f4e8f09f7f, type: 3}
+  pickAnimation: {fileID: 0}
+  pickDelay: 0
+  putAnimation: {fileID: 0}
+  putDelay: 0
+  carryAnimation: {fileID: 0}
+  damageable:
+    id: 0
   consumable:
-    id: 0
-  equipable:
-    id: 0
-  weapon:
     id: 1
+  equipable:
+    id: 1
+  weapon:
+    id: 2
   tool:
-    id: 0
+    id: 1
   references:
     version: 1
     00000000:
-      type: {class: , ns: , asm: }
+      type: {class: Damageable, ns: Items, asm: Assembly-CSharp}
+      data:
+        condition: 100
     00000001:
+      type: {class: , ns: , asm: }
+    00000002:
       type: {class: Weapon, ns: Items, asm: Assembly-CSharp}
       data:
         attacks:

@@ -544,13 +544,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serializedBlackboard: '{"_variables":{"movementEnabled":{"_name":"movementEnabled","_id":"5f149423-594f-4d1f-b3e5-b7e0800c027b","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+  _serializedBlackboard: '{"_variables":{"movementEnabled":{"_value":true,"_name":"movementEnabled","_id":"5f149423-594f-4d1f-b3e5-b7e0800c027b","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Target":{"_name":"Target","_id":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"ItemEntity":{"_propertyPath":"ItemHolder.ItemEntity","_name":"ItemEntity","_id":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02","$type":"NodeCanvas.Framework.Variable`1[[ItemEntity,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"repeatAttack":{"_name":"repeatAttack","_id":"0b000719-6ec7-446b-bb1a-a13913eb9766","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"isAttacking":{"_name":"isAttacking","_id":"444ff8e5-f49d-4ada-b998-90af477134a0","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences: []
   _serializedVariables:
-  - _json: '{"_name":"movementEnabled","_id":"5f149423-594f-4d1f-b3e5-b7e0800c027b","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+  - _json: '{"_value":true,"_name":"movementEnabled","_id":"5f149423-594f-4d1f-b3e5-b7e0800c027b","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
   - _json: '{"_name":"Target","_id":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
@@ -558,6 +560,12 @@ MonoBehaviour:
     _references: []
   - _json: '{"_propertyPath":"ItemHolder.ItemEntity","_name":"ItemEntity","_id":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02","$type":"NodeCanvas.Framework.Variable`1[[ItemEntity,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references: []
+  - _json: '{"_name":"repeatAttack","_id":"0b000719-6ec7-446b-bb1a-a13913eb9766","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_name":"isAttacking","_id":"444ff8e5-f49d-4ada-b998-90af477134a0","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
 --- !u!114 &3055680593888140716
 MonoBehaviour:

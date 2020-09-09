@@ -12,7 +12,7 @@ public class ItemHolder : MonoBehaviour
 	[SerializeField, ReadOnly]
 	private ItemEntity _itemEntity;
 	/// <summary>
-	/// On value change, also ItemEntity's parent is changed.
+	/// On value change, also ItemEntity's parent and holder are changed.
 	/// </summary>
 	public ItemEntity ItemEntity
 	{
@@ -21,19 +21,27 @@ public class ItemHolder : MonoBehaviour
 		{
 			if(_itemEntity != value)
 			{
-				_itemEntity?.SetParent(null);
-				value?.SetParent(parent);
+				if (_itemEntity)
+				{
+					_itemEntity.SetParent(null);
+					_itemEntity.holder = null;
+				}
+				if (value)
+				{
+					value.SetParent(itemEntityParent);
+					value.holder = this;
+				}
 				_itemEntity = value;
 			}
 		}
 	}
 
 	[SerializeField]
-	private Transform parent;
+	private Transform itemEntityParent;
 
 	private void Awake()
 	{
 		if(spawnItem)
-			ItemEntity = ItemEntity.Spawn(spawnItem, parent? parent.position : transform.position + transform.forward, parent? parent.rotation : Quaternion.identity);
+			ItemEntity = ItemEntity.Spawn(spawnItem, itemEntityParent? itemEntityParent.position : transform.position + transform.forward, itemEntityParent? itemEntityParent.rotation : Quaternion.identity);
 	}
 }

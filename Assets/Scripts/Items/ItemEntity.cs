@@ -12,6 +12,8 @@ public class ItemEntity : MonoBehaviour
 	public Item item;
 	[ReadOnly]
 	public float condition;
+	[ReadOnly]
+	public ItemHolder holder;
 
 	//TODO: ItemEntity state? Ground, Holder, Equipment, Storage
 

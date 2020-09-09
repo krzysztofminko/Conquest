@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnItem: {fileID: 11400000, guid: b509b404acc3b094d96e405d89650d00, type: 2}
   _itemEntity: {fileID: 0}
-  parent: {fileID: 7687365236782095495}
+  itemEntityParent: {fileID: 7687365236782095495}
 --- !u!114 &2642321937387842587
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -50,27 +50,23 @@ namespace NodeCanvas.Tasks.Actions
 
 		protected override void OnUpdate()
 		{
-			//Check if item entity exists
-			if (!itemEntity)
+			//Process
+			if (!processed && elapsedTime > itemEntity.item.putDelay)
 			{
-				EndAction(false);
+				//Put
+				agent.ItemEntity = null;
+
+				//Set carrying pose
+				if (itemEntity.item.carryAnimation)
+					overrideAnimator.ChangeStateAnimationClip("EmptyUpperIdle", null);
+
+				processed = true;
 			}
-			else
+
+			//Finish
+			if (elapsedTime > (itemEntity.item.putAnimation ? itemEntity.item.putAnimation.length : 0))
 			{
-				if (!processed && elapsedTime > itemEntity.item.putDelay)
-				{
-					agent.ItemEntity = null;
-
-					if (itemEntity.item.carryAnimation)
-						overrideAnimator.ChangeStateAnimationClip("EmptyUpperIdle", null);
-
-					processed = true;
-				}
-
-				if (elapsedTime > (itemEntity.item.putAnimation ? itemEntity.item.putAnimation.length : 0))
-				{
-					EndAction(true);
-				}
+				EndAction(true);
 			}
 		}
 	}

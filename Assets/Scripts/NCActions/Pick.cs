@@ -45,8 +45,10 @@ namespace NodeCanvas.Tasks.Actions{
 
 		protected override void OnUpdate()
 		{
-			//Check if item entity exists
-			if (!itemEntity)
+			//Check item entity
+			if (!itemEntity || 
+				(itemEntity.holder && itemEntity.holder != agent)
+				)
 			{
 				EndAction(false);
 			}
@@ -55,9 +57,8 @@ namespace NodeCanvas.Tasks.Actions{
 				//Process
 				if (!processed && elapsedTime > itemEntity.item.pickDelay)
 				{
-					//Check if already holded by anyone
-					if (!itemEntity.transform.parent)
-						agent.ItemEntity = itemEntity;
+					//Pick
+					agent.ItemEntity = itemEntity;
 
 					//Set carrying pose
 					if (itemEntity.item.carryAnimation)

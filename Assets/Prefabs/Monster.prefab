@@ -232,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnItem: {fileID: 11400000, guid: 544c2bfa8dca1d140aae02f7883b4480, type: 2}
   _itemEntity: {fileID: 0}
-  parent: {fileID: 0}
+  itemEntityParent: {fileID: 9067073976820061665}
 --- !u!114 &5951822802611319334
 MonoBehaviour:
   m_ObjectHideFlags: 0

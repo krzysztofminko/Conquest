@@ -52,17 +52,21 @@ namespace NodeCanvas.Tasks.Actions{
 			}
 			else
 			{
+				//Process
 				if (!processed && elapsedTime > itemEntity.item.pickDelay)
 				{
+					//Check if already holded by anyone
 					if (!itemEntity.transform.parent)
 						agent.ItemEntity = itemEntity;
 
+					//Set carrying pose
 					if (itemEntity.item.carryAnimation)
 						overrideAnimator.ChangeStateAnimationClip("EmptyUpperIdle", itemEntity.item.carryAnimation);
 
 					processed = true;
 				}
 
+				//Finish
 				if(elapsedTime > (itemEntity.item.pickAnimation ? itemEntity.item.pickAnimation.length : 0))
 				{
 					EndAction(true);

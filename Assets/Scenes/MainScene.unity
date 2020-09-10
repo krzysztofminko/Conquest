@@ -2391,39 +2391,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 606611446}
-    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
-        type: 3}
-      propertyPath: _serializedVariables.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
-        type: 3}
-      propertyPath: _serializedBlackboard
-      value: '{"_variables":{"movementEnabled":{"_value":true,"_name":"movementEnabled","_id":"5f149423-594f-4d1f-b3e5-b7e0800c027b","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Target":{"_name":"Target","_id":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"ItemEntity":{"_propertyPath":"ItemHolder.ItemEntity","_name":"ItemEntity","_id":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02","$type":"NodeCanvas.Framework.Variable`1[[ItemEntity,
-        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"repeatAttack":{"_name":"repeatAttack","_id":"0b000719-6ec7-446b-bb1a-a13913eb9766","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"isAttacking":{"_name":"isAttacking","_id":"444ff8e5-f49d-4ada-b998-90af477134a0","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
-        type: 3}
-      propertyPath: _serializedVariables.Array.data[3]._json
-      value: '{"_name":"repeatAttack","_id":"0b000719-6ec7-446b-bb1a-a13913eb9766","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
-        type: 3}
-      propertyPath: _serializedVariables.Array.data[4]._json
-      value: '{"_name":"isAttacking","_id":"444ff8e5-f49d-4ada-b998-90af477134a0","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
-        type: 3}
-      propertyPath: _serializedVariables.Array.data[0]._json
-      value: '{"_value":true,"_name":"movementEnabled","_id":"5f149423-594f-4d1f-b3e5-b7e0800c027b","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c359e493838fa4d42b927a3f0f92a889, type: 3}
 --- !u!1001 &488314418518439865

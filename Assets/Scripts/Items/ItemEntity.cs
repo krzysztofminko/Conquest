@@ -15,8 +15,6 @@ public class ItemEntity : MonoBehaviour
 	[ReadOnly]
 	public ItemHolder holder;
 
-	//TODO: ItemEntity state? Ground, Holder, Equipment, Storage
-
 	private new Collider collider;
 	private new Rigidbody rigidbody;
 

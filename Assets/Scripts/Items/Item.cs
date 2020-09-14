@@ -17,6 +17,10 @@ namespace Items
 		public float putDelay;
 		public AnimationClip carryAnimation;
 
+		[SerializeField]
+		private bool _isLarge;
+		public bool IsLarge { get => _isLarge; }
+
 		[SerializeReference, HideLabel]
 		public Damageable damageable = null;
 		[SerializeReference, HideLabel]

@@ -58,8 +58,10 @@ namespace NodeCanvas.Tasks.Actions{
 				if (!processed && elapsedTime > itemEntity.item.pickDelay)
 				{
 					//Pick
-					//agent.ItemEntity = itemEntity;
-					agent.GetComponent<Storage>().AddItem(itemEntity);
+					if (itemEntity.item.IsLarge)
+						agent.ItemEntity = itemEntity;
+					else
+						agent.GetComponent<Storage>().AddItem(itemEntity);
 
 					//Set carrying pose
 					if (itemEntity.item.carryAnimation)

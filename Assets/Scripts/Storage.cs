@@ -8,6 +8,10 @@ using UnityEngine;
 public class Storage : MonoBehaviour
 {
     [SerializeField]
+    private bool _acceptLarge;
+    public bool AcceptLarge { get => _acceptLarge; }
+
+    [SerializeField]
     private List<ItemEntity> itemsEntities;
         
     public int Count(Item item) => itemsEntities.Count(i => i.item == item);

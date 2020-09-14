@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Canvas))]
+[RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
 public class StorageUI : MonoBehaviour
 {
     [SerializeField, Required]
@@ -16,42 +16,39 @@ public class StorageUI : MonoBehaviour
     [SerializeField, Required]
     private Button itemButton;
 
-    [SerializeField, ReadOnly]
-    private Storage _storage;
-    public Storage Storage
-    {
-        get => _storage;
-        set => Visible = _storage = value;
-    }
+    [ReadOnly]
+    public Storage storage;
     [SerializeField, ReadOnly]
     private bool _visible;
     public bool Visible
     {
         get => _visible;
-        private set => _visible = enabled = canvas.enabled = value;
+        set => _visible = enabled = canvas.enabled = raycaster.enabled = value;
     }
 
     private Canvas canvas;
+    private GraphicRaycaster raycaster;
 
     private void Awake()
     {
         canvas = GetComponent<Canvas>();
+        raycaster = GetComponent<GraphicRaycaster>();
     }
 
     private void Start()
     {
-        Storage = Player.instance.GetComponent<Storage>();
+        storage = Player.instance.GetComponent<Storage>();
     }
 
     private void Update()
     {
-        nameText.text = Storage.name;
+        nameText.text = storage.name;
         Button button = null;
-        int count = Mathf.Max(Storage.items.Count, listParent.childCount);
+        int count = Mathf.Max(storage.items.Count, listParent.childCount);
         for (int i = 0; i < count; i++)
         {
             //Deactivate button
-            if(i >= Storage.items.Count)
+            if(i >= storage.items.Count)
                 listParent.GetChild(i).gameObject.SetActive(false);
 
             //Instantiate new button or get from list
@@ -59,14 +56,14 @@ public class StorageUI : MonoBehaviour
             {
                 button = Instantiate(itemButton, listParent);
             }
-            else if (Storage.items.Count > 0)
+            else if (storage.items.Count > 0)
                 button = listParent.GetChild(i).GetComponent<Button>();
 
             //Setup and activate button
-            if (Storage.items.Count > 0)
+            if (storage.items.Count > 0)
             {
                 button.gameObject.SetActive(true);
-                button.GetComponentInChildren<TextMeshProUGUI>().text = $"{Storage.items[i].name} x{Storage.Count(Storage.items[i])}";
+                button.GetComponentInChildren<TextMeshProUGUI>().text = $"{storage.items[i].name} x{storage.Count(storage.items[i])}";
             }
         }
     }

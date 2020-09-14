@@ -13,20 +13,21 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"boolVariable":{"_name":"movementEnabled","_targetVariableID":"5f149423-594f-4d1f-b3e5-b7e0800c027b"},"$type":"NodeCanvas.Tasks.Actions.SetBoolean"}]},"_name":"Idle","_position":{"x":397.2942,"y":60.25781},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"_itemEntity":{"_name":"ItemEntity","_targetVariableID":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02"},"$type":"NodeCanvas.Tasks.Actions.Put"}]},"_name":"Put","_position":{"x":192.0,"y":210.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"_itemEntity":{"_name":"Target","_targetVariableID":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98"},"$type":"NodeCanvas.Tasks.Actions.Pick"}]},"_name":"Pick","_position":{"x":-32.0,"y":288.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"executionMode":1,"actions":[{"waitFrames":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.WaitFrames"}]},"_name":"Pass
-    Frame","_position":{"x":655.0,"y":164.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"},{"_actionList":{"actions":[{"boolVariable":{"_name":"isAttacking","_targetVariableID":"444ff8e5-f49d-4ada-b998-90af477134a0"},"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},{"boolVariable":{"_name":"movementEnabled","_targetVariableID":"5f149423-594f-4d1f-b3e5-b7e0800c027b"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},{"boolVariable":{"_name":"repeatAttack","_targetVariableID":"0b000719-6ec7-446b-bb1a-a13913eb9766"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},{"_target":{"_name":"Target","_targetVariableID":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98"},"layerMask":{"value":5632},"$type":"NodeCanvas.Tasks.Actions.Attack"},{"boolVariable":{"_name":"isAttacking","_targetVariableID":"444ff8e5-f49d-4ada-b998-90af477134a0"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"}]},"_name":"Attack","_position":{"x":702.0712,"y":370.3013},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"},{"_position":{"x":547.0,"y":288.0},"$type":"NodeCanvas.StateMachines.EmptyState","$id":"5"},{"_actionList":{"actions":[{"boolVariable":{"_name":"movementEnabled","_targetVariableID":"5f149423-594f-4d1f-b3e5-b7e0800c027b"},"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},{"boolVariable":{"_name":"isAttacking","_targetVariableID":"444ff8e5-f49d-4ada-b998-90af477134a0"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"}]},"_name":"FinishAttack","_position":{"x":175.0,"y":583.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"6"},{"_conditionList":{"conditions":[]},"_actionList":{"executionMode":1,"actions":[{"enabled":{"_name":"movementEnabled","_targetVariableID":"5f149423-594f-4d1f-b3e5-b7e0800c027b"},"$type":"NodeCanvas.Tasks.Actions.Move"},{"layerMask":{"value":7680},"target":{"_name":"Target","_targetVariableID":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98"},"$type":"NodeCanvas.Tasks.Actions.Targeting"}]},"_repeatStateActions":true,"_position":{"x":835.2633,"y":-0.4302979},"$type":"NodeCanvas.StateMachines.ConcurrentState"},{"_conditionList":{"conditions":[{"buttonName":{"_name":"PrimaryAction","_targetVariableID":"95eae522-c04f-4727-9ad9-279ca55fba53"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"},{"valueA":{"_name":"isAttacking","_targetVariableID":"444ff8e5-f49d-4ada-b998-90af477134a0"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},{"valueA":{"_name":"repeatAttack","_targetVariableID":"0b000719-6ec7-446b-bb1a-a13913eb9766"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},{"valueA":{"_name":"ItemEntity","_targetVariableID":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity,
+    Frame","_position":{"x":655.0,"y":164.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"},{"_actionList":{"actions":[{"boolVariable":{"_name":"isAttacking","_targetVariableID":"444ff8e5-f49d-4ada-b998-90af477134a0"},"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},{"boolVariable":{"_name":"movementEnabled","_targetVariableID":"5f149423-594f-4d1f-b3e5-b7e0800c027b"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},{"boolVariable":{"_name":"repeatAttack","_targetVariableID":"0b000719-6ec7-446b-bb1a-a13913eb9766"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},{"_target":{"_name":"Target","_targetVariableID":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98"},"layerMask":{"value":13824},"$type":"NodeCanvas.Tasks.Actions.Attack"},{"boolVariable":{"_name":"isAttacking","_targetVariableID":"444ff8e5-f49d-4ada-b998-90af477134a0"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"}]},"_name":"Attack","_position":{"x":702.0712,"y":370.3013},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"},{"_position":{"x":547.0,"y":288.0},"$type":"NodeCanvas.StateMachines.EmptyState","$id":"5"},{"_onEnterList":{"executionMode":1,"actions":[{"targetStorage":{"_name":"Target","_targetVariableID":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98"},"show":true,"$type":"NodeCanvas.Tasks.Actions.ShowStorageUI"},{"boolVariable":{"_name":"movementEnabled","_targetVariableID":"5f149423-594f-4d1f-b3e5-b7e0800c027b"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"}]},"_onUpdateList":{"executionMode":1,"actions":[]},"_onExitList":{"executionMode":1,"actions":[{"targetStorage":{},"$type":"NodeCanvas.Tasks.Actions.ShowStorageUI"}]},"foldEnter":true,"foldExit":true,"_name":"Inventory","_position":{"x":114.0,"y":-234.0},"$type":"NodeCanvas.StateMachines.SuperActionState","$id":"6"},{"_actionList":{"executionMode":1,"actions":[{"boolVariable":{"_name":"movementEnabled","_targetVariableID":"5f149423-594f-4d1f-b3e5-b7e0800c027b"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},{"targetStorage":{"_name":"Target","_targetVariableID":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98"},"show":true,"$type":"NodeCanvas.Tasks.Actions.ShowStorageUI"}]},"_name":"Inventory","_position":{"x":696.0,"y":-268.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"7"},{"_actionList":{"actions":[{"boolVariable":{"_name":"movementEnabled","_targetVariableID":"5f149423-594f-4d1f-b3e5-b7e0800c027b"},"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},{"boolVariable":{"_name":"isAttacking","_targetVariableID":"444ff8e5-f49d-4ada-b998-90af477134a0"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"}]},"_name":"FinishAttack","_position":{"x":175.0,"y":583.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"8"},{"_conditionList":{"conditions":[]},"_actionList":{"executionMode":1,"actions":[{"enabled":{"_name":"movementEnabled","_targetVariableID":"5f149423-594f-4d1f-b3e5-b7e0800c027b"},"$type":"NodeCanvas.Tasks.Actions.Move"},{"layerMask":{"value":15872},"target":{"_name":"Target","_targetVariableID":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98"},"$type":"NodeCanvas.Tasks.Actions.Targeting"}]},"_repeatStateActions":true,"_position":{"x":835.2633,"y":-0.4302979},"$type":"NodeCanvas.StateMachines.ConcurrentState"},{"_conditionList":{"conditions":[{"buttonName":{"_name":"PrimaryAction","_targetVariableID":"95eae522-c04f-4727-9ad9-279ca55fba53"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"},{"valueA":{"_name":"isAttacking","_targetVariableID":"444ff8e5-f49d-4ada-b998-90af477134a0"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},{"valueA":{"_name":"repeatAttack","_targetVariableID":"0b000719-6ec7-446b-bb1a-a13913eb9766"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},{"valueA":{"_name":"ItemEntity","_targetVariableID":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}]},"_actionList":{"executionMode":1,"actions":[{"boolVariable":{"_name":"repeatAttack","_targetVariableID":"0b000719-6ec7-446b-bb1a-a13913eb9766"},"$type":"NodeCanvas.Tasks.Actions.SetBoolean"}]},"_repeatStateActions":true,"_position":{"x":1024.0,"y":5.0},"$type":"NodeCanvas.StateMachines.ConcurrentState"}],"connections":[{"_condition":{"conditions":[{"buttonName":{"_name":"SecondaryAction","_targetVariableID":"fe0d37d3-0ece-4c38-86e7-9e88f5aadc8d"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"},{"valueA":{"_name":"ItemEntity","_targetVariableID":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"buttonName":{"_name":"PrimaryAction","_targetVariableID":"95eae522-c04f-4727-9ad9-279ca55fba53"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"},{"valueA":{"_name":"Target","_targetVariableID":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"valueA":{"_name":"ItemEntity","_targetVariableID":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity,
     Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"buttonName":{"_name":"PrimaryAction","_targetVariableID":"95eae522-c04f-4727-9ad9-279ca55fba53"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"},{"valueA":{"_name":"ItemEntity","_targetVariableID":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"repeatAttack","_targetVariableID":"0b000719-6ec7-446b-bb1a-a13913eb9766"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"PrimaryAction":{"_value":"PrimaryAction","_name":"PrimaryAction","_id":"95eae522-c04f-4727-9ad9-279ca55fba53","$type":"NodeCanvas.Framework.Variable`1[[System.String,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"buttonName":{"_name":"Inventory","_targetVariableID":"a9701420-3aff-4f95-9b15-a1322a3fad85"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"repeatAttack","_targetVariableID":"0b000719-6ec7-446b-bb1a-a13913eb9766"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"buttonName":{"_name":"Inventory","_targetVariableID":"a9701420-3aff-4f95-9b15-a1322a3fad85"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"},"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"buttonName":{"_name":"Inventory","_targetVariableID":"a9701420-3aff-4f95-9b15-a1322a3fad85"},"$type":"NodeCanvas.Tasks.Conditions.CheckButtonInput"},"_sourceNode":{"$ref":"7"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"PrimaryAction":{"_value":"PrimaryAction","_name":"PrimaryAction","_id":"95eae522-c04f-4727-9ad9-279ca55fba53","$type":"NodeCanvas.Framework.Variable`1[[System.String,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"SecondaryAction":{"_value":"SecondaryAction","_name":"SecondaryAction","_id":"fe0d37d3-0ece-4c38-86e7-9e88f5aadc8d","$type":"NodeCanvas.Framework.Variable`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Inventory":{"_value":"Inventory","_name":"Inventory","_id":"a9701420-3aff-4f95-9b15-a1322a3fad85","$type":"NodeCanvas.Framework.Variable`1[[System.String,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}}'
   _objectReferences: []
   _graphSource:
     _version: 3.09
     _category: 
     _comments: 
-    _translation: {x: -274, y: 81}
+    _translation: {x: -46, y: 424}
     _zoomFactor: 1
   _haltSerialization: 0
 #---GRAPH_START---
@@ -149,7 +150,7 @@ MonoBehaviour:
 #                            "_targetVariableID": "400affdd-0a1c-4b6b-9a00-60f06e4e4e98"
 #                        },
 #                        "layerMask": {
-#                            "value": 5632
+#                            "value": 13824
 #                        },
 #                        "$type": "NodeCanvas.Tasks.Actions.Attack"
 #                    },
@@ -180,6 +181,83 @@ MonoBehaviour:
 #            "$id": "5"
 #        },
 #        {
+#            "_onEnterList": {
+#                "executionMode": 1,
+#                "actions": [
+#                    {
+#                        "targetStorage": {
+#                            "_name": "Target",
+#                            "_targetVariableID": "400affdd-0a1c-4b6b-9a00-60f06e4e4e98"
+#                        },
+#                        "show": true,
+#                        "$type": "NodeCanvas.Tasks.Actions.ShowStorageUI"
+#                    },
+#                    {
+#                        "boolVariable": {
+#                            "_name": "movementEnabled",
+#                            "_targetVariableID": "5f149423-594f-4d1f-b3e5-b7e0800c027b"
+#                        },
+#                        "setTo": 0,
+#                        "$type": "NodeCanvas.Tasks.Actions.SetBoolean"
+#                    }
+#                ]
+#            },
+#            "_onUpdateList": {
+#                "executionMode": 1,
+#                "actions": []
+#            },
+#            "_onExitList": {
+#                "executionMode": 1,
+#                "actions": [
+#                    {
+#                        "targetStorage": {
+#
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.ShowStorageUI"
+#                    }
+#                ]
+#            },
+#            "foldEnter": true,
+#            "foldExit": true,
+#            "_name": "Inventory",
+#            "_position": {
+#                "x": 114.0,
+#                "y": -234.0
+#            },
+#            "$type": "NodeCanvas.StateMachines.SuperActionState",
+#            "$id": "6"
+#        },
+#        {
+#            "_actionList": {
+#                "executionMode": 1,
+#                "actions": [
+#                    {
+#                        "boolVariable": {
+#                            "_name": "movementEnabled",
+#                            "_targetVariableID": "5f149423-594f-4d1f-b3e5-b7e0800c027b"
+#                        },
+#                        "setTo": 0,
+#                        "$type": "NodeCanvas.Tasks.Actions.SetBoolean"
+#                    },
+#                    {
+#                        "targetStorage": {
+#                            "_name": "Target",
+#                            "_targetVariableID": "400affdd-0a1c-4b6b-9a00-60f06e4e4e98"
+#                        },
+#                        "show": true,
+#                        "$type": "NodeCanvas.Tasks.Actions.ShowStorageUI"
+#                    }
+#                ]
+#            },
+#            "_name": "Inventory",
+#            "_position": {
+#                "x": 696.0,
+#                "y": -268.0
+#            },
+#            "$type": "NodeCanvas.StateMachines.ActionState",
+#            "$id": "7"
+#        },
+#        {
 #            "_actionList": {
 #                "actions": [
 #                    {
@@ -205,7 +283,7 @@ MonoBehaviour:
 #                "y": 583.0
 #            },
 #            "$type": "NodeCanvas.StateMachines.ActionState",
-#            "$id": "6"
+#            "$id": "8"
 #        },
 #        {
 #            "_conditionList": {
@@ -223,7 +301,7 @@ MonoBehaviour:
 #                    },
 #                    {
 #                        "layerMask": {
-#                            "value": 7680
+#                            "value": 15872
 #                        },
 #                        "target": {
 #                            "_name": "Target",
@@ -411,6 +489,22 @@ MonoBehaviour:
 #            "$type": "NodeCanvas.StateMachines.FSMConnection"
 #        },
 #        {
+#            "_condition": {
+#                "buttonName": {
+#                    "_name": "Inventory",
+#                    "_targetVariableID": "a9701420-3aff-4f95-9b15-a1322a3fad85"
+#                },
+#                "$type": "NodeCanvas.Tasks.Conditions.CheckButtonInput"
+#            },
+#            "_sourceNode": {
+#                "$ref": "0"
+#            },
+#            "_targetNode": {
+#                "$ref": "6"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        },
+#        {
 #            "_sourceNode": {
 #                "$ref": "1"
 #            },
@@ -475,8 +569,40 @@ MonoBehaviour:
 #            "$type": "NodeCanvas.StateMachines.FSMConnection"
 #        },
 #        {
+#            "_condition": {
+#                "buttonName": {
+#                    "_name": "Inventory",
+#                    "_targetVariableID": "a9701420-3aff-4f95-9b15-a1322a3fad85"
+#                },
+#                "$type": "NodeCanvas.Tasks.Conditions.CheckButtonInput"
+#            },
 #            "_sourceNode": {
 #                "$ref": "6"
+#            },
+#            "_targetNode": {
+#                "$ref": "0"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        },
+#        {
+#            "_condition": {
+#                "buttonName": {
+#                    "_name": "Inventory",
+#                    "_targetVariableID": "a9701420-3aff-4f95-9b15-a1322a3fad85"
+#                },
+#                "$type": "NodeCanvas.Tasks.Conditions.CheckButtonInput"
+#            },
+#            "_sourceNode": {
+#                "$ref": "7"
+#            },
+#            "_targetNode": {
+#                "$ref": "0"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "8"
 #            },
 #            "_targetNode": {
 #                "$ref": "0"
@@ -497,6 +623,12 @@ MonoBehaviour:
 #                "_value": "SecondaryAction",
 #                "_name": "SecondaryAction",
 #                "_id": "fe0d37d3-0ece-4c38-86e7-9e88f5aadc8d",
+#                "$type": "NodeCanvas.Framework.Variable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+#            },
+#            "Inventory": {
+#                "_value": "Inventory",
+#                "_name": "Inventory",
+#                "_id": "a9701420-3aff-4f95-9b15-a1322a3fad85",
 #                "$type": "NodeCanvas.Framework.Variable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
 #            }
 #        }

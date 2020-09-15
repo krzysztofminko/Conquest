@@ -11,28 +11,19 @@ public class Storage : MonoBehaviour
     private bool _acceptLarge;
     public bool AcceptLarge { get => _acceptLarge; }
 
-    [SerializeField]
-    private List<ItemEntity> itemsEntities;
+    public readonly List<ItemEntity> itemsEntities = new List<ItemEntity>();
         
     public int Count(Item item) => itemsEntities.Count(i => i.item == item);
 
-    //TODO: redesign this element!
-    public readonly List<Item> items = new List<Item>();
-
-    public void AddItem(ItemEntity itemEntity)
+    public void AddItemEntity(ItemEntity itemEntity)
     {
-        if (!itemsEntities.Find(i => i.item == itemEntity.item))
-            items.Add(itemEntity.item);
-
         itemsEntities.Add(itemEntity);
         itemEntity.gameObject.SetActive(false);
     }
 
-    public void RemoveItem(ItemEntity itemEntity)
+    public void RemoveItemEntity(ItemEntity itemEntity)
     {
         itemsEntities.Remove(itemEntity);
         itemEntity.gameObject.SetActive(true);
-        if (Count(itemEntity.item) == 0)
-            items.Remove(itemEntity.item);
     }
 }

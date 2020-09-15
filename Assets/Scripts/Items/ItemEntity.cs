@@ -10,6 +10,8 @@ public class ItemEntity : MonoBehaviour
 {
 	[DisableInPlayMode]
 	public Item item;
+	[ReadOnly, Min(1)]
+	public int count = 1;
 	[ReadOnly]
 	public float condition;
 	[ReadOnly]

@@ -18,7 +18,8 @@ MonoBehaviour:
   putAnimation: {fileID: 0}
   putDelay: 0
   carryAnimation: {fileID: 0}
-  _isLarge: 1
+  _isLarge: 0
+  _isStackable: 1
   damageable:
     id: 0
   consumable:

@@ -21,6 +21,10 @@ namespace Items
 		private bool _isLarge;
 		public bool IsLarge { get => _isLarge; }
 
+		[SerializeField]
+		private bool _isStackable;
+		public bool IsStackable { get => _isStackable; }
+
 		[SerializeReference, HideLabel]
 		public Damageable damageable = null;
 		[SerializeReference, HideLabel]

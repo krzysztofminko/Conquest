@@ -44,11 +44,10 @@ public class StorageUI : MonoBehaviour
     {
         nameText.text = storage.name;
         Button button = null;
-        int count = Mathf.Max(storage.items.Count, listParent.childCount);
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < storage.itemsEntities.Count; i++)
         {
             //Deactivate button
-            if(i >= storage.items.Count)
+            if(i >= storage.itemsEntities.Count)
                 listParent.GetChild(i).gameObject.SetActive(false);
 
             //Instantiate new button or get from list
@@ -56,14 +55,14 @@ public class StorageUI : MonoBehaviour
             {
                 button = Instantiate(itemButton, listParent);
             }
-            else if (storage.items.Count > 0)
+            else if (storage.itemsEntities.Count > 0)
                 button = listParent.GetChild(i).GetComponent<Button>();
 
             //Setup and activate button
-            if (storage.items.Count > 0)
+            if (storage.itemsEntities.Count > 0)
             {
                 button.gameObject.SetActive(true);
-                button.GetComponentInChildren<TextMeshProUGUI>().text = $"{storage.items[i].name} x{storage.Count(storage.items[i])}";
+                button.GetComponentInChildren<TextMeshProUGUI>().text = storage.itemsEntities[i].item.name + (storage.itemsEntities[i].item.IsStackable ? $" x{storage.itemsEntities[i].count}" : "");
             }
         }
     }

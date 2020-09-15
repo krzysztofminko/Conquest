@@ -16,16 +16,20 @@ namespace NodeCanvas.Tasks.Actions{
 		
 		private OverrideAnimator overrideAnimator;
 		private Animator animator;
+		private Storage storage;
 
 		protected override string OnInit()
 		{
 			overrideAnimator = agent.GetComponent<OverrideAnimator>();
 			animator = agent.GetComponent<Animator>();
+			storage = agent.GetComponent<Storage>();
 
 			if (!overrideAnimator)
 				return "No OverrideAnimator component on agent game object.";
 			if (!animator)
 				return "No Animator component on agent game object.";
+			if (!storage)
+				return "No Storage component on agent game object.";
 			return null;
 		}
 
@@ -59,9 +63,30 @@ namespace NodeCanvas.Tasks.Actions{
 				{
 					//Pick
 					if (itemEntity.item.IsLarge)
+					{
 						agent.ItemEntity = itemEntity;
+					}
 					else
-						agent.GetComponent<Storage>().AddItem(itemEntity);
+					{
+						if (itemEntity.item.IsStackable)
+						{
+							ItemEntity existingItemEntity = storage.itemsEntities.Find(i => i.item == itemEntity.item);
+							if (existingItemEntity) 
+							{
+								existingItemEntity.count += itemEntity.count;
+								Object.Destroy(itemEntity.gameObject);
+								itemEntity = existingItemEntity;
+							}
+							else
+							{
+								storage.AddItemEntity(itemEntity);
+							}
+						}
+						else
+						{
+							storage.AddItemEntity(itemEntity);
+						}
+					}
 
 					//Set carrying pose
 					if (itemEntity.item.carryAnimation)

@@ -1232,7 +1232,7 @@ PrefabInstance:
     - target: {fileID: 3326690634337028605, guid: 6d2f8fff923c21a489dff41efab4d140,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000021009291
+      value: -0.000026697531
       objectReference: {fileID: 0}
     - target: {fileID: 3464322453204990432, guid: 6d2f8fff923c21a489dff41efab4d140,
         type: 3}
@@ -2393,8 +2393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fcc6102bee3707498c81e280c435da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStorageUI: {fileID: 1278422017}
-  targetStorageUI: {fileID: 605203807}
+  playerUI: {fileID: 1278422017}
+  targetUI: {fileID: 605203807}
+  _selectedItemEntity: {fileID: 0}
+  _playerStorageIsSelected: 1
 --- !u!225 &643724966
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4822,6 +4824,33 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 606611446}
+    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
+        type: 3}
+      propertyPath: _serializedVariables.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
+        type: 3}
+      propertyPath: _serializedBlackboard
+      value: '{"_variables":{"movementEnabled":{"_value":true,"_name":"movementEnabled","_id":"5f149423-594f-4d1f-b3e5-b7e0800c027b","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Target":{"_name":"Target","_id":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"ItemEntity":{"_propertyPath":"ItemHolder.ItemEntity","_name":"ItemEntity","_id":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02","$type":"NodeCanvas.Framework.Variable`1[[ItemEntity,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"repeatAttack":{"_name":"repeatAttack","_id":"0b000719-6ec7-446b-bb1a-a13913eb9766","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"isAttacking":{"_name":"isAttacking","_id":"444ff8e5-f49d-4ada-b998-90af477134a0","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
+        type: 3}
+      propertyPath: _serializedVariables.Array.data[5]._json
+      value: '{"_name":"Player Storage Is Selected","_id":"0fe0301c-0c1f-44e9-aa4b-4db1177fbde3","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
+        type: 3}
+      propertyPath: _serializedVariables.Array.data[6]._json
+      value: '{"_name":"Player Storage Is Selected","_id":"0fe0301c-0c1f-44e9-aa4b-4db1177fbde3","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c359e493838fa4d42b927a3f0f92a889, type: 3}
 --- !u!1001 &488314418518439865
@@ -5062,7 +5091,7 @@ PrefabInstance:
     - target: {fileID: 3326690634337028605, guid: 6d2f8fff923c21a489dff41efab4d140,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000015287245
+      value: -0.00003241958
       objectReference: {fileID: 0}
     - target: {fileID: 3464322453204990432, guid: 6d2f8fff923c21a489dff41efab4d140,
         type: 3}

@@ -1,7 +1,9 @@
-﻿using Sirenix.OdinInspector;
+﻿using SelectableList;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,9 +14,8 @@ public class StorageUI : MonoBehaviour
     [SerializeField, Required]
     private TextMeshProUGUI nameText;
     [SerializeField, Required]
-    private RectTransform listParent;
-    [SerializeField, Required]
-    private Button itemButton;
+    private ListParent _listParent;
+    public ListParent ListParent { get => _listParent; private set => _listParent = value; }
 
     [ReadOnly]
     public Storage storage;
@@ -26,6 +27,7 @@ public class StorageUI : MonoBehaviour
         set => _visible = enabled = canvas.enabled = raycaster.enabled = value;
     }
 
+
     private Canvas canvas;
     private GraphicRaycaster raycaster;
 
@@ -33,37 +35,19 @@ public class StorageUI : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         raycaster = GetComponent<GraphicRaycaster>();
-    }
-
-    private void Start()
-    {
-        storage = Player.instance.GetComponent<Storage>();
+        storage = Player.Instance.GetComponent<Storage>();
+        ListParent.onElementSetup += SetupListElement;
     }
 
     private void Update()
     {
         nameText.text = storage.name;
-        Button button = null;
-        for (int i = 0; i < storage.itemsEntities.Count; i++)
-        {
-            //Deactivate button
-            if(i >= storage.itemsEntities.Count)
-                listParent.GetChild(i).gameObject.SetActive(false);
+        ListParent.UpdateList(storage.itemsEntities.Count);
+    }
 
-            //Instantiate new button or get from list
-            if (i >= listParent.childCount)
-            {
-                button = Instantiate(itemButton, listParent);
-            }
-            else if (storage.itemsEntities.Count > 0)
-                button = listParent.GetChild(i).GetComponent<Button>();
-
-            //Setup and activate button
-            if (storage.itemsEntities.Count > 0)
-            {
-                button.gameObject.SetActive(true);
-                button.GetComponentInChildren<TextMeshProUGUI>().text = storage.itemsEntities[i].item.name + (storage.itemsEntities[i].item.IsStackable ? $" x{storage.itemsEntities[i].count}" : "");
-            }
-        }
+    private void SetupListElement(ListElement element, int id)
+    {
+        ItemEntity itemEntity = storage.itemsEntities[id];
+        element.GetComponentInChildren<TextMeshProUGUI>().text = itemEntity.item.name + (itemEntity.item.IsStackable ? $" x{itemEntity.count}" : "");
     }
 }

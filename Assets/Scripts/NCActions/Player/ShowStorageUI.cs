@@ -1,19 +1,19 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-using System.Diagnostics;
 
 namespace NodeCanvas.Tasks.Actions{
 
-	[Category("Player")]
-	public class ShowStorageUI : ActionTask<Player>
+	[Category("UI")]
+	[Description("Shows or hides Storage UI.")]
+	public class ShowStorageUI : ActionTask
 	{
-		public BBParameter<Storage> targetStorage;
 		public bool show;
+		public BBParameter<Storage> targetStorage;
 		
 		protected override void OnExecute()
 		{
-			StorageUIManager.ShowStorageUI(show);
-			StorageUIManager.SetTargetStorage(targetStorage.value);
+			StorageUIManager.Instance.ShowStorageUI(show);
+			StorageUIManager.Instance.SetTargetStorage(targetStorage.value);
 			EndAction(true);
 		}
 	}

@@ -11,7 +11,7 @@ namespace StatsWithModifiers
 	{
 		public enum ModifierType { Permanent, Timed, Equipable }
 
-		[SerializeField, HorizontalGroup()]
+		[SerializeField, HorizontalGroup(), ClassExtends(typeof(Stat), AllowAbstract = false)]
 		private ClassTypeReference _stat;
 		public ClassTypeReference Stat { get => _stat;}
 

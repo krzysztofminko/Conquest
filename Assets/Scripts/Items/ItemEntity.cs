@@ -4,14 +4,27 @@ using Items;
 using Sirenix.OdinInspector;
 using UnityEngine.AI;
 using StatsWithModifiers;
+using System;
 
 [RequireComponent(typeof(Collider), typeof(Rigidbody)), HideMonoScript]
 public class ItemEntity : MonoBehaviour
 {
+	public event Action<ItemEntity> onDestroy;
+
 	[DisableInPlayMode]
 	public Item item;
 	[ReadOnly, Min(1)]
-	public int count = 1;
+	private int _count = 1;
+	public int Count
+	{
+		get => _count;
+		set
+		{
+			_count = value;
+			if (value < 1)
+				Destroy(gameObject);
+		}
+	}
 	[ReadOnly]
 	public float condition;
 	[ReadOnly]
@@ -54,5 +67,10 @@ public class ItemEntity : MonoBehaviour
 			//if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 5, NavMesh.AllAreas))
 				//transform.position = hit.position;
 		}
+	}
+
+	private void OnDestroy()
+	{
+		onDestroy?.Invoke(this);
 	}
 }

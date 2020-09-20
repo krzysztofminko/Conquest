@@ -25,7 +25,15 @@ public class Storage : MonoBehaviour
         itemEntity.storage = this;
         itemEntity.gameObject.SetActive(false);
         itemEntity.transform.parent = transform;
+        itemEntity.onDestroy += ItemEntity_onDestroy;
         onAddItemEntity?.Invoke(itemsEntities.Count - 1);
+    }
+
+    private void ItemEntity_onDestroy(ItemEntity itemEntity)
+    {
+        int index = itemsEntities.IndexOf(itemEntity);
+        itemsEntities.RemoveAt(index);
+        onRemoveItemEntity?.Invoke(index);
     }
 
     public void RemoveItemEntity(ItemEntity itemEntity)

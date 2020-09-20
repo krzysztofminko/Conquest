@@ -62,7 +62,7 @@ public class StorageUI : MonoBehaviour
     private void SetupListElement(GameObject element, int id)
     {
         ItemEntity itemEntity = Storage.itemsEntities[id];
-        element.GetComponentInChildren<TextMeshProUGUI>().text = itemEntity.item.name + (itemEntity.item.IsStackable ? $" x{itemEntity.count}" : "");
+        element.GetComponentInChildren<TextMeshProUGUI>().text = itemEntity.item.name + (itemEntity.item.IsStackable ? $" x{itemEntity.Count}" : "");
     }
 
     private void Storage_onAddItemEntity(int index) 

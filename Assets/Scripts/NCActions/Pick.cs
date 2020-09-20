@@ -73,7 +73,7 @@ namespace NodeCanvas.Tasks.Actions{
 							ItemEntity existingItemEntity = storage.itemsEntities.Find(i => i.item == itemEntity.item);
 							if (existingItemEntity) 
 							{
-								existingItemEntity.count += itemEntity.count;
+								existingItemEntity.Count += itemEntity.Count;
 								Object.Destroy(itemEntity.gameObject);
 								itemEntity = existingItemEntity;
 							}

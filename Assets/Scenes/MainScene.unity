@@ -1232,7 +1232,7 @@ PrefabInstance:
     - target: {fileID: 3326690634337028605, guid: 6d2f8fff923c21a489dff41efab4d140,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000026697531
+      value: 0.00007697638
       objectReference: {fileID: 0}
     - target: {fileID: 3464322453204990432, guid: 6d2f8fff923c21a489dff41efab4d140,
         type: 3}
@@ -4226,6 +4226,18 @@ MonoBehaviour:
   - axis: Inventory
     keyboard: {fileID: 21300000, guid: fd60768b819caa348aab8e4d5ef3c503, type: 3}
     controller: {fileID: 21300000, guid: 0e620ee7cc5c6b0499b2428bb35d5c39, type: 3}
+  - axis: Transfer
+    keyboard: {fileID: 21300000, guid: bbcd41da2a9a6cc4ea8cf40e36789105, type: 3}
+    controller: {fileID: 21300000, guid: 6475debfa8dce084eb6db02d57bf3a0a, type: 3}
+  - axis: Drop
+    keyboard: {fileID: 21300000, guid: e5fbe5f1aa879a94489718f8de80cd01, type: 3}
+    controller: {fileID: 21300000, guid: 34d73180491f0504f8c5bb8ee6159bac, type: 3}
+  - axis: Equip
+    keyboard: {fileID: 21300000, guid: 38cb601b779a1c34eacf16974f79d0c3, type: 3}
+    controller: {fileID: 21300000, guid: 4457b01ecbd2afe4c87466585fac4d13, type: 3}
+  - axis: Consume
+    keyboard: {fileID: 21300000, guid: 9fdc00a5fb2eaf94389e912a578d5bf9, type: 3}
+    controller: {fileID: 21300000, guid: c6d51278c51ac0d46904437038e375d9, type: 3}
   _hints: []
 --- !u!114 &1889956755
 MonoBehaviour:
@@ -4824,33 +4836,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 606611446}
-    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
-        type: 3}
-      propertyPath: _serializedVariables.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
-        type: 3}
-      propertyPath: _serializedBlackboard
-      value: '{"_variables":{"movementEnabled":{"_value":true,"_name":"movementEnabled","_id":"5f149423-594f-4d1f-b3e5-b7e0800c027b","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Target":{"_name":"Target","_id":"400affdd-0a1c-4b6b-9a00-60f06e4e4e98","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"ItemEntity":{"_propertyPath":"ItemHolder.ItemEntity","_name":"ItemEntity","_id":"c79bc3ed-c227-4fdd-a056-de28ee8aaa02","$type":"NodeCanvas.Framework.Variable`1[[ItemEntity,
-        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"repeatAttack":{"_name":"repeatAttack","_id":"0b000719-6ec7-446b-bb1a-a13913eb9766","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"isAttacking":{"_name":"isAttacking","_id":"444ff8e5-f49d-4ada-b998-90af477134a0","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
-        type: 3}
-      propertyPath: _serializedVariables.Array.data[5]._json
-      value: '{"_name":"Player Storage Is Selected","_id":"0fe0301c-0c1f-44e9-aa4b-4db1177fbde3","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2944363913402068567, guid: c359e493838fa4d42b927a3f0f92a889,
-        type: 3}
-      propertyPath: _serializedVariables.Array.data[6]._json
-      value: '{"_name":"Player Storage Is Selected","_id":"0fe0301c-0c1f-44e9-aa4b-4db1177fbde3","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c359e493838fa4d42b927a3f0f92a889, type: 3}
 --- !u!1001 &488314418518439865
@@ -5091,7 +5076,7 @@ PrefabInstance:
     - target: {fileID: 3326690634337028605, guid: 6d2f8fff923c21a489dff41efab4d140,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00003241958
+      value: 0.000084605774
       objectReference: {fileID: 0}
     - target: {fileID: 3464322453204990432, guid: 6d2f8fff923c21a489dff41efab4d140,
         type: 3}

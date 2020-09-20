@@ -1,7 +1,7 @@
-﻿using Sirenix.OdinInspector;
+﻿using SelectableList;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using SelectableList;
-using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class StorageUIManager : MonoBehaviour
@@ -35,62 +35,78 @@ public class StorageUIManager : MonoBehaviour
 
     private void Update()
     {
-        if (SelectedItemEntity)
+        if (!SelectedItemEntity)
         {
-            if (PlayerStorageIsSelected)
-            {
-                if (InputHints.GetButtonDown("Drop", "Drop"))
-                {
-                    Player.Instance.Storage.RemoveItemEntity(SelectedItemEntity);
-                    SelectedItemEntity.transform.position = Player.Instance.transform.position;
-                }
-                if (InputHints.GetButtonDown("Equip", "Equip"))
-                {
-                    SelectedItemEntity.gameObject.SetActive(true);
-                    Player.Instance.ItemHolder.ItemEntity = SelectedItemEntity;
-                }
-            }
+            if (playerUI.Storage && playerUI.Storage.itemsEntities.Count > 0)
+                playerUI.ListParent.Select(0);
+            else if (targetUI.Storage && targetUI.Storage.itemsEntities.Count > 0)
+                targetUI.ListParent.Select(0);
         }
     }
 
     public void ShowStorageUI(bool show)
     {
         canvasGroup.alpha = show ? 1 : 0;
-        canvasGroup.blocksRaycasts = playerUI.Visible = enabled = show;
+        canvasGroup.blocksRaycasts = enabled = show;
+        playerUI.Storage = show ? Player.Instance.Storage : null;
 
         if (show)
         {
-            playerUI.ListParent.onSelect += SelectPlayerItemEntity;
+            playerUI.ListParent.onSelectedChange += SelectPlayerItemEntity;
+            playerUI.ListParent.Select(0);
         }
         else
         {
-            playerUI.ListParent.onSelect -= SelectPlayerItemEntity;
+            playerUI.ListParent.onSelectedChange -= SelectPlayerItemEntity;
         }
     }
+
 
     public void SetTargetStorage(Storage target = null)
     {
-        targetUI.Visible = targetUI.storage = target;
+        targetUI.Storage = target;
 
         if (target)
         {
-            targetUI.ListParent.onSelect += SelectTargetItemEntity;
+            targetUI.ListParent.onSelectedChange += SelectTargetItemEntity;
         }
         else
         {
-            targetUI.ListParent.onSelect -= SelectTargetItemEntity;
+            targetUI.ListParent.onSelectedChange -= SelectTargetItemEntity;
         }
     }
 
-    public void SelectPlayerItemEntity(ListElement element, int id)
+    private void SelectPlayerItemEntity(int index)
     {
-        SelectedItemEntity = playerUI.storage.itemsEntities[id];
-        PlayerStorageIsSelected = true;
+        if (index >= 0)
+        {
+            SelectedItemEntity = playerUI.Storage.itemsEntities[index];
+            PlayerStorageIsSelected = true;
+        }
+        else if (targetUI.Storage && targetUI.Storage.itemsEntities.Count > 0)
+        {
+            targetUI.ListParent.Select(0);
+        }
+        else
+        {
+            SelectedItemEntity = null;
+        }
     }
 
-    public void SelectTargetItemEntity(ListElement element, int id)
+    private void SelectTargetItemEntity(int index)
     {
-        SelectedItemEntity = targetUI.storage.itemsEntities[id];
-        PlayerStorageIsSelected = false;
+        if (index >= 0)
+        {
+            SelectedItemEntity = targetUI.Storage.itemsEntities[index];
+            PlayerStorageIsSelected = false;
+        }
+        else if (playerUI.Storage && playerUI.Storage.itemsEntities.Count > 0) 
+        { 
+            playerUI.ListParent.Select(0);
+        }
+        else
+        {
+            SelectedItemEntity = null;
+        }
     }
 }

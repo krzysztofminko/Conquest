@@ -4,13 +4,19 @@ using System;
 
 namespace SelectableList
 {
-	public class ListElement : MonoBehaviour, ISelectHandler
+	public class ListElement : MonoBehaviour, ISelectHandler, IDeselectHandler
 	{
-		public event Action onSelect;
+		public event Action<ListElement> onSelect;
+		public event Action<ListElement> onDeselect;
 
 		public void OnSelect(BaseEventData eventData)
 		{
-			onSelect?.Invoke();
+			onSelect?.Invoke(this);
+		}
+
+		public void OnDeselect(BaseEventData eventData)
+		{
+			onDeselect?.Invoke(this);
 		}
 	}
 }

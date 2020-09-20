@@ -1,0 +1,486 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f945e777233a59f4aba40aeca29093a6, type: 3}
+  m_Name: StorageUI
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"show":true,"targetStorage":{"_name":"Target","_targetVariableID":"790d482b-e507-4110-8932-cfe74d36ba49"},"$type":"NodeCanvas.Tasks.Actions.ShowStorageUI"},{"boolVariable":{"_name":"movementEnabled","_targetVariableID":"5f149423-594f-4d1f-b3e5-b7e0800c027b"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},{"boolVariable":{"_name":"targetingEnabled","_targetVariableID":"05d6d0a9-4204-4a60-8674-8bcbca655303"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"}]},"_name":"Start","_position":{"x":366.0,"y":7.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"selectedItemEntity":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"playerStorageIsSelected":{"_name":"Player
+    Storage Is Selected","_targetVariableID":"e17c3210-cb2b-4ce2-ac11-3d5c5669d0e4"},"$type":"NodeCanvas.Tasks.Actions.GetSelectedItemEntity"}]},"_repeatStateActions":true,"_name":"StorageUI","_position":{"x":756.0,"y":445.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"targetStorage":{},"$type":"NodeCanvas.Tasks.Actions.ShowStorageUI"}]},"_name":"Finish","_position":{"x":1320.0,"y":714.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Consume"}]},"_name":"Consume","_position":{"x":522.0,"y":241.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"},{"_actionList":{"executionMode":1,"actions":[{"itemEntity":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"$type":"NodeCanvas.Tasks.Actions.Drop"}]},"_name":"Drop","_position":{"x":521.0,"y":652.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Equip"}]},"_name":"Equip/Unequip","_position":{"x":1043.0,"y":243.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_actionList":{"executionMode":1,"actions":[{"itemEntity":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"target":{"_name":"Target","_targetVariableID":"790d482b-e507-4110-8932-cfe74d36ba49"},"fromPlayerToTarget":{"_name":"Player
+    Storage Is Selected","_targetVariableID":"e17c3210-cb2b-4ce2-ac11-3d5c5669d0e4"},"$type":"NodeCanvas.Tasks.Actions.Transfer"}]},"_name":"Transfer","_position":{"x":1046.0,"y":635.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"6"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"buttonName":{"_name":"Inventory","_targetVariableID":"2c0030cb-8935-495d-b3d6-efc12a03b800"},"hintText":{"_value":"Close
+    inventory"},"$type":"NodeCanvas.Tasks.Conditions.InputHint"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"Player
+    Storage Is Selected","_targetVariableID":"e17c3210-cb2b-4ce2-ac11-3d5c5669d0e4"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},{"valueA":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"buttonName":{"_name":"Consume","_targetVariableID":"15567ba9-5a31-4d1d-b239-6c1a1f3b2ce4"},"hintText":{"_value":"Consume"},"$type":"NodeCanvas.Tasks.Conditions.InputHint"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"buttonName":{"_name":"Drop","_targetVariableID":"c0fdb481-13dd-441c-97a2-2c75aa8724d2"},"hintText":{"_value":"Drop"},"$type":"NodeCanvas.Tasks.Conditions.InputHint"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"Player
+    Storage Is Selected","_targetVariableID":"e17c3210-cb2b-4ce2-ac11-3d5c5669d0e4"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},{"valueA":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"buttonName":{"_name":"Equip","_targetVariableID":"316a61c2-f2c2-4d4c-b8d1-cb21b3dfc8cb"},"hintText":{"_value":"Equip"},"$type":"NodeCanvas.Tasks.Conditions.InputHint"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"valueA":{"_name":"Target","_targetVariableID":"790d482b-e507-4110-8932-cfe74d36ba49"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[Storage,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"buttonName":{"_name":"Transfer","_targetVariableID":"2c27b982-2080-4f3c-befa-67d860fec187"},"hintText":{"_value":"Transfer"},"$type":"NodeCanvas.Tasks.Conditions.InputHint"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"Consume":{"_value":"Consume","_name":"Consume","_id":"15567ba9-5a31-4d1d-b239-6c1a1f3b2ce4","$type":"NodeCanvas.Framework.Variable`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Equip":{"_value":"Equip","_name":"Equip","_id":"316a61c2-f2c2-4d4c-b8d1-cb21b3dfc8cb","$type":"NodeCanvas.Framework.Variable`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Drop":{"_value":"Drop","_name":"Drop","_id":"c0fdb481-13dd-441c-97a2-2c75aa8724d2","$type":"NodeCanvas.Framework.Variable`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Transfer":{"_value":"Transfer","_name":"Transfer","_id":"2c27b982-2080-4f3c-befa-67d860fec187","$type":"NodeCanvas.Framework.Variable`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Inventory":{"_value":"Inventory","_name":"Inventory","_id":"2c0030cb-8935-495d-b3d6-efc12a03b800","$type":"NodeCanvas.Framework.Variable`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}}'
+  _objectReferences: []
+  _graphSource:
+    _version: 3.09
+    _category: 
+    _comments: 
+    _translation: {x: -51, y: 19}
+    _zoomFactor: 1
+  _haltSerialization: 0
+#---GRAPH_START---
+#The pretty formatted json serialization bellow is only a reference to help in version control diff. Other than that it is not used at all.
+#{
+#    "type": "NodeCanvas.StateMachines.FSM",
+#    "nodes": [
+#        {
+#            "_actionList": {
+#                "executionMode": 1,
+#                "actions": [
+#                    {
+#                        "show": true,
+#                        "targetStorage": {
+#                            "_name": "Target",
+#                            "_targetVariableID": "790d482b-e507-4110-8932-cfe74d36ba49"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.ShowStorageUI"
+#                    },
+#                    {
+#                        "boolVariable": {
+#                            "_name": "movementEnabled",
+#                            "_targetVariableID": "5f149423-594f-4d1f-b3e5-b7e0800c027b"
+#                        },
+#                        "setTo": 0,
+#                        "$type": "NodeCanvas.Tasks.Actions.SetBoolean"
+#                    },
+#                    {
+#                        "boolVariable": {
+#                            "_name": "targetingEnabled",
+#                            "_targetVariableID": "05d6d0a9-4204-4a60-8674-8bcbca655303"
+#                        },
+#                        "setTo": 0,
+#                        "$type": "NodeCanvas.Tasks.Actions.SetBoolean"
+#                    }
+#                ]
+#            },
+#            "_name": "Start",
+#            "_position": {
+#                "x": 366.0,
+#                "y": 7.0
+#            },
+#            "$type": "NodeCanvas.StateMachines.ActionState",
+#            "$id": "0"
+#        },
+#        {
+#            "_actionList": {
+#                "executionMode": 1,
+#                "actions": [
+#                    {
+#                        "selectedItemEntity": {
+#                            "_name": "SelectedItemEntity",
+#                            "_targetVariableID": "8a0cf046-37f6-4591-8780-050c99dc92c5"
+#                        },
+#                        "playerStorageIsSelected": {
+#                            "_name": "Player Storage Is Selected",
+#                            "_targetVariableID": "e17c3210-cb2b-4ce2-ac11-3d5c5669d0e4"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.GetSelectedItemEntity"
+#                    }
+#                ]
+#            },
+#            "_repeatStateActions": true,
+#            "_name": "StorageUI",
+#            "_position": {
+#                "x": 756.0,
+#                "y": 445.0
+#            },
+#            "$type": "NodeCanvas.StateMachines.ActionState",
+#            "$id": "1"
+#        },
+#        {
+#            "_actionList": {
+#                "executionMode": 1,
+#                "actions": [
+#                    {
+#                        "targetStorage": {
+#
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.ShowStorageUI"
+#                    }
+#                ]
+#            },
+#            "_name": "Finish",
+#            "_position": {
+#                "x": 1320.0,
+#                "y": 714.0
+#            },
+#            "$type": "NodeCanvas.StateMachines.ActionState",
+#            "$id": "2"
+#        },
+#        {
+#            "_actionList": {
+#                "executionMode": 1,
+#                "actions": [
+#                    {
+#                        "$type": "NodeCanvas.Tasks.Actions.Consume"
+#                    }
+#                ]
+#            },
+#            "_name": "Consume",
+#            "_position": {
+#                "x": 522.0,
+#                "y": 241.0
+#            },
+#            "$type": "NodeCanvas.StateMachines.ActionState",
+#            "$id": "3"
+#        },
+#        {
+#            "_actionList": {
+#                "executionMode": 1,
+#                "actions": [
+#                    {
+#                        "itemEntity": {
+#                            "_name": "SelectedItemEntity",
+#                            "_targetVariableID": "8a0cf046-37f6-4591-8780-050c99dc92c5"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.Drop"
+#                    }
+#                ]
+#            },
+#            "_name": "Drop",
+#            "_position": {
+#                "x": 521.0,
+#                "y": 652.0
+#            },
+#            "$type": "NodeCanvas.StateMachines.ActionState",
+#            "$id": "4"
+#        },
+#        {
+#            "_actionList": {
+#                "executionMode": 1,
+#                "actions": [
+#                    {
+#                        "$type": "NodeCanvas.Tasks.Actions.Equip"
+#                    }
+#                ]
+#            },
+#            "_name": "Equip/Unequip",
+#            "_position": {
+#                "x": 1043.0,
+#                "y": 243.0
+#            },
+#            "$type": "NodeCanvas.StateMachines.ActionState",
+#            "$id": "5"
+#        },
+#        {
+#            "_actionList": {
+#                "executionMode": 1,
+#                "actions": [
+#                    {
+#                        "itemEntity": {
+#                            "_name": "SelectedItemEntity",
+#                            "_targetVariableID": "8a0cf046-37f6-4591-8780-050c99dc92c5"
+#                        },
+#                        "target": {
+#                            "_name": "Target",
+#                            "_targetVariableID": "790d482b-e507-4110-8932-cfe74d36ba49"
+#                        },
+#                        "fromPlayerToTarget": {
+#                            "_name": "Player Storage Is Selected",
+#                            "_targetVariableID": "e17c3210-cb2b-4ce2-ac11-3d5c5669d0e4"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Actions.Transfer"
+#                    }
+#                ]
+#            },
+#            "_name": "Transfer",
+#            "_position": {
+#                "x": 1046.0,
+#                "y": 635.0
+#            },
+#            "$type": "NodeCanvas.StateMachines.ActionState",
+#            "$id": "6"
+#        }
+#    ],
+#    "connections": [
+#        {
+#            "_sourceNode": {
+#                "$ref": "0"
+#            },
+#            "_targetNode": {
+#                "$ref": "1"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        },
+#        {
+#            "_condition": {
+#                "buttonName": {
+#                    "_name": "Inventory",
+#                    "_targetVariableID": "2c0030cb-8935-495d-b3d6-efc12a03b800"
+#                },
+#                "hintText": {
+#                    "_value": "Close inventory"
+#                },
+#                "$type": "NodeCanvas.Tasks.Conditions.InputHint"
+#            },
+#            "_sourceNode": {
+#                "$ref": "1"
+#            },
+#            "_targetNode": {
+#                "$ref": "2"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        },
+#        {
+#            "_condition": {
+#                "conditions": [
+#                    {
+#                        "valueA": {
+#                            "_name": "Player Storage Is Selected",
+#                            "_targetVariableID": "e17c3210-cb2b-4ce2-ac11-3d5c5669d0e4"
+#                        },
+#                        "valueB": {
+#                            "_value": true
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Conditions.CheckBoolean"
+#                    },
+#                    {
+#                        "valueA": {
+#                            "_name": "SelectedItemEntity",
+#                            "_targetVariableID": "8a0cf046-37f6-4591-8780-050c99dc92c5"
+#                        },
+#                        "valueB": {
+#
+#                        },
+#                        "_invert": true,
+#                        "$type": "NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+#                    },
+#                    {
+#                        "buttonName": {
+#                            "_name": "Consume",
+#                            "_targetVariableID": "15567ba9-5a31-4d1d-b239-6c1a1f3b2ce4"
+#                        },
+#                        "hintText": {
+#                            "_value": "Consume"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Conditions.InputHint"
+#                    }
+#                ],
+#                "$type": "NodeCanvas.Framework.ConditionList"
+#            },
+#            "_sourceNode": {
+#                "$ref": "1"
+#            },
+#            "_targetNode": {
+#                "$ref": "3"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        },
+#        {
+#            "_condition": {
+#                "conditions": [
+#                    {
+#                        "valueA": {
+#                            "_name": "SelectedItemEntity",
+#                            "_targetVariableID": "8a0cf046-37f6-4591-8780-050c99dc92c5"
+#                        },
+#                        "valueB": {
+#
+#                        },
+#                        "_invert": true,
+#                        "$type": "NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+#                    },
+#                    {
+#                        "buttonName": {
+#                            "_name": "Drop",
+#                            "_targetVariableID": "c0fdb481-13dd-441c-97a2-2c75aa8724d2"
+#                        },
+#                        "hintText": {
+#                            "_value": "Drop"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Conditions.InputHint"
+#                    }
+#                ],
+#                "$type": "NodeCanvas.Framework.ConditionList"
+#            },
+#            "_sourceNode": {
+#                "$ref": "1"
+#            },
+#            "_targetNode": {
+#                "$ref": "4"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        },
+#        {
+#            "_condition": {
+#                "conditions": [
+#                    {
+#                        "valueA": {
+#                            "_name": "Player Storage Is Selected",
+#                            "_targetVariableID": "e17c3210-cb2b-4ce2-ac11-3d5c5669d0e4"
+#                        },
+#                        "valueB": {
+#                            "_value": true
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Conditions.CheckBoolean"
+#                    },
+#                    {
+#                        "valueA": {
+#                            "_name": "SelectedItemEntity",
+#                            "_targetVariableID": "8a0cf046-37f6-4591-8780-050c99dc92c5"
+#                        },
+#                        "valueB": {
+#
+#                        },
+#                        "_invert": true,
+#                        "$type": "NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+#                    },
+#                    {
+#                        "buttonName": {
+#                            "_name": "Equip",
+#                            "_targetVariableID": "316a61c2-f2c2-4d4c-b8d1-cb21b3dfc8cb"
+#                        },
+#                        "hintText": {
+#                            "_value": "Equip"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Conditions.InputHint"
+#                    }
+#                ],
+#                "$type": "NodeCanvas.Framework.ConditionList"
+#            },
+#            "_sourceNode": {
+#                "$ref": "1"
+#            },
+#            "_targetNode": {
+#                "$ref": "5"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        },
+#        {
+#            "_condition": {
+#                "conditions": [
+#                    {
+#                        "valueA": {
+#                            "_name": "SelectedItemEntity",
+#                            "_targetVariableID": "8a0cf046-37f6-4591-8780-050c99dc92c5"
+#                        },
+#                        "valueB": {
+#
+#                        },
+#                        "_invert": true,
+#                        "$type": "NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+#                    },
+#                    {
+#                        "valueA": {
+#                            "_name": "Target",
+#                            "_targetVariableID": "790d482b-e507-4110-8932-cfe74d36ba49"
+#                        },
+#                        "valueB": {
+#
+#                        },
+#                        "_invert": true,
+#                        "$type": "NodeCanvas.Tasks.Conditions.CheckVariable`1[[Storage, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+#                    },
+#                    {
+#                        "buttonName": {
+#                            "_name": "Transfer",
+#                            "_targetVariableID": "2c27b982-2080-4f3c-befa-67d860fec187"
+#                        },
+#                        "hintText": {
+#                            "_value": "Transfer"
+#                        },
+#                        "$type": "NodeCanvas.Tasks.Conditions.InputHint"
+#                    }
+#                ],
+#                "$type": "NodeCanvas.Framework.ConditionList"
+#            },
+#            "_sourceNode": {
+#                "$ref": "1"
+#            },
+#            "_targetNode": {
+#                "$ref": "6"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "3"
+#            },
+#            "_targetNode": {
+#                "$ref": "1"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "4"
+#            },
+#            "_targetNode": {
+#                "$ref": "1"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "5"
+#            },
+#            "_targetNode": {
+#                "$ref": "1"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        },
+#        {
+#            "_sourceNode": {
+#                "$ref": "6"
+#            },
+#            "_targetNode": {
+#                "$ref": "1"
+#            },
+#            "$type": "NodeCanvas.StateMachines.FSMConnection"
+#        }
+#    ],
+#    "canvasGroups": [],
+#    "localBlackboard": {
+#        "_variables": {
+#            "Consume": {
+#                "_value": "Consume",
+#                "_name": "Consume",
+#                "_id": "15567ba9-5a31-4d1d-b239-6c1a1f3b2ce4",
+#                "$type": "NodeCanvas.Framework.Variable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+#            },
+#            "Equip": {
+#                "_value": "Equip",
+#                "_name": "Equip",
+#                "_id": "316a61c2-f2c2-4d4c-b8d1-cb21b3dfc8cb",
+#                "$type": "NodeCanvas.Framework.Variable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+#            },
+#            "Drop": {
+#                "_value": "Drop",
+#                "_name": "Drop",
+#                "_id": "c0fdb481-13dd-441c-97a2-2c75aa8724d2",
+#                "$type": "NodeCanvas.Framework.Variable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+#            },
+#            "Transfer": {
+#                "_value": "Transfer",
+#                "_name": "Transfer",
+#                "_id": "2c27b982-2080-4f3c-befa-67d860fec187",
+#                "$type": "NodeCanvas.Framework.Variable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+#            },
+#            "Inventory": {
+#                "_value": "Inventory",
+#                "_name": "Inventory",
+#                "_id": "2c0030cb-8935-495d-b3d6-efc12a03b800",
+#                "$type": "NodeCanvas.Framework.Variable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"
+#            }
+#        }
+#    }
+#}
+#---GRAPH_END---

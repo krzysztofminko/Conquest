@@ -16,6 +16,8 @@ public class ItemEntity : MonoBehaviour
 	public float condition;
 	[ReadOnly]
 	public ItemHolder holder;
+	[ReadOnly]
+	public Storage storage;
 
 	private new Collider collider;
 	private new Rigidbody rigidbody;

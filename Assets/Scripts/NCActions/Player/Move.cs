@@ -36,24 +36,24 @@ namespace NodeCanvas.Tasks.Actions
 
 		protected override void OnUpdate()
 		{
-			if (Input.GetButtonDown("Run"))
-				playerIsRunning = !playerIsRunning;
-			float speed = playerIsRunning ? agent.runSpeed : agent.walkSpeed;
-			Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * speed;
-			if (movement.sqrMagnitude > 0)
-			{
-				agent.transform.rotation = Quaternion.RotateTowards(agent.transform.rotation, Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.main.transform.rotation * movement.normalized, Vector3.up)), agent.turnSpeed * Time.deltaTime);
-			}
-			else
-			{
-				speed = 0;
-			}
 
 			if (enabled.value)
 			{
-				characterController.SimpleMove(Camera.main.transform.rotation * movement);
-				animator.SetFloat("MoveSpeed", speed);
-			}
+				if (Input.GetButtonDown("Run"))
+					playerIsRunning = !playerIsRunning;
+				float speed = playerIsRunning ? agent.runSpeed : agent.walkSpeed;
+				Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * speed;
+				if (movement.sqrMagnitude > 0)
+				{
+					agent.transform.rotation = Quaternion.RotateTowards(agent.transform.rotation, Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.main.transform.rotation * movement.normalized, Vector3.up)), agent.turnSpeed * Time.deltaTime);
+				}
+				else
+				{
+					speed = 0;
+				}
+					characterController.SimpleMove(Camera.main.transform.rotation * movement);
+					animator.SetFloat("MoveSpeed", speed);
+				}
 			else
 			{
 				animator.SetFloat("MoveSpeed", 0);

@@ -1,58 +1,84 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
-using UnityEngine.Events;
 using System;
+using UnityEngine.EventSystems;
 
 namespace SelectableList
 {
 	public class ListParent : MonoBehaviour
 	{
+		public event Action<int> onSelectedChange;
+		public event Action<GameObject, int> onCreateElement;
+
 		[SerializeField, Required]
 		private ListElement elementPrefab;
 
-		[SerializeField, ReadOnly]
-		private int _selected;
-		public int Selected { get => _selected; private set => _selected = value; }
-
-		public event Action<ListElement, int> onSelect;
-		public event Action<ListElement, int> onElementSetup;
-
-		[SerializeField, HideInInspector]
-		private List<ListElement> elements = new List<ListElement>();
-
-		public void UpdateList(int listCount)
-		{
-			ListElement element = null;
-			for (int i = 0; i < Mathf.Max(listCount, elements.Count); i++)
+		[ShowInInspector, ReadOnly]
+		private int _selected = -1;
+		public int Selected 
+		{ 
+			get => _selected;
+			private set
 			{
-				int id;
-
-				//Deactivate button
-				if (i >= listCount)
-					elements[i].gameObject.SetActive(false);
-
-				if (listCount > 0)
-				{
-					//Instantiate new button or get from list
-					if (i >= elements.Count)
-					{
-						element = Instantiate(elementPrefab, transform);
-						id = i;
-						element.onSelect += () => { Selected = id; onSelect?.Invoke(element, id); };
-						elements.Add(element);
-					}
-					else
-					{
-						element = elements[i];
-					}
-
-					//Setup and activate button
-					element.gameObject.SetActive(true);
-					id = i;
-					onElementSetup?.Invoke(element, id);
-				}
+				_selected = value;
+				onSelectedChange?.Invoke(_selected);
 			}
 		}
+				
+		private List<ListElement> elements = new List<ListElement>();
+
+		public void Draw(int count)
+		{
+			Clear();
+			for (int i = 0; i < count; i++)
+				InsertElement(i);
+		}
+
+		public void Clear()
+		{
+			for (int i = elements.Count - 1; i >= 0; i--)
+				RemoveElement(i);
+		}
+
+		public ListElement InsertElement(int index)
+		{
+			ListElement element = Instantiate(elementPrefab, transform);
+			element.gameObject.SetActive(true);
+			element.transform.SetSiblingIndex(index);
+			element.onSelect += Element_onSelect;
+			elements.Insert(index, element);
+			onCreateElement?.Invoke(element.gameObject, index);
+			return element;
+		}
+
+		public void RemoveElement(int index)
+		{
+			elements[index].onSelect -= Element_onSelect;
+			Destroy(elements[index].gameObject);
+			elements.RemoveAt(index);
+
+			if (Selected == index)
+				Select(index);
+		}
+		
+		public void Select(int index)
+		{
+			if (elements.Count > 0)
+			{
+				EventSystem.current.SetSelectedGameObject(elements[Mathf.Clamp(index, 0, elements.Count - 1)].gameObject);
+			}
+			else
+			{
+				EventSystem.current.SetSelectedGameObject(null);
+				Selected = -1;
+			}
+		}
+
+		private void Element_onSelect(ListElement element)
+		{
+			Selected = elements.IndexOf(element);
+		}
+
 	}
 }

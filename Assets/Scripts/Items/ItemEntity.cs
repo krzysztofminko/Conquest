@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine.AI;
 using StatsWithModifiers;
 using System;
+using NodeCanvas.Tasks.Actions;
 
 [RequireComponent(typeof(Collider), typeof(Rigidbody)), HideMonoScript]
 public class ItemEntity : MonoBehaviour
@@ -32,6 +33,7 @@ public class ItemEntity : MonoBehaviour
 	[ReadOnly]
 	public Storage storage;
 
+
 	private new Collider collider;
 	private new Rigidbody rigidbody;
 
@@ -52,8 +54,9 @@ public class ItemEntity : MonoBehaviour
 		return entity;
 	}
 
-	public void SetParent(Transform parent)
+	public void SetParent(Transform parent, bool gameObjectActive)
 	{
+		gameObject.SetActive(gameObjectActive);
 		transform.parent = parent;
 		collider.enabled = !parent;
 		rigidbody.isKinematic = parent;
@@ -71,6 +74,9 @@ public class ItemEntity : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		onDestroy?.Invoke(this);
+		if (!Game.IsQuitting)
+		{
+			onDestroy?.Invoke(this);
+		}
 	}
 }

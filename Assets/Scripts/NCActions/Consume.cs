@@ -10,6 +10,7 @@ namespace NodeCanvas.Tasks.Actions{
 	[Category("Storage")]
 	public class Consume : ActionTask<Storage>
 	{
+		[RequiredField]
 		public BBParameter<ItemEntity> itemEntity;
 
 		protected override void OnExecute()

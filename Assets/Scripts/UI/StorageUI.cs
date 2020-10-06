@@ -1,5 +1,7 @@
-﻿using SelectableList;
+﻿using Items;
+using SelectableList;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,7 +31,7 @@ public class StorageUI : MonoBehaviour
                 if (_storage)
                 {
                     _storage.onAddItemEntity -= Storage_onAddItemEntity;
-                    _storage.onRemoveItemEntity -= Storage_onRemoveItemEntity;
+                    _storage.onRemoveItemEntity -= Storage_onBeforeRemoveItemEntity;
                     ListParent.Clear();
                 }
 
@@ -40,13 +42,13 @@ public class StorageUI : MonoBehaviour
                 if (_storage)
                 {
                     _storage.onAddItemEntity += Storage_onAddItemEntity;
-                    _storage.onRemoveItemEntity += Storage_onRemoveItemEntity;
-                    ListParent.Draw(_storage.itemsEntities.Count);
+                    _storage.onRemoveItemEntity += Storage_onBeforeRemoveItemEntity;
+                    ListParent.Draw(_storage.itemsEntities);
                     nameText.text = _storage.name;
                 }
             }
         } 
-    }    
+    }
 
     private Canvas canvas;
     private GraphicRaycaster raycaster;
@@ -59,19 +61,19 @@ public class StorageUI : MonoBehaviour
         ListParent.onCreateElement += SetupListElement;
     }
 
-    private void SetupListElement(GameObject element, int id)
+    private void SetupListElement(GameObject element, object assignedObject)
     {
-        ItemEntity itemEntity = Storage.itemsEntities[id];
+        ItemEntity itemEntity = assignedObject as ItemEntity;
         element.GetComponentInChildren<TextMeshProUGUI>().text = itemEntity.item.name + (itemEntity.item.IsStackable ? $" x{itemEntity.Count}" : "");
     }
 
-    private void Storage_onAddItemEntity(int index) 
+    private void Storage_onAddItemEntity(ItemEntity itemEntity) 
     {
-        ListParent.InsertElement(index);
+        ListParent.AddElement(itemEntity);
     }
 
-    private void Storage_onRemoveItemEntity(int index)
+    private void Storage_onBeforeRemoveItemEntity(ItemEntity itemEntity)
     {
-        ListParent.RemoveElement(index);
+        ListParent.RemoveElement(itemEntity);
     }
 }

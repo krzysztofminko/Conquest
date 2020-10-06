@@ -23,12 +23,12 @@ public class ItemHolder : MonoBehaviour
 			{
 				if (_itemEntity)
 				{
-					_itemEntity.SetParent(null);
+					_itemEntity.SetParent(null, true);
 					_itemEntity.holder = null;
 				}
 				if (value)
 				{
-					value.SetParent(itemEntityParent);
+					value.SetParent(itemEntityParent, true);
 					value.holder = this;
 				}
 				_itemEntity = value;

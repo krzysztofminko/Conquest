@@ -38,9 +38,9 @@ public class StorageUIManager : MonoBehaviour
         if (!SelectedItemEntity)
         {
             if (playerUI.Storage && playerUI.Storage.itemsEntities.Count > 0)
-                playerUI.ListParent.Select(0);
+                playerUI.ListParent.SelectIndex(0);
             else if (targetUI.Storage && targetUI.Storage.itemsEntities.Count > 0)
-                targetUI.ListParent.Select(0);
+                targetUI.ListParent.SelectIndex(0);
         }
     }
 
@@ -52,12 +52,12 @@ public class StorageUIManager : MonoBehaviour
 
         if (show)
         {
-            playerUI.ListParent.onSelectedChange += SelectPlayerItemEntity;
-            playerUI.ListParent.Select(0);
+            playerUI.ListParent.onSelectedUpdate += SelectPlayerItemEntity;
+            playerUI.ListParent.SelectIndex(0);
         }
         else
         {
-            playerUI.ListParent.onSelectedChange -= SelectPlayerItemEntity;
+            playerUI.ListParent.onSelectedUpdate -= SelectPlayerItemEntity;
         }
     }
 
@@ -68,24 +68,24 @@ public class StorageUIManager : MonoBehaviour
 
         if (target)
         {
-            targetUI.ListParent.onSelectedChange += SelectTargetItemEntity;
+            targetUI.ListParent.onSelectedUpdate += SelectTargetItemEntity;
         }
         else
         {
-            targetUI.ListParent.onSelectedChange -= SelectTargetItemEntity;
+            targetUI.ListParent.onSelectedUpdate -= SelectTargetItemEntity;
         }
     }
 
-    private void SelectPlayerItemEntity(int index)
+    private void SelectPlayerItemEntity(GameObject listElement, object assignedObject)
     {
-        if (index >= 0)
+        if (listElement)
         {
-            SelectedItemEntity = playerUI.Storage.itemsEntities[index];
+            SelectedItemEntity = assignedObject as ItemEntity;
             PlayerStorageIsSelected = true;
         }
         else if (targetUI.Storage && targetUI.Storage.itemsEntities.Count > 0)
         {
-            targetUI.ListParent.Select(0);
+            targetUI.ListParent.SelectIndex(0);
         }
         else
         {
@@ -93,16 +93,16 @@ public class StorageUIManager : MonoBehaviour
         }
     }
 
-    private void SelectTargetItemEntity(int index)
+    private void SelectTargetItemEntity(GameObject listElement, object assignedObject)
     {
-        if (index >= 0)
+        if (listElement)
         {
-            SelectedItemEntity = targetUI.Storage.itemsEntities[index];
+            SelectedItemEntity = assignedObject as ItemEntity;
             PlayerStorageIsSelected = false;
         }
         else if (playerUI.Storage && playerUI.Storage.itemsEntities.Count > 0) 
         { 
-            playerUI.ListParent.Select(0);
+            playerUI.ListParent.SelectIndex(0);
         }
         else
         {

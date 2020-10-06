@@ -10,6 +10,7 @@ namespace Items
 	[Serializable]
 	public class Equipable
 	{
+		public Equipment.SlotType slot;
 		public List<StatModifier> modifiers;
 	}
 }

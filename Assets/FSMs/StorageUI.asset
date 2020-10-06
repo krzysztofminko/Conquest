@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StorageUI
   m_EditorClassIdentifier: 
   _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"show":true,"targetStorage":{"_name":"Target","_targetVariableID":"790d482b-e507-4110-8932-cfe74d36ba49"},"$type":"NodeCanvas.Tasks.Actions.ShowStorageUI"},{"boolVariable":{"_name":"movementEnabled","_targetVariableID":"5f149423-594f-4d1f-b3e5-b7e0800c027b"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"},{"boolVariable":{"_name":"targetingEnabled","_targetVariableID":"05d6d0a9-4204-4a60-8674-8bcbca655303"},"setTo":0,"$type":"NodeCanvas.Tasks.Actions.SetBoolean"}]},"_name":"Start","_position":{"x":366.0,"y":7.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"selectedItemEntity":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"playerStorageIsSelected":{"_name":"Player
-    Storage Is Selected","_targetVariableID":"e17c3210-cb2b-4ce2-ac11-3d5c5669d0e4"},"$type":"NodeCanvas.Tasks.Actions.GetSelectedItemEntity"}]},"_repeatStateActions":true,"_name":"StorageUI","_position":{"x":756.0,"y":445.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"targetStorage":{},"$type":"NodeCanvas.Tasks.Actions.ShowStorageUI"}]},"_name":"Finish","_position":{"x":1320.0,"y":714.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Consume"}]},"_name":"Consume","_position":{"x":522.0,"y":241.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"},{"_actionList":{"executionMode":1,"actions":[{"itemEntity":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"$type":"NodeCanvas.Tasks.Actions.Drop"}]},"_name":"Drop","_position":{"x":521.0,"y":652.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Equip"}]},"_name":"Equip/Unequip","_position":{"x":1043.0,"y":243.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_actionList":{"executionMode":1,"actions":[{"itemEntity":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"target":{"_name":"Target","_targetVariableID":"790d482b-e507-4110-8932-cfe74d36ba49"},"fromPlayerToTarget":{"_name":"Player
+    Storage Is Selected","_targetVariableID":"e17c3210-cb2b-4ce2-ac11-3d5c5669d0e4"},"$type":"NodeCanvas.Tasks.Actions.GetSelectedItemEntity"}]},"_repeatStateActions":true,"_name":"StorageUI","_position":{"x":756.0,"y":445.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"targetStorage":{},"$type":"NodeCanvas.Tasks.Actions.ShowStorageUI"}]},"_name":"Finish","_position":{"x":1320.0,"y":714.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"executionMode":1,"actions":[{"itemEntity":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"$type":"NodeCanvas.Tasks.Actions.Consume"}]},"_name":"Consume","_position":{"x":522.0,"y":241.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"},{"_actionList":{"executionMode":1,"actions":[{"itemEntity":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"$type":"NodeCanvas.Tasks.Actions.Drop"}]},"_name":"Drop","_position":{"x":521.0,"y":652.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[{"itemEntity":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"$type":"NodeCanvas.Tasks.Actions.Equip"}]},"_name":"Equip/Unequip","_position":{"x":1043.0,"y":243.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_actionList":{"executionMode":1,"actions":[{"itemEntity":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"target":{"_name":"Target","_targetVariableID":"790d482b-e507-4110-8932-cfe74d36ba49"},"fromPlayerToTarget":{"_name":"Player
     Storage Is Selected","_targetVariableID":"e17c3210-cb2b-4ce2-ac11-3d5c5669d0e4"},"$type":"NodeCanvas.Tasks.Actions.Transfer"}]},"_name":"Transfer","_position":{"x":1046.0,"y":635.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"6"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"buttonName":{"_name":"Inventory","_targetVariableID":"2c0030cb-8935-495d-b3d6-efc12a03b800"},"hintText":{"_value":"Close
     inventory"},"$type":"NodeCanvas.Tasks.Conditions.InputHint"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"Player
     Storage Is Selected","_targetVariableID":"e17c3210-cb2b-4ce2-ac11-3d5c5669d0e4"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},{"valueA":{"_name":"SelectedItemEntity","_targetVariableID":"8a0cf046-37f6-4591-8780-050c99dc92c5"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[ItemEntity,
@@ -33,7 +33,7 @@ MonoBehaviour:
     _version: 3.09
     _category: 
     _comments: 
-    _translation: {x: -51, y: 19}
+    _translation: {x: -627, y: -57}
     _zoomFactor: 1
   _haltSerialization: 0
 #---GRAPH_START---
@@ -130,6 +130,10 @@ MonoBehaviour:
 #                "executionMode": 1,
 #                "actions": [
 #                    {
+#                        "itemEntity": {
+#                            "_name": "SelectedItemEntity",
+#                            "_targetVariableID": "8a0cf046-37f6-4591-8780-050c99dc92c5"
+#                        },
 #                        "$type": "NodeCanvas.Tasks.Actions.Consume"
 #                    }
 #                ]
@@ -168,6 +172,10 @@ MonoBehaviour:
 #                "executionMode": 1,
 #                "actions": [
 #                    {
+#                        "itemEntity": {
+#                            "_name": "SelectedItemEntity",
+#                            "_targetVariableID": "8a0cf046-37f6-4591-8780-050c99dc92c5"
+#                        },
 #                        "$type": "NodeCanvas.Tasks.Actions.Equip"
 #                    }
 #                ]

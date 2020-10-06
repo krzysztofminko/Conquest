@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdb45f59f32d1cb44ae5ccdb041734f2, type: 3}
-  m_Name: Consumable
+  m_Name: Helmet1
   m_EditorClassIdentifier: 
-  prefab: {fileID: 535337120888991247, guid: f87b93caf055d4741bf7bf21a6ca1bee, type: 3}
+  prefab: {fileID: 7389254737772344858, guid: c7d1b0556ee0f9f4e9b51adf69198c30, type: 3}
   pickAnimation: {fileID: 0}
   pickDelay: 0
   putAnimation: {fileID: 0}
   putDelay: 0
   carryAnimation: {fileID: 0}
   _isLarge: 0
-  _isStackable: 1
+  _isStackable: 0
   damageable:
     id: 0
   consumable:
-    id: 1
-  equipable:
     id: 0
+  equipable:
+    id: 1
   weapon:
     id: 0
   tool:
@@ -35,12 +35,7 @@ MonoBehaviour:
     00000000:
       type: {class: , ns: , asm: }
     00000001:
-      type: {class: Consumable, ns: Items, asm: Assembly-CSharp}
+      type: {class: Equipable, ns: Items, asm: Assembly-CSharp}
       data:
-        modifiers:
-        - _stat:
-            _classRef: Health, Assembly-CSharp
-          _affectMax: 0
-          _type: 0
-          _value: -40
-          _duration: 0
+        slot: 0
+        modifiers: []

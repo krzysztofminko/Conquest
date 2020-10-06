@@ -18,14 +18,16 @@ MonoBehaviour:
   putAnimation: {fileID: 0}
   putDelay: 0
   carryAnimation: {fileID: 0}
+  _isLarge: 0
+  _isStackable: 0
   damageable:
     id: 0
   consumable:
     id: 1
   equipable:
-    id: 1
-  weapon:
     id: 2
+  weapon:
+    id: 3
   tool:
     id: 1
   references:
@@ -37,6 +39,11 @@ MonoBehaviour:
     00000001:
       type: {class: , ns: , asm: }
     00000002:
+      type: {class: Equipable, ns: Items, asm: Assembly-CSharp}
+      data:
+        slot: 1
+        modifiers: []
+    00000003:
       type: {class: Weapon, ns: Items, asm: Assembly-CSharp}
       data:
         attacks:

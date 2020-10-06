@@ -5,34 +5,26 @@ using ParadoxNotion.Design;
 namespace NodeCanvas.Tasks.Actions{
 
 	[Category("Storage")]
-	public class Equip : ActionTask<Storage>{
+	public class Equip : ActionTask<Equipment>
+	{
+		[RequiredField]
+		public BBParameter<ItemEntity> itemEntity;
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit(){
-			return null;
-		}
+		protected override void OnExecute()
+		{
+			if (itemEntity.value.item.equipable != null)
+			{
+				if (agent.IsEquiped(itemEntity.value))
+					agent.Unequip(itemEntity.value);
+				else
+					agent.Equip(itemEntity.value, itemEntity.value.item.equipable.slot);
 
-		//This is called once each time the task is enabled.
-		//Call EndAction() to mark the action as finished, either in success or failure.
-		//EndAction can be called from anywhere.
-		protected override void OnExecute(){
-			EndAction(true);
-		}
-
-		//Called once per frame while the action is active.
-		protected override void OnUpdate(){
-			
-		}
-
-		//Called when the task is disabled.
-		protected override void OnStop(){
-			
-		}
-
-		//Called when the task is paused.
-		protected override void OnPause(){
-			
+				EndAction(true);
+			}
+			else
+			{
+				EndAction(false);
+			}
 		}
 	}
 }

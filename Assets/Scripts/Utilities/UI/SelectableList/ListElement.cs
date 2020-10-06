@@ -9,6 +9,11 @@ namespace SelectableList
 		public event Action<ListElement> onSelect;
 		public event Action<ListElement> onDeselect;
 
+		/// <summary>
+		/// Data element assigned to this list element
+		/// </summary>
+		public object assignedObject;
+
 		public void OnSelect(BaseEventData eventData)
 		{
 			onSelect?.Invoke(this);

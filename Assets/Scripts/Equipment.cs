@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-[HideMonoScript]
+[HideMonoScript, RequireComponent(typeof(Storage))]
 public class Equipment : MonoBehaviour
 {
     public enum SlotType { Head, Chest, Legs }
@@ -23,6 +23,14 @@ public class Equipment : MonoBehaviour
 
     [SerializeField, TableList(AlwaysExpanded = true, IsReadOnly = true)]
     private List<Slot> _slots;
+
+    private Storage storage;
+
+    private void Awake()
+    {
+        storage = GetComponent<Storage>();
+        storage.onRemoveItemEntity += UnqeuipOnRemove;
+    }
 
     private void Reset()
     {
@@ -53,12 +61,21 @@ public class Equipment : MonoBehaviour
         else
         {
             Slot slot = this[slotType];
-            if (slot.itemEntity)
-                Unequip(slot.itemEntity);
-            slot.itemEntity = itemEntity;
-            itemEntity.SetParent(slot.parent);
-            //TODO: add equipable modifiers
+            if(slot.itemEntity != itemEntity) 
+            { 
+                if (slot.itemEntity)
+                    Unequip(slot.itemEntity);
+                slot.itemEntity = itemEntity;
+                itemEntity.SetParent(slot.parent, true);
+                //TODO: add equipable modifiers
+            }
         }
+    }
+
+    public void UnqeuipOnRemove(ItemEntity itemEntity)
+    {
+        if (IsEquiped(itemEntity))
+            Unequip(itemEntity);
     }
 
     public void Unequip(ItemEntity itemEntity)
@@ -74,7 +91,7 @@ public class Equipment : MonoBehaviour
         }
         else
         {
-            slot.itemEntity.SetParent(null);
+            slot.itemEntity.SetParent(transform, false);
             slot.itemEntity = null;
         }
     }

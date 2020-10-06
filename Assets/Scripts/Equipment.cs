@@ -1,5 +1,6 @@
 ﻿using Items;
 using Sirenix.OdinInspector;
+using StatsWithModifiers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,7 +68,14 @@ public class Equipment : MonoBehaviour
                     Unequip(slot.itemEntity);
                 slot.itemEntity = itemEntity;
                 itemEntity.SetParent(slot.parent, true);
-                //TODO: add equipable modifiers
+
+                //Apply modifiers
+                for (int i = 0; i < itemEntity.item.equipable.modifiers.Count; i++)
+                    if(itemEntity.item.equipable.modifiers[i].Type == StatModifier.ModifierType.Equipable)
+                    {
+                        Stat stat = GetComponent(itemEntity.item.equipable.modifiers[i].Stat.Type) as Stat;
+                        stat.ApplyModifier(itemEntity.item.equipable.modifiers[i]);
+                    }
             }
         }
     }
@@ -80,7 +88,6 @@ public class Equipment : MonoBehaviour
 
     public void Unequip(ItemEntity itemEntity)
     {
-        //TODO: remove equipable modifiers
         if (!itemEntity)
             Debug.LogError("Item entity can't be null.", this);
         
@@ -93,6 +100,14 @@ public class Equipment : MonoBehaviour
         {
             slot.itemEntity.SetParent(transform, false);
             slot.itemEntity = null;
+
+            //Remove modifiers
+            for (int i = 0; i < itemEntity.item.equipable.modifiers.Count; i++)
+                if (itemEntity.item.equipable.modifiers[i].Type == StatModifier.ModifierType.Equipable)
+                {
+                    Stat stat = GetComponent(itemEntity.item.equipable.modifiers[i].Stat.Type) as Stat;
+                    stat.RemoveModifier(itemEntity.item.equipable.modifiers[i]);
+                }
         }
     }
 }

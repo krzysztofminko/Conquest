@@ -6,8 +6,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-//TODO: Can I move this functionalities to StorageUIManager?
 [RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
 public class StorageUI : MonoBehaviour
 {

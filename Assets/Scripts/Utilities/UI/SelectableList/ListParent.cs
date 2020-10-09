@@ -31,7 +31,7 @@ namespace SelectableList
 			private set
 			{
 				_selected = value;
-				onSelectedUpdate?.Invoke(_selected?.gameObject, _selected?.assignedObject);
+				onSelectedUpdate?.Invoke(_selected?.gameObject, _selected?.bindedObject);
 			}
 		}
 				
@@ -42,11 +42,14 @@ namespace SelectableList
 		/// </summary>
 		/// <typeparam name="T">Data type</typeparam>
 		/// <param name="data">List of objects assigned to list elements</param>
-		public void Draw<T>(List<T> data)
+		/// <returns>List of created ListElements</returns>
+		public List<ListElement> Draw<T>(List<T> data)
 		{
 			Clear();
+			List<ListElement> list = new List<ListElement>();
 			for (int i = 0; i < data.Count; i++)
-				AddElement(data[i]);
+				list.Add(AddElement(data[i]));
+			return list;
 		}
 
 		/// <summary>
@@ -65,7 +68,7 @@ namespace SelectableList
 		public ListElement AddElement(object assignedObject)
 		{
 			ListElement element = Instantiate(elementPrefab, transform);
-			element.assignedObject = assignedObject;
+			element.bindedObject = assignedObject;
 			element.gameObject.SetActive(true);
 			element.onSelect += Element_onSelect;
 			elements.Add(element);
@@ -76,7 +79,7 @@ namespace SelectableList
 		/// <summary>
 		/// Removes list element with specified assignedObject;
 		/// </summary>
-		public void RemoveElement(object assignedObject) => RemoveElementAt(elements.FindIndex(e => e.assignedObject == assignedObject));
+		public void RemoveElement(object assignedObject) => RemoveElementAt(elements.FindIndex(e => e.bindedObject == assignedObject));
 
 		private void RemoveElementAt(int index)
 		{
@@ -88,6 +91,13 @@ namespace SelectableList
 			if (Selected == element)
 				SelectIndex(index);
 		}
+
+		/// <summary>
+		/// Get's existing ListElement, with provided assigned object. 
+		/// </summary>
+		/// <param name="asssignedObject"></param>
+		/// <returns></returns>
+		public ListElement GetElement(object asssignedObject) => elements.Find(e => e.bindedObject == asssignedObject);
 
 		/// <summary>
 		/// Invokes EventSystem.current.SetSelectedGameObject

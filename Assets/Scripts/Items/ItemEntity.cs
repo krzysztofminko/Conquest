@@ -2,15 +2,13 @@
 using System.Collections;
 using Items;
 using Sirenix.OdinInspector;
-using UnityEngine.AI;
-using StatsWithModifiers;
 using System;
-using NodeCanvas.Tasks.Actions;
 
 [RequireComponent(typeof(Collider), typeof(Rigidbody)), HideMonoScript]
 public class ItemEntity : MonoBehaviour
 {
 	public event Action<ItemEntity> onDestroy;
+	public event Action<ItemEntity> onStateChange;
 
 	[DisableInPlayMode]
 	public Item item;
@@ -21,11 +19,17 @@ public class ItemEntity : MonoBehaviour
 		get => _count;
 		set
 		{
-			_count = value;
-			if (value < 1)
-				Destroy(gameObject);
+			if (_count != value)
+			{
+				_count = value;
+				onStateChange?.Invoke(this);
+				if (value < 1)
+					Destroy(gameObject);
+			}			
 		}
 	}
+
+
 	[ReadOnly]
 	public float condition;
 	[ReadOnly]

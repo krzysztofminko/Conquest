@@ -1,4 +1,5 @@
 ﻿using Items;
+using JetBrains.Annotations;
 using SelectableList;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
@@ -29,7 +30,10 @@ public class StorageUI : MonoBehaviour
                 if (_storage)
                 {
                     _storage.onAddItemEntity -= Storage_onAddItemEntity;
-                    _storage.onRemoveItemEntity -= Storage_onBeforeRemoveItemEntity;
+                    _storage.onRemoveItemEntity -= Storage_onRemoveItemEntity;
+                    foreach (ItemEntity item in _storage.itemsEntities)
+                        item.onStateChange -= ItemEntity_onStateChange;
+
                     ListParent.Clear();
                 }
 
@@ -40,7 +44,10 @@ public class StorageUI : MonoBehaviour
                 if (_storage)
                 {
                     _storage.onAddItemEntity += Storage_onAddItemEntity;
-                    _storage.onRemoveItemEntity += Storage_onBeforeRemoveItemEntity;
+                    _storage.onRemoveItemEntity += Storage_onRemoveItemEntity;
+                    foreach (ItemEntity item in _storage.itemsEntities)
+                        item.onStateChange += ItemEntity_onStateChange;
+
                     ListParent.Draw(_storage.itemsEntities);
                     nameText.text = _storage.name;
                 }
@@ -65,13 +72,10 @@ public class StorageUI : MonoBehaviour
         element.GetComponentInChildren<TextMeshProUGUI>().text = itemEntity.item.name + (itemEntity.item.IsStackable ? $" x{itemEntity.Count}" : "");
     }
 
-    private void Storage_onAddItemEntity(ItemEntity itemEntity) 
-    {
-        ListParent.AddElement(itemEntity);
-    }
+    private void ItemEntity_onStateChange(ItemEntity itemEntity) => SetupListElement(ListParent.GetElement(itemEntity).gameObject, itemEntity);
 
-    private void Storage_onBeforeRemoveItemEntity(ItemEntity itemEntity)
-    {
-        ListParent.RemoveElement(itemEntity);
-    }
+    private void Storage_onAddItemEntity(ItemEntity itemEntity) => ListParent.AddElement(itemEntity);
+
+    private void Storage_onRemoveItemEntity(ItemEntity itemEntity) => ListParent.RemoveElement(itemEntity);
+
 }

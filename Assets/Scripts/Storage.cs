@@ -14,9 +14,6 @@ public class Storage : MonoBehaviour
 
     public event Action<ItemEntity> onAddItemEntity;
     public event Action<ItemEntity> onRemoveItemEntity;
-    //TODO: implement updates of item state in UI
-    public event Action<ItemEntity> onItemEntityCountChange;
-
 
     //TODO: more protection from accessing this list?
     public readonly List<ItemEntity> itemsEntities = new List<ItemEntity>();

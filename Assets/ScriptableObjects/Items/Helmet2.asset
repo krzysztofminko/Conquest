@@ -38,4 +38,10 @@ MonoBehaviour:
       type: {class: Equipable, ns: Items, asm: Assembly-CSharp}
       data:
         slot: 0
-        modifiers: []
+        modifiers:
+        - _stat:
+            _classRef: Health, Assembly-CSharp
+          _affectMax: 1
+          _type: 2
+          _value: 20
+          _duration: 0

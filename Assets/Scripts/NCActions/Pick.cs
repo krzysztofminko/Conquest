@@ -68,6 +68,7 @@ namespace NodeCanvas.Tasks.Actions{
 					}
 					else
 					{
+						//TODO: move stack management to Storage
 						if (itemEntity.item.IsStackable)
 						{
 							ItemEntity existingItemEntity = storage.itemsEntities.Find(i => i.item == itemEntity.item);

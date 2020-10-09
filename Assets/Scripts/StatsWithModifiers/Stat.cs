@@ -56,6 +56,7 @@ namespace StatsWithModifiers
 				Value += modifier.Value;
 		}
 
+		//TODO: Forbid removing modifiers that was never applied
 		public void RemoveModifier(StatModifier modifier)
 		{
 			if (modifier.Type == StatModifier.ModifierType.Permanent)

@@ -20,13 +20,61 @@ public class Storage : MonoBehaviour
         
     public int Count(Item item) => itemsEntities.Count(i => i.item == item);
 
+    public void Transfer(ItemEntity itemEntity, Storage target, int count)
+    {
+        if (!itemEntity.item.IsStackable)
+        {
+            RemoveItemEntity(itemEntity);
+            target.AddItemEntity(itemEntity);
+        }
+        else
+        {
+            count = Mathf.Clamp(count, 1, itemEntity.Count);
+            itemEntity.Count -= count;
+
+            ItemEntity newItemEntity = null;
+            newItemEntity = target.itemsEntities.Find(i => i.item == itemEntity.item);
+            if (newItemEntity)
+            {
+                newItemEntity.Count += count;
+            }
+            else
+            {
+                newItemEntity = ItemEntity.Spawn(itemEntity.item, target.transform.position, Quaternion.identity);
+                newItemEntity.Count = count;
+                target.AddItemEntity(newItemEntity);
+            }
+        }
+    }
+
     public void AddItemEntity(ItemEntity itemEntity)
     {
-        itemsEntities.Add(itemEntity);
-        itemEntity.storage = this;
-        itemEntity.SetParent(transform, false);;
-        itemEntity.onDestroy += RemoveItemEntityOnDestroy;
-        onAddItemEntity?.Invoke(itemEntity);
+        if (itemEntity.item.IsStackable)
+        {
+            ItemEntity existingItemEntity = itemsEntities.Find(i => i.item == itemEntity.item);
+            if (existingItemEntity)
+            {
+                existingItemEntity.Count += itemEntity.Count;
+                Destroy(itemEntity.gameObject);
+            }
+            else
+            {
+                itemsEntities.Add(itemEntity);
+                itemEntity.storage = this;
+                itemEntity.SetParent(transform, false); ;
+                itemEntity.onDestroy += RemoveItemEntityOnDestroy;
+                onAddItemEntity?.Invoke(itemEntity);
+            }
+        }
+        else
+        {
+            itemsEntities.Add(itemEntity);
+            itemEntity.storage = this;
+            itemEntity.SetParent(transform, false); ;
+            itemEntity.onDestroy += RemoveItemEntityOnDestroy;
+            onAddItemEntity?.Invoke(itemEntity);
+        }
+
     }
 
     public void RemoveItemEntity(ItemEntity itemEntity)

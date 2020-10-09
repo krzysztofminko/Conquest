@@ -63,31 +63,9 @@ namespace NodeCanvas.Tasks.Actions{
 				{
 					//Pick
 					if (itemEntity.item.IsLarge)
-					{
 						agent.ItemEntity = itemEntity;
-					}
 					else
-					{
-						//TODO: move stack management to Storage
-						if (itemEntity.item.IsStackable)
-						{
-							ItemEntity existingItemEntity = storage.itemsEntities.Find(i => i.item == itemEntity.item);
-							if (existingItemEntity) 
-							{
-								existingItemEntity.Count += itemEntity.Count;
-								Object.Destroy(itemEntity.gameObject);
-								itemEntity = existingItemEntity;
-							}
-							else
-							{
-								storage.AddItemEntity(itemEntity);
-							}
-						}
-						else
-						{
-							storage.AddItemEntity(itemEntity);
-						}
-					}
+						storage.AddItemEntity(itemEntity);
 
 					//Set carrying pose
 					if (itemEntity.item.carryAnimation)

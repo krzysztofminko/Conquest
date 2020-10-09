@@ -11,20 +11,14 @@ namespace NodeCanvas.Tasks.Actions{
 		public BBParameter<ItemEntity> itemEntity;
 		[RequiredField]
 		public BBParameter<Storage> target;
-		public BBParameter<bool> fromPlayerToTarget;
+		public BBParameter<bool> fromAgentToTarget;
 
 		protected override void OnExecute()
 		{
-			if (fromPlayerToTarget.value)
-			{
-				agent.RemoveItemEntity(itemEntity.value);
-				target.value.AddItemEntity(itemEntity.value);
-			}
+			if (fromAgentToTarget.value)
+				agent.Transfer(itemEntity.value, target.value, 1);
 			else
-			{
-				target.value.RemoveItemEntity(itemEntity.value);
-				agent.AddItemEntity(itemEntity.value);
-			}
+				target.value.Transfer(itemEntity.value, agent, 1);
 			EndAction(true);
 		}
 	}

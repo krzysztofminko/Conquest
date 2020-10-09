@@ -83,6 +83,8 @@ namespace SelectableList
 
 		private void RemoveElementAt(int index)
 		{
+			if (index < 0 || index >= elements.Count)
+				Debug.LogError($"index({index}) out of range ({elements.Count})", this);
 			ListElement element = elements[index];
 			element.onSelect -= Element_onSelect;
 			Destroy(element.gameObject);

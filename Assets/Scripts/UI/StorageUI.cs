@@ -74,8 +74,16 @@ public class StorageUI : MonoBehaviour
 
     private void ItemEntity_onStateChange(ItemEntity itemEntity) => SetupListElement(ListParent.GetElement(itemEntity).gameObject, itemEntity);
 
-    private void Storage_onAddItemEntity(ItemEntity itemEntity) => ListParent.AddElement(itemEntity);
+    private void Storage_onAddItemEntity(ItemEntity itemEntity)
+    {
+        ListParent.AddElement(itemEntity);
+        itemEntity.onStateChange += ItemEntity_onStateChange;
+    }
 
-    private void Storage_onRemoveItemEntity(ItemEntity itemEntity) => ListParent.RemoveElement(itemEntity);
+    private void Storage_onRemoveItemEntity(ItemEntity itemEntity) 
+    { 
+        ListParent.RemoveElement(itemEntity);
+        itemEntity.onStateChange -= ItemEntity_onStateChange;
+    }
 
 }

@@ -12,7 +12,7 @@ public class ItemEntity : MonoBehaviour
 
 	[DisableInPlayMode]
 	public Item item;
-	[ReadOnly, Min(1)]
+	[SerializeField, ReadOnly, Min(1)]
 	private int _count = 1;
 	public int Count
 	{

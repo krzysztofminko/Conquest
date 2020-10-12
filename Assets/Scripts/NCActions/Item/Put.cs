@@ -1,13 +1,10 @@
-﻿using Items;
-using NodeCanvas.Framework;
+﻿using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions
 {
-
-	[Category("ItemHolder")]
+	[Category("Item")]
 	public class Put : ActionTask<ItemHolder>
 	{
 		public BBParameter<ItemEntity> _itemEntity;

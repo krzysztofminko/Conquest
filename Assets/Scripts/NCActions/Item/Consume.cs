@@ -1,14 +1,12 @@
-using Items;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using StatsWithModifiers;
-using System;
 using System.Collections.Generic;
 
 namespace NodeCanvas.Tasks.Actions{
 
-	[Category("Storage")]
-	public class Consume : ActionTask<Storage>
+	[Category("Item")]
+	public class Consume : ActionTask
 	{
 		[RequiredField]
 		public BBParameter<ItemEntity> itemEntity;

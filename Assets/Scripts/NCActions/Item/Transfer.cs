@@ -1,10 +1,9 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 
-
-namespace NodeCanvas.Tasks.Actions{
-
-	[Category("Storage")]
+namespace NodeCanvas.Tasks.Actions
+{
+	[Category("Item")]
 	public class Transfer : ActionTask<Storage>
 	{
 		[RequiredField]

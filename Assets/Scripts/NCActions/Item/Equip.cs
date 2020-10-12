@@ -1,10 +1,9 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 
-
 namespace NodeCanvas.Tasks.Actions{
 
-	[Category("Storage")]
+	[Category("Item")]
 	public class Equip : ActionTask<Equipment>
 	{
 		[RequiredField]

@@ -1,11 +1,10 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 
-
 namespace NodeCanvas.Tasks.Actions{
 
-	[Category("Storage")]
-	public class Drop : ActionTask<Storage>
+	[Category("Item")]
+	public class Drop : ActionTask
 	{
 		[RequiredField]
 		public BBParameter<ItemEntity> itemEntity;
@@ -14,8 +13,8 @@ namespace NodeCanvas.Tasks.Actions{
 		{
 			if (itemEntity.value.holder)
 				itemEntity.value.holder.ItemEntity = null;
-			if (itemEntity.value.storage == agent)
-				agent.RemoveItemEntity(itemEntity.value);
+			if (itemEntity.value.storage)
+				itemEntity.value.storage.RemoveItemEntity(itemEntity.value);
 
 			EndAction(true);
 		}

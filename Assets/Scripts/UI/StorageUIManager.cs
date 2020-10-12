@@ -38,9 +38,9 @@ public class StorageUIManager : MonoBehaviour
         if (!SelectedItemEntity)
         {
             if (playerUI.Storage && playerUI.Storage.itemsEntities.Count > 0)
-                playerUI.ListParent.SelectIndex(0);
+                playerUI.ListParent.SelectByIndex(0);
             else if (targetUI.Storage && targetUI.Storage.itemsEntities.Count > 0)
-                targetUI.ListParent.SelectIndex(0);
+                targetUI.ListParent.SelectByIndex(0);
         }
     }
 
@@ -53,7 +53,7 @@ public class StorageUIManager : MonoBehaviour
         if (show)
         {
             playerUI.ListParent.onSelectedUpdate += SelectPlayerItemEntity;
-            playerUI.ListParent.SelectIndex(0);
+            playerUI.ListParent.SelectByIndex(0);
         }
         else
         {
@@ -85,7 +85,7 @@ public class StorageUIManager : MonoBehaviour
         }
         else if (targetUI.Storage && targetUI.Storage.itemsEntities.Count > 0)
         {
-            targetUI.ListParent.SelectIndex(0);
+            targetUI.ListParent.SelectByIndex(0);
         }
         else
         {
@@ -102,7 +102,7 @@ public class StorageUIManager : MonoBehaviour
         }
         else if (playerUI.Storage && playerUI.Storage.itemsEntities.Count > 0) 
         { 
-            playerUI.ListParent.SelectIndex(0);
+            playerUI.ListParent.SelectByIndex(0);
         }
         else
         {

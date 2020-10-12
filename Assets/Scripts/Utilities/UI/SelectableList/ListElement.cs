@@ -11,14 +11,7 @@ namespace SelectableList
 
 		public object bindedObject;
 
-		public void OnSelect(BaseEventData eventData)
-		{
-			onSelect?.Invoke(this);
-		}
-
-		public void OnDeselect(BaseEventData eventData)
-		{
-			onDeselect?.Invoke(this);
-		}
+		public void OnSelect(BaseEventData eventData) => onSelect?.Invoke(this);
+		public void OnDeselect(BaseEventData eventData) => onDeselect?.Invoke(this);
 	}
 }

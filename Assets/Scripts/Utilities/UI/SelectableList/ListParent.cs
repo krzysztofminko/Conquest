@@ -110,7 +110,8 @@ namespace SelectableList
 		/// </summary>
 		public void SelectByIndex(int index)
 		{
-			EventSystem.current.SetSelectedGameObject(elements.Count > 0 ? elements[Mathf.Clamp(index, 0, elements.Count - 1)].gameObject : null);
+			if (!EventSystem.current.alreadySelecting)
+				EventSystem.current.SetSelectedGameObject(elements.Count > 0 ? elements[Mathf.Clamp(index, 0, elements.Count - 1)].gameObject : null);
 		}
 
 		private void ListElement_onSelect(ListElement element) => Selected = element;

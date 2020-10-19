@@ -6,6 +6,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
+//TODO: Use OdinInspector
+//TODO: Add hold effect/icon
+//TODO: assign icons to keys not axes
 public class InputHints : MonoBehaviour
 {
 	[System.Serializable]
@@ -28,25 +31,33 @@ public class InputHints : MonoBehaviour
 		public Sprite controller;
 	}
 
+	[System.Serializable]
+	private class AxisHoldDuration
+	{
+		public string axis;
+		public float duration;
+	}
 
 	public static InputHints instance;
+	private static bool controller;
+	private static List<Hint> hints = new List<Hint>();
+	private static List<AxisHoldDuration> axisHoldDurations = new List<AxisHoldDuration>();
 
 	[SerializeField] private Transform listParent;
 	[SerializeField] private Transform prefab;
+	[SerializeField, Min(0)] private float defaultHoldDuration = 1;
 	[SerializeField] private List<AxisIcons> axisIcons = new List<AxisIcons>();
-	[SerializeField] private List<Hint> _hints = new List<Hint>();
-	private static List<Hint> hints = new List<Hint>();
 
-	private static bool controller;
 
 	private void Awake()
 	{
+		//TODO: validate for only one posible instance
 		instance = this;
-		_hints = hints;
 	}
 
 	private void LateUpdate()
 	{
+		//TODO: better controls switching
 		string[] joys = Input.GetJoystickNames();
 		controller = joys.Length > 0 && joys.Any(j => !string.IsNullOrEmpty(j));
 
@@ -60,12 +71,24 @@ public class InputHints : MonoBehaviour
 			{
 				hints[i].dontDestroy = false;
 			}
+
+		//Update held buttons
+		for (int i = axisHoldDurations.Count - 1; i >= 0; i--)
+		{
+			if (Input.GetButtonUp(axisHoldDurations[i].axis))
+				axisHoldDurations.RemoveAt(i);
+			else
+				axisHoldDurations[i].duration += Time.deltaTime;
+		}
 	}
 
 
-	private static void SetHint(string axis, string text = null)
+	private static void SetHint(string axis, string text, bool hold)
 	{
 		Hint hint = hints.Find(h => h.axis == axis);
+
+		if (hold)
+			text = "(hold) " + text;
 
 		if (hint == null)
 		{
@@ -93,7 +116,32 @@ public class InputHints : MonoBehaviour
 
 	public static bool GetButtonDown(string axis, string text = null)
 	{
-		SetHint(axis, text);
+		SetHint(axis, text, false);
 		return Input.GetButtonDown(axis);
+	}
+
+	public static bool GetButtonUp(string axis, string text = null)
+	{
+		SetHint(axis, text, false);
+		return Input.GetButtonUp(axis);
+	}
+
+	public static bool GetButtonHold(string axis, string text = null)
+	{
+		SetHint(axis, text, true);
+
+		if (Input.GetButtonDown(axis))
+			axisHoldDurations.Add(new AxisHoldDuration { axis = axis, duration = 0 });
+
+		if (Input.GetButton(axis))
+		{
+			AxisHoldDuration ahd = axisHoldDurations.Find(ad => ad.axis == axis);
+			if (ahd != null && ahd.duration > instance.defaultHoldDuration)
+			{
+				axisHoldDurations.Remove(ahd);
+				return true;
+			}
+		}
+		return false;
 	}
 }

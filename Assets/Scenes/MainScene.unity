@@ -489,10 +489,10 @@ RectTransform:
   m_Father: {fileID: 1458946837}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 315, y: -25}
-  m_SizeDelta: {x: 630, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &99039924
 MonoBehaviour:
@@ -1232,7 +1232,7 @@ PrefabInstance:
     - target: {fileID: 3326690634337028605, guid: 6d2f8fff923c21a489dff41efab4d140,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00053974893
+      value: 0.0004344596
       objectReference: {fileID: 0}
     - target: {fileID: 3464322453204990432, guid: 6d2f8fff923c21a489dff41efab4d140,
         type: 3}
@@ -4306,10 +4306,10 @@ RectTransform:
   m_Father: {fileID: 1458946837}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 315, y: -175}
-  m_SizeDelta: {x: 630, y: 250}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1754945527
 MonoBehaviour:
@@ -4559,6 +4559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listParent: {fileID: 405534721}
   prefab: {fileID: 367894900}
+  defaultHoldDuration: 1
   axisIcons:
   - axis: PrimaryAction
     keyboard: {fileID: 21300000, guid: 4f99347c7aae2d8459e797f02f12cc4e, type: 3}
@@ -4581,7 +4582,6 @@ MonoBehaviour:
   - axis: Consume
     keyboard: {fileID: 21300000, guid: 9fdc00a5fb2eaf94389e912a578d5bf9, type: 3}
     controller: {fileID: 21300000, guid: c6d51278c51ac0d46904437038e375d9, type: 3}
-  _hints: []
 --- !u!114 &1889956755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5488,7 +5488,7 @@ PrefabInstance:
     - target: {fileID: 3326690634337028605, guid: 6d2f8fff923c21a489dff41efab4d140,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00053974893
+      value: 0.0004344596
       objectReference: {fileID: 0}
     - target: {fileID: 3464322453204990432, guid: 6d2f8fff923c21a489dff41efab4d140,
         type: 3}

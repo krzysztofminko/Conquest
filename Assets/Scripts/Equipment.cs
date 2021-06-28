@@ -10,7 +10,7 @@ using UnityEngine;
 [HideMonoScript, RequireComponent(typeof(Storage))]
 public class Equipment : MonoBehaviour
 {
-    public enum SlotType { Head, Chest, Legs }
+    public enum SlotType { Head, Chest, Legs, Weapon1, Weapon2 }
 
     [Serializable]
     public class Slot
@@ -80,7 +80,7 @@ public class Equipment : MonoBehaviour
         }
     }
 
-    public void UnqeuipOnRemove(ItemEntity itemEntity)
+    private void UnqeuipOnRemove(ItemEntity itemEntity)
     {
         if (IsEquiped(itemEntity))
             Unequip(itemEntity);

@@ -13,8 +13,15 @@ MonoBehaviour:
   m_Name: MonsterWeapon
   m_EditorClassIdentifier: 
   prefab: {fileID: 3642268760297068100, guid: 19fc59d5865ba4d43a8577dea64bf463, type: 3}
-  damageable: 0
-  condition: 100
+  pickAnimation: {fileID: 0}
+  pickDelay: 0
+  putAnimation: {fileID: 0}
+  putDelay: 0
+  carryAnimation: {fileID: 0}
+  _isLarge: 0
+  _isStackable: 0
+  damageable:
+    id: 0
   consumable:
     id: 0
   equipable:
@@ -42,4 +49,4 @@ MonoBehaviour:
           range: 2
           damage:
           - type: 2
-            value: 10
+            value: 5

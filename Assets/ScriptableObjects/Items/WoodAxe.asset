@@ -41,7 +41,7 @@ MonoBehaviour:
     00000002:
       type: {class: Equipable, ns: Items, asm: Assembly-CSharp}
       data:
-        slot: 1
+        slot: 3
         modifiers: []
     00000003:
       type: {class: Weapon, ns: Items, asm: Assembly-CSharp}

@@ -490,6 +490,12 @@ MonoBehaviour:
   - type: 2
     parent: {fileID: 4885559903321747828}
     itemEntity: {fileID: 0}
+  - type: 3
+    parent: {fileID: 4885559903321747828}
+    itemEntity: {fileID: 0}
+  - type: 4
+    parent: {fileID: 2496915091746501751}
+    itemEntity: {fileID: 0}
 --- !u!114 &1399189800368072059
 MonoBehaviour:
   m_ObjectHideFlags: 0

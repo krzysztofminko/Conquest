@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f945e777233a59f4aba40aeca29093a6, type: 3}
   m_Name: Monster
   m_EditorClassIdentifier: 
-  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"waitFrames":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.WaitFrames"}]},"_position":{"x":96.0,"y":149.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"speed":{"_value":2.0},"keepDistance":{"_value":0.1},"minWanderDistance":{"_value":5.0},"maxWanderDistance":{"_value":10.0},"$type":"NodeCanvas.Tasks.Actions.Wander"}]},"_name":"Idle","_position":{"x":243.0,"y":254.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"target":{"_name":"Target","_targetVariableID":"2e084a07-c5df-4e04-b749-09e45d1fe538"},"speed":{"_value":3.5},"keepDistance":{"_value":0.1},"$type":"NodeCanvas.Tasks.Actions.MoveToGameObject"}]},"_name":"GoTo","_position":{"x":608.0,"y":384.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"executionMode":1,"actions":[{"_target":{"_name":"Target","_targetVariableID":"2e084a07-c5df-4e04-b749-09e45d1fe538"},"layerMask":{"value":1792},"$type":"NodeCanvas.Tasks.Actions.Attack"}]},"_name":"Attack","_position":{"x":461.0,"y":587.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"_isDisabled":true,"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"Target","_targetVariableID":"2e084a07-c5df-4e04-b749-09e45d1fe538"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[UnityEngine.GameObject,
+  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"waitFrames":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.WaitFrames"}]},"_position":{"x":96.0,"y":149.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"speed":{"_value":1.0},"keepDistance":{"_value":0.1},"minWanderDistance":{"_value":5.0},"maxWanderDistance":{"_value":10.0},"$type":"NodeCanvas.Tasks.Actions.Wander"}]},"_name":"Idle","_position":{"x":243.0,"y":254.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"target":{"_name":"Target","_targetVariableID":"2e084a07-c5df-4e04-b749-09e45d1fe538"},"speed":{"_value":3.0},"keepDistance":{"_value":0.1},"$type":"NodeCanvas.Tasks.Actions.MoveToGameObject"}]},"_name":"GoTo","_position":{"x":608.0,"y":384.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"executionMode":1,"actions":[{"_target":{"_name":"Target","_targetVariableID":"2e084a07-c5df-4e04-b749-09e45d1fe538"},"layerMask":{"value":1792},"$type":"NodeCanvas.Tasks.Actions.Attack"}]},"_name":"Attack","_position":{"x":461.0,"y":587.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"Target","_targetVariableID":"2e084a07-c5df-4e04-b749-09e45d1fe538"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"checkTarget":{"_name":"Target","_targetVariableID":"2e084a07-c5df-4e04-b749-09e45d1fe538"},"distance":{"_value":10.0},"$type":"NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"checkMode":1,"conditions":[{"valueA":{"_name":"Target","_targetVariableID":"2e084a07-c5df-4e04-b749-09e45d1fe538"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"checkTarget":{"_name":"Target","_targetVariableID":"2e084a07-c5df-4e04-b749-09e45d1fe538"},"checkType":1,"distance":{"_value":15.0},"$type":"NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"Target","_targetVariableID":"2e084a07-c5df-4e04-b749-09e45d1fe538"},"valueB":{},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"checkTarget":{"_name":"Target","_targetVariableID":"2e084a07-c5df-4e04-b749-09e45d1fe538"},"distance":{"_value":2.0},"$type":"NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"valueA":{"_name":"Target","_targetVariableID":"2e084a07-c5df-4e04-b749-09e45d1fe538"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[UnityEngine.GameObject,
@@ -22,7 +22,7 @@ MonoBehaviour:
     _version: 3.09
     _category: 
     _comments: 
-    _translation: {x: -92, y: -43}
+    _translation: {x: -105, y: -61}
     _zoomFactor: 1
   _haltSerialization: 0
 #---GRAPH_START---
@@ -55,7 +55,7 @@ MonoBehaviour:
 #                "actions": [
 #                    {
 #                        "speed": {
-#                            "_value": 2.0
+#                            "_value": 1.0
 #                        },
 #                        "keepDistance": {
 #                            "_value": 0.1
@@ -88,7 +88,7 @@ MonoBehaviour:
 #                            "_targetVariableID": "2e084a07-c5df-4e04-b749-09e45d1fe538"
 #                        },
 #                        "speed": {
-#                            "_value": 3.5
+#                            "_value": 3.0
 #                        },
 #                        "keepDistance": {
 #                            "_value": 0.1
@@ -138,7 +138,6 @@ MonoBehaviour:
 #            "_targetNode": {
 #                "$ref": "1"
 #            },
-#            "_isDisabled": true,
 #            "$type": "NodeCanvas.StateMachines.FSMConnection"
 #        },
 #        {

@@ -3,6 +3,8 @@ Survive and conquest new lands using tools and weapons, gathering resources, bui
   
 ![](Screens/anim01.gif)
 
+[Go to my C# scripts](https://github.com/krzysztofminko/Conquest/tree/master/Assets/Scripts)
+
 ## Implemented features
 ### Inventory and Items
 - picking

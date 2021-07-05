@@ -18,7 +18,7 @@ MonoBehaviour:
   putAnimation: {fileID: 0}
   putDelay: 0
   carryAnimation: {fileID: 0}
-  _isLarge: 0
+  _isLarge: 1
   _isStackable: 0
   damageable:
     id: 0
@@ -30,3 +30,7 @@ MonoBehaviour:
     id: 0
   tool:
     id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }

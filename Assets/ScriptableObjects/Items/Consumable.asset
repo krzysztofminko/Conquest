@@ -45,5 +45,5 @@ MonoBehaviour:
             _suppressLogs: 0
           _affectMax: 0
           _type: 0
-          _value: -40
+          _value: 20
           _duration: 0

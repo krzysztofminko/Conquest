@@ -25,8 +25,26 @@ MonoBehaviour:
   consumable:
     id: 0
   equipable:
-    id: 0
+    id: 1
   weapon:
     id: 0
   tool:
     id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
+    00000001:
+      type: {class: Equipable, ns: Items, asm: Items}
+      data:
+        slot: 0
+        modifiers:
+        - _stat:
+            GuidAssignmentFailed: 0
+            GUID: 328de471fdf44634d8061b2333b4ce17
+            TypeNameAndAssembly: Health, StatsWithModifiers
+            _suppressLogs: 0
+          _affectMax: 1
+          _type: 0
+          _value: 10
+          _duration: 0

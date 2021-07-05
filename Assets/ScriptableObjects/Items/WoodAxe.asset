@@ -25,9 +25,9 @@ MonoBehaviour:
   consumable:
     id: 0
   equipable:
-    id: 0
-  weapon:
     id: 1
+  weapon:
+    id: 2
   tool:
     id: 0
   references:
@@ -35,6 +35,11 @@ MonoBehaviour:
     00000000:
       type: {class: , ns: , asm: }
     00000001:
+      type: {class: Equipable, ns: Items, asm: Items}
+      data:
+        slot: 3
+        modifiers: []
+    00000002:
       type: {class: Weapon, ns: Items, asm: Items}
       data:
         attacks:

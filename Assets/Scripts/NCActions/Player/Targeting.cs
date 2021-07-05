@@ -6,7 +6,7 @@ using UnityEngine;
 namespace NodeCanvas.Tasks.Actions{
 
 	[Category("Player")]
-	public class Targeting : ActionTask<Player>
+	public class Targeting : ActionTask
 	{
 		public BBParameter<bool> enabled = true;
 		public LayerMask layerMask;

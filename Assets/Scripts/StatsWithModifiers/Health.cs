@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
-using StatsWithModifiers;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
+using Damageable;
+using StatsWithModifiers;
 
 public class Health : Stat, IDamageable
 {

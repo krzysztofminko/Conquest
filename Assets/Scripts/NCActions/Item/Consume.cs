@@ -1,9 +1,8 @@
+using Items;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-using StatsWithModifiers;
-using System.Collections.Generic;
 
-namespace NodeCanvas.Tasks.Actions{
+namespace NCActions{
 
 	[Category("Item")]
 	public class Consume : ActionTask
@@ -15,10 +14,7 @@ namespace NodeCanvas.Tasks.Actions{
 		{
 			if (itemEntity.value.item.consumable != null)
 			{
-				List<StatModifier> modifiers = itemEntity.value.item.consumable.modifiers;
-				for (int i = 0; i < modifiers.Count; i++)
-					(agent.GetComponent(modifiers[i].Stat.Type) as Stat)?.ApplyModifier(modifiers[i]);
-
+				itemEntity.value.item.consumable.ApplyModifiers(agent.gameObject);
 				itemEntity.value.Count--;
 
 				EndAction(true);

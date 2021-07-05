@@ -25,23 +25,8 @@ MonoBehaviour:
   consumable:
     id: 0
   equipable:
-    id: 1
+    id: 0
   weapon:
     id: 0
   tool:
     id: 0
-  references:
-    version: 1
-    00000000:
-      type: {class: , ns: , asm: }
-    00000001:
-      type: {class: Equipable, ns: Items, asm: Assembly-CSharp}
-      data:
-        slot: 0
-        modifiers:
-        - _stat:
-            _classRef: Health, Assembly-CSharp
-          _affectMax: 1
-          _type: 2
-          _value: 10
-          _duration: 0

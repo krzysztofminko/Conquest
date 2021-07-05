@@ -1,5 +1,21 @@
 {
   "dependencies": {
+    "com.solidalloy.type-references": {
+      "version": "https://github.com/SolidAlloy/ClassTypeReference-for-Unity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.solidalloy.util": "1.28.0"
+      },
+      "hash": "2371ab02f1dee6dd05afcadec210af83ac8e6da3"
+    },
+    "com.solidalloy.util": {
+      "version": "https://github.com/SolidAlloy/SolidUtilities.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d8a6400d71032604ee02b81f63d47fb4c2bbcdbd"
+    },
     "com.unity.cinemachine": {
       "version": "2.6.0",
       "depth": 0,

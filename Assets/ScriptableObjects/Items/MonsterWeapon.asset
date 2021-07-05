@@ -35,7 +35,7 @@ MonoBehaviour:
     00000000:
       type: {class: , ns: , asm: }
     00000001:
-      type: {class: Weapon, ns: Items, asm: Assembly-CSharp}
+      type: {class: Weapon, ns: Items, asm: Items}
       data:
         attacks:
         - name: Hit
@@ -44,9 +44,9 @@ MonoBehaviour:
           projectile: {fileID: 0}
           trailStart: 0
           trailEnd: 0
-          damageDelay: 0.47
-          targetOnly: 1
+          damageDelay: 0.4
+          targetOnly: 0
           range: 2
           damage:
           - type: 2
-            value: 5
+            value: 10

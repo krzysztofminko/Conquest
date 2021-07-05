@@ -1,86 +1,87 @@
 ﻿using UnityEngine;
-using System.Collections;
-using Items;
 using Sirenix.OdinInspector;
 using System;
 
-[RequireComponent(typeof(Collider), typeof(Rigidbody)), HideMonoScript]
-public class ItemEntity : MonoBehaviour
+namespace Items
 {
-	public event Action<ItemEntity> onDestroy;
-	public event Action<ItemEntity> onStateChange;
-
-	[DisableInPlayMode]
-	public Item item;
-	[SerializeField, ReadOnly, Min(1)]
-	private int _count = 1;
-	public int Count
+	[RequireComponent(typeof(Collider), typeof(Rigidbody)), HideMonoScript]
+	public class ItemEntity : MonoBehaviour
 	{
-		get => _count;
-		set
+		public event Action<ItemEntity> onDestroy;
+		public event Action<ItemEntity> onStateChange;
+
+		[DisableInPlayMode]
+		public Item item;
+		[SerializeField, ReadOnly, Min(1)]
+		private int _count = 1;
+		public int Count
 		{
-			if (_count != value)
+			get => _count;
+			set
 			{
-				_count = value;
-				onStateChange?.Invoke(this);
-				if (value < 1)
-					Destroy(gameObject);
-			}			
+				if (_count != value)
+				{
+					_count = value;
+					onStateChange?.Invoke(this);
+					if (value < 1)
+						Destroy(gameObject);
+				}
+			}
 		}
-	}
 
 
-	[ReadOnly]
-	public float condition;
-	[ReadOnly]
-	public ItemHolder holder;
-	[ReadOnly]
-	public Storage storage;
+		[ReadOnly]
+		public float condition;
+		[ReadOnly]
+		public ItemHolder holder;
+		[ReadOnly]
+		public Storage storage;
 
 
-	private new Collider collider;
-	private new Rigidbody rigidbody;
+		private new Collider collider;
+		private new Rigidbody rigidbody;
 
-	private void Awake()
-	{
-		collider = GetComponent<Collider>();
-		rigidbody = GetComponent<Rigidbody>();
-	}
-
-	public static ItemEntity Spawn(Item item, Vector3 position, Quaternion rotation)
-	{
-		if(!item.prefab)
-			Debug.LogError($"{item} has no prefab.", item);
-
-		ItemEntity entity = Instantiate(item.prefab, position, rotation);
-		entity.item = item;
-		entity.condition = item.damageable != null ? item.damageable.condition : 0;
-		return entity;
-	}
-
-	public void SetParent(Transform parent, bool gameObjectActive)
-	{
-		gameObject.SetActive(gameObjectActive);
-		transform.parent = parent;
-		collider.enabled = !parent;
-		rigidbody.isKinematic = parent;
-		if (parent)
+		private void Awake()
 		{
-			transform.localPosition = Vector3.zero;
-			transform.localRotation = Quaternion.identity;
+			collider = GetComponent<Collider>();
+			rigidbody = GetComponent<Rigidbody>();
 		}
-		else
+
+		public static ItemEntity Spawn(Item item, Vector3 position, Quaternion rotation)
 		{
-			//if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 5, NavMesh.AllAreas))
+			if (!item.prefab)
+				Debug.LogError($"{item} has no prefab.", item);
+
+			ItemEntity entity = Instantiate(item.prefab, position, rotation);
+			entity.item = item;
+			entity.condition = item.damageable != null ? item.damageable.condition : 0;
+			return entity;
+		}
+
+		public void SetParent(Transform parent, bool gameObjectActive)
+		{
+			gameObject.SetActive(gameObjectActive);
+			transform.parent = parent;
+			collider.enabled = !parent;
+			rigidbody.isKinematic = parent;
+			if (parent)
+			{
+				transform.localPosition = Vector3.zero;
+				transform.localRotation = Quaternion.identity;
+			}
+			else
+			{
+				//if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 5, NavMesh.AllAreas))
 				//transform.position = hit.position;
+			}
 		}
-	}
 
-	private void OnDestroy()
-	{
-		if (!Game.IsQuitting)
+		private void OnDestroy()
 		{
-			onDestroy?.Invoke(this);
+			if (!AppState.IsQuitting)
+			{
+				onDestroy?.Invoke(this);
+			}
 		}
 	}
 }

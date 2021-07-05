@@ -1,0 +1,22 @@
+{
+    "name": "NCActions",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b134867f3cd9e37428b652f97bf28b72",
+        "GUID:b7e32e5172f8b764aadd4566d2b2de8e",
+        "GUID:02c41ce9a3789e0449a72f1f0f69ea20",
+        "GUID:b597c9a37e1314146868c6c985fd74d2",
+        "GUID:cb0c9c6cf55e7b3499e567638ae5ac22",
+        "GUID:2d0bb66409d198a42890234916964414",
+        "GUID:bd6316058d61a2141b653d4c10a290b9"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

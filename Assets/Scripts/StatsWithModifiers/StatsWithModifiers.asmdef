@@ -1,0 +1,17 @@
+{
+    "name": "StatsWithModifiers",
+    "rootNamespace": "StatsWithModifiers",
+    "references": [
+        "GUID:bd6316058d61a2141b653d4c10a290b9",
+        "GUID:ea6a6314f279f814facc8c48a7d3c9f1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

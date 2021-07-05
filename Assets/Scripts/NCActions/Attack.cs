@@ -1,9 +1,12 @@
+using Damageable;
+using Items;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NodeCanvas.Tasks.Actions{
+namespace NCActions
+{
 
 	[Category("ItemHolder")]
 	public class Attack : ActionTask<ItemHolder>

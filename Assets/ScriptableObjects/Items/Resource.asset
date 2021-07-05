@@ -30,7 +30,3 @@ MonoBehaviour:
     id: 0
   tool:
     id: 0
-  references:
-    version: 1
-    00000000:
-      type: {class: , ns: , asm: }

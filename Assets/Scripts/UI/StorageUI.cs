@@ -1,89 +1,90 @@
 ﻿using Items;
-using JetBrains.Annotations;
 using SelectableList;
 using Sirenix.OdinInspector;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
-public class StorageUI : MonoBehaviour
+namespace UI
 {
-    [SerializeField, Required]
-    private TextMeshProUGUI nameText;
-    [SerializeField, Required]
-    private ListParent _listParent;
-    public ListParent ListParent { get => _listParent; private set => _listParent = value; }
-
-    [SerializeField, ReadOnly]
-    private Storage _storage;
-    public Storage Storage 
+    [RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
+    public class StorageUI : MonoBehaviour
     {
-        get => _storage;
-        set
+        [SerializeField, Required]
+        private TextMeshProUGUI nameText;
+        [SerializeField, Required]
+        private ListParent _listParent;
+        public ListParent ListParent { get => _listParent; private set => _listParent = value; }
+
+        [SerializeField, ReadOnly]
+        private Storage _storage;
+        public Storage Storage
         {
-            enabled = canvas.enabled = raycaster.enabled = value;
-            if (_storage != value)
+            get => _storage;
+            set
             {
-                //Clear old storage
-                if (_storage)
+                enabled = canvas.enabled = raycaster.enabled = value;
+                if (_storage != value)
                 {
-                    _storage.onAddItemEntity -= Storage_onAddItemEntity;
-                    _storage.onRemoveItemEntity -= Storage_onRemoveItemEntity;
-                    foreach (ItemEntity item in _storage.itemsEntities)
-                        item.onStateChange -= ItemEntity_onStateChange;
+                    //Clear old storage
+                    if (_storage)
+                    {
+                        _storage.onAddItemEntity -= Storage_onAddItemEntity;
+                        _storage.onRemoveItemEntity -= Storage_onRemoveItemEntity;
+                        foreach (ItemEntity item in _storage.itemsEntities)
+                            item.onStateChange -= ItemEntity_onStateChange;
 
-                    ListParent.Clear();
-                }
+                        ListParent.Clear();
+                    }
 
-                //Assign
-                _storage = value;
+                    //Assign
+                    _storage = value;
 
-                //Setup new storage
-                if (_storage)
-                {
-                    _storage.onAddItemEntity += Storage_onAddItemEntity;
-                    _storage.onRemoveItemEntity += Storage_onRemoveItemEntity;
-                    foreach (ItemEntity item in _storage.itemsEntities)
-                        item.onStateChange += ItemEntity_onStateChange;
+                    //Setup new storage
+                    if (_storage)
+                    {
+                        _storage.onAddItemEntity += Storage_onAddItemEntity;
+                        _storage.onRemoveItemEntity += Storage_onRemoveItemEntity;
+                        foreach (ItemEntity item in _storage.itemsEntities)
+                            item.onStateChange += ItemEntity_onStateChange;
 
-                    ListParent.Draw(_storage.itemsEntities);
-                    nameText.text = _storage.name;
+                        ListParent.Draw(_storage.itemsEntities);
+                        nameText.text = _storage.name;
+                    }
                 }
             }
-        } 
+        }
+
+        private Canvas canvas;
+        private GraphicRaycaster raycaster;
+
+
+        private void Awake()
+        {
+            canvas = GetComponent<Canvas>();
+            raycaster = GetComponent<GraphicRaycaster>();
+            ListParent.onCreateElement += SetupListElement;
+        }
+
+        private void SetupListElement(GameObject element, object assignedObject)
+        {
+            ItemEntity itemEntity = assignedObject as ItemEntity;
+            element.GetComponentInChildren<TextMeshProUGUI>().text = itemEntity.item.name + (itemEntity.item.IsStackable ? $" x{itemEntity.Count}" : "");
+        }
+
+        private void ItemEntity_onStateChange(ItemEntity itemEntity) => SetupListElement(ListParent.GetElement(itemEntity).gameObject, itemEntity);
+
+        private void Storage_onAddItemEntity(ItemEntity itemEntity)
+        {
+            ListParent.AddElement(itemEntity);
+            itemEntity.onStateChange += ItemEntity_onStateChange;
+        }
+
+        private void Storage_onRemoveItemEntity(ItemEntity itemEntity)
+        {
+            ListParent.RemoveElement(itemEntity);
+            itemEntity.onStateChange -= ItemEntity_onStateChange;
+        }
+
     }
-
-    private Canvas canvas;
-    private GraphicRaycaster raycaster;
-
-
-    private void Awake()
-    {
-        canvas = GetComponent<Canvas>();
-        raycaster = GetComponent<GraphicRaycaster>();
-        ListParent.onCreateElement += SetupListElement;
-    }
-
-    private void SetupListElement(GameObject element, object assignedObject)
-    {
-        ItemEntity itemEntity = assignedObject as ItemEntity;
-        element.GetComponentInChildren<TextMeshProUGUI>().text = itemEntity.item.name + (itemEntity.item.IsStackable ? $" x{itemEntity.Count}" : "");
-    }
-
-    private void ItemEntity_onStateChange(ItemEntity itemEntity) => SetupListElement(ListParent.GetElement(itemEntity).gameObject, itemEntity);
-
-    private void Storage_onAddItemEntity(ItemEntity itemEntity)
-    {
-        ListParent.AddElement(itemEntity);
-        itemEntity.onStateChange += ItemEntity_onStateChange;
-    }
-
-    private void Storage_onRemoveItemEntity(ItemEntity itemEntity) 
-    { 
-        ListParent.RemoveElement(itemEntity);
-        itemEntity.onStateChange -= ItemEntity_onStateChange;
-    }
-
 }

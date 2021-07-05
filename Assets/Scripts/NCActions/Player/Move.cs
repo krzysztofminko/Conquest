@@ -5,9 +5,16 @@ using UnityEngine;
 namespace NodeCanvas.Tasks.Actions
 {
 	[Category("Player")]
-	public class Move : ActionTask<Movement>
+	public class Move : ActionTask
 	{
 		public BBParameter<bool> enabled = true;
+
+		public BBParameter<float> walkSpeed = 4;
+		public BBParameter<float> runSpeed = 8;
+		public BBParameter<float> turnSpeed = 600;
+		public BBParameter<AnimationClip> idleAnimation;
+		public BBParameter<AnimationClip> moveAnimation;
+
 		public bool playerIsRunning;
 
 		private OverrideAnimator overrideAnimator;
@@ -28,8 +35,8 @@ namespace NodeCanvas.Tasks.Actions
 			if (!animator)
 				return "Player has no Animator.";
 
-			overrideAnimator.ChangeStateAnimationClip("EmptyIdle", agent.idleAnimation);
-			overrideAnimator.ChangeStateAnimationClip("EmptyMove", agent.moveAnimation);
+			overrideAnimator.ChangeStateAnimationClip("EmptyIdle", idleAnimation.value);
+			overrideAnimator.ChangeStateAnimationClip("EmptyMove", moveAnimation.value);
 
 			return null;
 		}
@@ -41,11 +48,11 @@ namespace NodeCanvas.Tasks.Actions
 			{
 				if (Input.GetButtonDown("Run"))
 					playerIsRunning = !playerIsRunning;
-				float speed = playerIsRunning ? agent.runSpeed : agent.walkSpeed;
+				float speed = playerIsRunning ? runSpeed.value : walkSpeed.value;
 				Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * speed;
 				if (movement.sqrMagnitude > 0)
 				{
-					agent.transform.rotation = Quaternion.RotateTowards(agent.transform.rotation, Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.main.transform.rotation * movement.normalized, Vector3.up)), agent.turnSpeed * Time.deltaTime);
+					agent.transform.rotation = Quaternion.RotateTowards(agent.transform.rotation, Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.main.transform.rotation * movement.normalized, Vector3.up)), turnSpeed.value * Time.deltaTime);
 				}
 				else
 				{

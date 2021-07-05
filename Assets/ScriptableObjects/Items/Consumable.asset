@@ -35,11 +35,14 @@ MonoBehaviour:
     00000000:
       type: {class: , ns: , asm: }
     00000001:
-      type: {class: Consumable, ns: Items, asm: Assembly-CSharp}
+      type: {class: Consumable, ns: Items, asm: Items}
       data:
         modifiers:
         - _stat:
-            _classRef: Health, Assembly-CSharp
+            GuidAssignmentFailed: 0
+            GUID: 328de471fdf44634d8061b2333b4ce17
+            TypeNameAndAssembly: Health, StatsWithModifiers
+            _suppressLogs: 0
           _affectMax: 0
           _type: 0
           _value: -40

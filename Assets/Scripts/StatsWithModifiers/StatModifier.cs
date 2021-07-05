@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using TypeReferences;
 
 namespace StatsWithModifiers
@@ -11,9 +9,9 @@ namespace StatsWithModifiers
 	{
 		public enum ModifierType { Permanent, Timed, Equipable }
 
-		[SerializeField, HorizontalGroup(), ClassExtends(typeof(Stat), AllowAbstract = false)]
-		private ClassTypeReference _stat;
-		public ClassTypeReference Stat { get => _stat;}
+		[SerializeField, HorizontalGroup(), Inherits(typeof(Stat), AllowAbstract = false, ShortName = true, ExpandAllFolders = true)]
+		private TypeReference _stat;
+		public TypeReference Stat { get => _stat;}
 
 		[SerializeField, HorizontalGroup(50), LabelText("Max"), LabelWidth(30)]
 		private bool _affectMax;
@@ -27,10 +25,10 @@ namespace StatsWithModifiers
 		private float _value;
 		public float Value { get => _value; }
 
-		[SerializeField, ShowIf("typeTimed")]
+		[SerializeField, ShowIf("i_typeTimed")]
 		private float _duration;
 		public float Duration { get => _duration; }
 
-		private bool typeTimed => Type == ModifierType.Timed;
+		private bool i_typeTimed => Type == ModifierType.Timed;
 	}
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.EditorCoroutines.Editor;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 using XNode;
 
 [ExecuteAlways]
@@ -46,14 +47,13 @@ public class World : SerializedMonoBehaviour
 
 	public Terrain[] chunksPool;
 
-	[ShowInInspector,ReadOnly]
-	private int coroutinesCount;
 	private Dictionary<Terrain, EditorCoroutine> generatedChunksEditorCoroutines = new Dictionary<Terrain, EditorCoroutine>();
 	private float[,] heights;
 
 	private System.Diagnostics.Stopwatch stopwatch1 = new System.Diagnostics.Stopwatch();
 	private System.Diagnostics.Stopwatch stopwatch2 = new System.Diagnostics.Stopwatch();
-	
+
+	private EditorCoroutine generatorCoroutine;
 
 	[Min(16)]
 	public int chunkWorldSize = 512;
@@ -115,7 +115,6 @@ public class World : SerializedMonoBehaviour
 	//TODO: Replace with generation requests system in separate class, without coroutines
 	private void Update()
 	{
-		coroutinesCount = generatedChunksEditorCoroutines.Count;
 		Camera camera = Camera.current;
 		if (camera && chunksPool != null && chunksPool.Length > 0)
 		{
@@ -205,6 +204,8 @@ public class World : SerializedMonoBehaviour
 				terrain.drawTreesAndFoliage = false;
 				terrain.bakeLightProbesForTrees = false;
 				terrain.basemapDistance = 100;
+
+				terrain.gameObject.AddComponent<NavMeshSurface>().collectObjects = CollectObjects.Children;
 				
 				chunks[x * ChunksInRow + z] = terrain;
 				chunksPool[x * ChunksInRow + z] = terrain;
@@ -239,13 +240,49 @@ public class World : SerializedMonoBehaviour
 		}
 	}
 
-	private EditorCoroutine generatorCoroutine;
 	[Button]
 	private void GenerateTerrainHeightmaps()
 	{
 		if (generatorCoroutine != null)
 			EditorCoroutineUtility.StopCoroutine(generatorCoroutine);
 		generatorCoroutine = EditorCoroutineUtility.StartCoroutine(GenerateTerrainHeightmapsCoroutine(), this);
+	}
+
+	[Button]
+	private void GenerateTerrainSplatmaps()
+	{
+		if (generatorCoroutine != null)
+			EditorCoroutineUtility.StopCoroutine(generatorCoroutine);
+		generatorCoroutine = EditorCoroutineUtility.StartCoroutine(GenerateTerrainSplatmapsCoroutine(), this);
+	}
+
+	[Button]
+	private void GenerateNavMeshes()
+	{
+		if (generatorCoroutine != null)
+			EditorCoroutineUtility.StopCoroutine(generatorCoroutine);
+		generatorCoroutine = EditorCoroutineUtility.StartCoroutine(GenerateNavMeshesCoroutine(), this);
+	}
+
+	private IEnumerator GenerateNavMeshesCoroutine()
+	{
+		stopwatch1.Restart();
+
+		for (int cx = 0; cx < ChunksInRow; cx++)
+			for (int cz = 0; cz < ChunksInRow; cz++)
+			{
+				stopwatch2.Restart();
+
+				chunks[cx * ChunksInRow + cz].GetComponent<NavMeshSurface>().BuildNavMesh();
+
+				stopwatch2.Stop();
+				Debug.Log($"BuildNavMesh in {stopwatch2.Elapsed.TotalMilliseconds}ms");
+
+				yield return null;
+			}
+
+		stopwatch1.Stop();
+		Debug.Log($"Generated all navMeshes in {stopwatch1.Elapsed.TotalMilliseconds}ms");
 	}
 
 	private bool isGenerating;
@@ -320,6 +357,12 @@ public class World : SerializedMonoBehaviour
 		chunk.terrainData.SetAlphamaps(0, 0, splatmap);
 
 		chunk.transform.position = new Vector3(chunk.transform.position.x, 0, chunk.transform.position.z);
+
+		/*
+		yield return null;
+		chunk.GetComponent<NavMeshSurface>().BuildNavMesh();
+		*/
+
 		generatedChunksEditorCoroutines.Remove(chunk);
 		isGenerating = false;
 	}
@@ -377,8 +420,7 @@ public class World : SerializedMonoBehaviour
 	}
 
 
-	[Button]
-	private void GenerateTerrainSplatmaps()
+	private IEnumerator GenerateTerrainSplatmapsCoroutine()
 	{
 		if (chunks == null)
 		{
@@ -397,9 +439,21 @@ public class World : SerializedMonoBehaviour
 			{
 				chunk = chunks[cx * ChunksInRow + cz];
 
+				stopwatch2.Restart();
+				int counter = 0;
 				for (int x = 0; x < ChunkMapSize; x++)
 					for (int z = 0; z < ChunkMapSize; z++)
 					{
+						counter++;
+						if (counter > Mathf.Pow(ChunkMapSize + 1, 2) / 8)
+						{
+							counter = 0;
+							stopwatch2.Stop();
+							Debug.Log($"Finished iteration in {stopwatch2.Elapsed.TotalMilliseconds}ms");
+							yield return null;
+							stopwatch2.Restart();
+						}
+
 						float mapx = cx * (ChunkMapSize - 1) + x;
 						float mapz = cz * (ChunkMapSize - 1) + z;
 						float slopeX = MaxWorldHeight * (baseNoise.noise.Sample((mapx + 1) * MapToWorld , mapz * MapToWorld, (int)WorldSize) - baseNoise.noise.Sample((mapx - 1) * MapToWorld, mapz * MapToWorld, (int)WorldSize));
@@ -423,10 +477,23 @@ public class World : SerializedMonoBehaviour
 						splatmap[z, x, 1] = 1f - Mathf.Clamp(steepness - transitionStart + transitionRange * 0.5f, 0f, transitionRange * 0.5f)/ transitionRange;
 					}
 
+				stopwatch2.Stop();
+				Debug.Log($"Finished iteration in {stopwatch2.Elapsed.TotalMilliseconds}ms");
+
+				yield return null;
+
+				stopwatch2.Restart();
+
 				chunk.terrainData.SetAlphamaps(0, 0, splatmap);
+
+				stopwatch2.Stop();
+				Debug.Log($"SetAlphamaps in {stopwatch2.Elapsed.TotalMilliseconds}ms");
+
+				yield return null;
 			}
 
 		stopwatch1.Stop();
-		Debug.Log($"Generated splatmaps in {stopwatch1.Elapsed.TotalMilliseconds}ms");
+		Debug.Log($"Generated all splatmaps in {stopwatch1.Elapsed.TotalMilliseconds}ms");
 	}
+
 }

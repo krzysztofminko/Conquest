@@ -174,7 +174,7 @@ Animator:
   m_GameObject: {fileID: 8819722735123856606}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 111c9eea53bd88740a709aab1b12067d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 9267bcdc2d411b64690430ef70a0e98c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3365cdf759b69394d92a286fd87c90a8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -318,6 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4998860517464554753}
   - component: {fileID: 177016182092547089}
+  - component: {fileID: 6318678311096806315}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -393,6 +394,24 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.5083244, z: 0.0014690161}
     m_Extent: {x: 0.5, y: 0.5674815, z: 0.55811685}
   m_DirtyAABB: 0
+--- !u!114 &6318678311096806315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018732327046575083}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 2
+  outlineColor: {r: 0.8207547, g: 0.18970275, b: 0.18970275, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &6605460319926816533
 PrefabInstance:
   m_ObjectHideFlags: 0

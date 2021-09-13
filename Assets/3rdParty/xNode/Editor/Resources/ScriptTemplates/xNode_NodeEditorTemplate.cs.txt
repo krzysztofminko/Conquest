@@ -1,0 +1,29 @@
+using UnityEngine;
+using XNodeEditor;
+
+[CustomNodeEditor(typeof(#SCRIPTNAME#))]
+public class #SCRIPTNAME#Editor : NodeEditor 
+{
+	private #SCRIPTNAME# node;
+    
+	public override void OnCreate()
+	{
+        	//onUpdateNode += (n)=> (n as #SCRIPTNAME#).[SOME_METHOD];
+	}
+
+    	public override void OnBodyGUI() 
+	{
+        if (node == null) node = target as #SCRIPTNAME#;
+
+        // Update serialized object's representation
+        serializedObject.Update();
+
+        NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("propertyName"));
+
+        //if (GUILayout.Button(new GUIContent("ButtonName")));
+        //EditorGUILayout.LabelField(new GUIContent(texture2d), GUILayout.Width(180), GUILayout.Height(180));
+
+        // Apply property modifications
+        serializedObject.ApplyModifiedProperties();
+    }
+}

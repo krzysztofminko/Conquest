@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb45f59f32d1cb44ae5ccdb041734f2, type: 3}
+  m_Name: WoodAxe
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 578275136934914593, guid: d443c60b6ff654c4e82a63f4e8f09f7f, type: 3}
+  pickAnimation: {fileID: 7400000, guid: 63a0822800c16c94e8ab7beeca23e554, type: 3}
+  pickDelay: 0.5
+  putAnimation: {fileID: 7400000, guid: a9cf1b1cc42c49745b058779721bb23c, type: 3}
+  putDelay: 0.5
+  carryAnimation: {fileID: 0}
+  _isLarge: 0
+  _isStackable: 0
+  damageable:
+    id: 0
+  consumable:
+    id: 1
+  equipable:
+    id: 2
+  weapon:
+    id: 3
+  tool:
+    id: 1
+  references:
+    version: 1
+    00000000:
+      type: {class: Damageable, ns: Items, asm: Items}
+      data:
+        condition: 100
+    00000001:
+      type: {class: , ns: , asm: }
+    00000002:
+      type: {class: Equipable, ns: Items, asm: Items}
+      data:
+        slot: 3
+        modifiers: []
+    00000003:
+      type: {class: Weapon, ns: Items, asm: Items}
+      data:
+        attacks:
+        - name: Hit
+          animation: {fileID: 7400000, guid: 3558db8e6c045c3418d8e7593f8a88de, type: 3}
+          projectile: {fileID: 0}
+          trailStart: 0.22
+          trailEnd: 0.33
+          damageDelay: 0.5
+          targetOnly: 0
+          range: 3
+          damage:
+          - type: 32
+            value: 50

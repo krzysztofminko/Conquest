@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
+using UnityEngine.Assertions;
 
 namespace Items
 {
@@ -10,7 +11,7 @@ namespace Items
 		public event Action<ItemEntity> onDestroy;
 		public event Action<ItemEntity> onStateChange;
 
-		[DisableInPlayMode]
+		[DisableInPlayMode, Required]
 		public Item item;
 		[SerializeField, ReadOnly, Min(1)]
 		private int _count = 1;

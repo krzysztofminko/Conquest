@@ -9,7 +9,7 @@ namespace Items
 	[Serializable, InlineProperty]
 	public class AttackSettings
 	{
-		public string name;
+		public string name = "UnknownAttack";
 		public AnimationClip animation;
 		public Projectile projectile;
 		[PropertyRange(0, "GetAnimationLength"), OnValueChanged("trailStartChanged")]

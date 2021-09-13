@@ -54,12 +54,49 @@ public class World : SerializedMonoBehaviour
 	private System.Diagnostics.Stopwatch stopwatch1 = new System.Diagnostics.Stopwatch();
 	private System.Diagnostics.Stopwatch stopwatch2 = new System.Diagnostics.Stopwatch();
 	
+
+	[Min(16)]
+	public int chunkWorldSize = 512;
+	[Min(16)]
+	public int chunkMapSize = 256;
+	[Min(1)]
+	public int chunksInRow = 1;
+	[Min(1)]
+	public int splatLayers = 2;
+	[ReadOnly]
+	public int worldSize;
+	[ReadOnly]
+	public int worldMapSize;
+	[ReadOnly]
+	public int totalChunks;
+	[ReadOnly]
+	public int totalMapSamples;
+	[ReadOnly]
+	public float heightmapsMB;
+	[ReadOnly]
+	public float splatmapsMB;
+	[ReadOnly]
+	public float ssdLoadingTime;
+	[ReadOnly]
+	public float hddLoadingTime;
+
 	private void OnValidate()
 	{
 		ChunkWorldSize = ChunkWorldSize / 2 * 2;
 		ChunkMapSize = ChunkWorldSize * 2;
 		WorldSize = ChunksInRow * ChunkWorldSize;
 		MapSize = ChunksInRow * ChunkMapSize;
+
+		totalChunks = chunksInRow * chunksInRow;
+		worldSize = chunkWorldSize * chunksInRow;
+		worldMapSize = chunkMapSize * chunksInRow;
+		totalMapSamples = worldMapSize * worldMapSize;
+		heightmapsMB = (float)sizeof(byte) * totalMapSamples / 1024 / 1024;
+		splatmapsMB = (float)sizeof(byte) * splatLayers * totalMapSamples / 1024 / 1024;
+		ssdLoadingTime = (heightmapsMB + splatmapsMB) / 500;
+		hddLoadingTime = (heightmapsMB + splatmapsMB) / 60;
+
+
 	}
 
 	private void OnEnable()

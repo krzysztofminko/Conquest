@@ -247,6 +247,8 @@ public class World : SerializedMonoBehaviour
 				for (int i = transform.childCount - 1; i >= 0; i--)
 					DestroyImmediate(transform.GetChild(0).gameObject);
 		}
+
+		generatedChunksEditorCoroutines.Clear();
 	}
 
 	[Button]

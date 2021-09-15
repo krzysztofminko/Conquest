@@ -443,7 +443,7 @@ public class World : SerializedMonoBehaviour
 		OutputNoise outputNoise = noiseGraph.nodes.Find(n => n is OutputNoise) as OutputNoise;
 		Terrain chunk;
 		float steepness;
-		float transitionStart = 40;
+		float transitionStart = 60;
 		float[,,] splatmap = new float[ChunkMapSize, ChunkMapSize, terrainLayers.Length];
 		for (int cx = 0; cx < ChunksInRow; cx++)
 			for (int cz = 0; cz < ChunksInRow; cz++)

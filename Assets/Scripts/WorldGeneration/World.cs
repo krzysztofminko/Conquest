@@ -17,8 +17,8 @@ public class World : SerializedMonoBehaviour
 	private float _worldSize;
 	[ShowInInspector, ReadOnly, SuffixLabel("tx", Overlay = true)]
 	private int _mapSize;
-	[SerializeField, ReadOnly, SuffixLabel("tx", Overlay = true), Tooltip("If greater than 256, SetHeights duration is too long for one frame.")]
-	private int _chunkMapSize = 256;
+	[SerializeField, SuffixLabel("tx", Overlay = true), Tooltip("If greater than 256, SetHeights duration is too long for one frame.")]
+	private int _chunkMapSize = 128;
 	[SerializeField, SuffixLabel("m", Overlay = true)]
 	private int _chunkWorldSize = 128;
 	[SerializeField, SuffixLabel("chunks", Overlay = true)]
@@ -86,7 +86,6 @@ public class World : SerializedMonoBehaviour
 	private void OnValidate()
 	{
 		ChunkWorldSize = ChunkWorldSize / 2 * 2;
-		ChunkMapSize = ChunkWorldSize * 2;
 		WorldSize = ChunksInRow * ChunkWorldSize;
 		MapSize = ChunksInRow * ChunkMapSize;
 

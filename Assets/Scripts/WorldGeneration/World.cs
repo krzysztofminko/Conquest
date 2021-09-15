@@ -54,6 +54,9 @@ public class World : SerializedMonoBehaviour
 	private System.Diagnostics.Stopwatch stopwatch2 = new System.Diagnostics.Stopwatch();
 
 	private EditorCoroutine generatorCoroutine;
+	
+	[ShowInInspector, ReadOnly]
+	private int coroutinesCount;
 
 	[Min(16)]
 	public int chunkWorldSize = 512;
@@ -115,6 +118,8 @@ public class World : SerializedMonoBehaviour
 	//TODO: Replace with generation requests system in separate class, without coroutines
 	private void Update()
 	{
+		coroutinesCount = generatedChunksEditorCoroutines.Count;
+
 		Camera camera = Camera.current;
 		if (camera && chunksPool != null && chunksPool.Length > 0)
 		{

@@ -210,8 +210,11 @@ public class World : SerializedMonoBehaviour
 				terrain.bakeLightProbesForTrees = false;
 				terrain.basemapDistance = 100;
 
-				terrain.gameObject.AddComponent<NavMeshSurface>().collectObjects = CollectObjects.Children;
-				
+				NavMeshSurface nms = terrain.gameObject.AddComponent<NavMeshSurface>();
+				nms.collectObjects = CollectObjects.Children;
+				nms.overrideTileSize = true;
+				nms.tileSize = 64;
+
 				chunks[x * ChunksInRow + z] = terrain;
 				chunksPool[x * ChunksInRow + z] = terrain;
 			}

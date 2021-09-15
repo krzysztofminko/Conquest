@@ -210,6 +210,7 @@ public class World : SerializedMonoBehaviour
 				terrain.drawTreesAndFoliage = false;
 				terrain.bakeLightProbesForTrees = false;
 				terrain.basemapDistance = 100;
+				terrain.drawInstanced = true;
 
 				NavMeshSurface nms = terrain.gameObject.AddComponent<NavMeshSurface>();
 				nms.collectObjects = CollectObjects.Children;

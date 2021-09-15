@@ -113,13 +113,12 @@ public class World : SerializedMonoBehaviour
 			EditorApplication.update -= Update;
 	}
 
-	//TODO: Create PlayMode coroutines
-	//TODO: Replace with generation requests system in separate class, without coroutines
+	//TODO: Replace with generation requests system in separate class, without? coroutines
 	private void Update()
 	{
 		coroutinesCount = generatedChunksEditorCoroutines.Count;
 
-		Camera camera = Camera.current;
+		Camera camera = Application.isPlaying? Camera.main : Camera.current;
 		if (camera && chunksPool != null && chunksPool.Length > 0)
 		{
 			Vector2Int cameraChunkPosition = new Vector2Int((int)(camera.transform.position.x / ChunkWorldSize), (int)(camera.transform.position.z / ChunkWorldSize));
@@ -163,7 +162,10 @@ public class World : SerializedMonoBehaviour
 									//TODO: Look for this bug with PlayMode coroutines
 									generatedChunksEditorCoroutines.Remove(chunk);
 								}
-								generatedChunksEditorCoroutines.Add(chunk, EditorCoroutineUtility.StartCoroutineOwnerless(GenerateChunkCoroutine(chunkAbsolutePosition.x, chunkAbsolutePosition.y, chunk)));
+								if(Application.isPlaying)
+									StartCoroutine(GenerateChunkCoroutine(chunkAbsolutePosition.x, chunkAbsolutePosition.y, chunk));
+								else
+									generatedChunksEditorCoroutines.Add(chunk, EditorCoroutineUtility.StartCoroutine(GenerateChunkCoroutine(chunkAbsolutePosition.x, chunkAbsolutePosition.y, chunk), this));
 								Debug.Log($"Enabled {chunk}, {cameraChunkPosition} + {chunkLocalPosition} = {chunkAbsolutePosition}", chunk);
 							}
 							else

@@ -358,10 +358,12 @@ public class World : SerializedMonoBehaviour
 
 		chunk.transform.position = new Vector3(chunk.transform.position.x, 0, chunk.transform.position.z);
 
-		/*
-		yield return null;
-		chunk.GetComponent<NavMeshSurface>().BuildNavMesh();
-		*/
+		stopwatch1.Restart();
+		yield return EditorCoroutineUtility.StartCoroutineOwnerless(chunk.GetComponent<NavMeshSurface>().BuildNavMeshAsync());
+		stopwatch1.Stop();
+		Debug.Log($"BuildNavMesh in {stopwatch1.Elapsed.TotalMilliseconds}ms");
+
+
 
 		generatedChunksEditorCoroutines.Remove(chunk);
 		isGenerating = false;

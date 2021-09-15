@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -171,6 +172,34 @@ namespace UnityEngine.AI
             var data = NavMeshBuilder.BuildNavMeshData(GetBuildSettings(),
                     sources, sourcesBounds, transform.position, transform.rotation);
 
+            if (data != null)
+            {
+                data.name = gameObject.name;
+                RemoveData();
+                m_NavMeshData = data;
+                if (isActiveAndEnabled)
+                    AddData();
+            }
+        }
+
+        public IEnumerator BuildNavMeshAsync()
+        {
+            var sources = CollectSources();
+
+            // Use unscaled bounds - this differs in behaviour from e.g. collider components.
+            // But is similar to reflection probe - and since navmesh data has no scaling support - it is the right choice here.
+            var sourcesBounds = new Bounds(m_Center, Abs(m_Size));
+            if (m_CollectObjects == CollectObjects.All || m_CollectObjects == CollectObjects.Children)
+            {
+                sourcesBounds = CalculateWorldBounds(sources);
+            }
+
+            var data = new NavMeshData(m_AgentTypeID);
+            data.position = transform.position;
+            data.rotation = transform.rotation;
+            data.name = name;
+
+            yield return NavMeshBuilder.UpdateNavMeshDataAsync(data, GetBuildSettings(), sources, sourcesBounds);
             if (data != null)
             {
                 data.name = gameObject.name;

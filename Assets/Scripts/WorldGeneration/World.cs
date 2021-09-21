@@ -1,16 +1,21 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Unity.EditorCoroutines.Editor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.WSA;
 using XNode;
+using Application = UnityEngine.Application;
 
 [ExecuteAlways]
 public class World : SerializedMonoBehaviour
 {
+	public static World Instance;
+
 	[SerializeField]
 	private bool debugNormals;
 	[ShowInInspector, ReadOnly, SuffixLabel("m", Overlay = true)]
@@ -42,6 +47,7 @@ public class World : SerializedMonoBehaviour
 	public float MaxWorldHeight { get => _maxWorldHeight; private set => _maxWorldHeight = value; }
 	public float MapToWorld => 1f * ChunkWorldSize / ChunkMapSize;
 	public float WorldToMap => 1f * ChunkMapSize / ChunkWorldSize;
+	public int Layers => terrainLayers.Length;
 
 	public Terrain[] chunks;
 
@@ -105,6 +111,7 @@ public class World : SerializedMonoBehaviour
 	{
 		if (!Application.isPlaying)
 			EditorApplication.update += Update;
+		Instance = this;
 	}
 
 	private void OnDisable()
@@ -162,10 +169,23 @@ public class World : SerializedMonoBehaviour
 									//TODO: Look for this bug with PlayMode coroutines
 									generatedChunksEditorCoroutines.Remove(chunk);
 								}
-								if(Application.isPlaying)
-									StartCoroutine(GenerateChunkCoroutine(chunkAbsolutePosition.x, chunkAbsolutePosition.y, chunk));
+
+								if (File.Exists($"{Application.persistentDataPath}/chunk{chunkAbsolutePosition.x}_{chunkAbsolutePosition.y}.data"))
+								{
+									Debug.Log("Loading");
+									if (Application.isPlaying)
+										StartCoroutine(LoadChunkCoroutine(chunkAbsolutePosition.x, chunkAbsolutePosition.y, chunk));
+									else
+										generatedChunksEditorCoroutines.Add(chunk, EditorCoroutineUtility.StartCoroutine(LoadChunkCoroutine(chunkAbsolutePosition.x, chunkAbsolutePosition.y, chunk), this));
+								}
 								else
-									generatedChunksEditorCoroutines.Add(chunk, EditorCoroutineUtility.StartCoroutine(GenerateChunkCoroutine(chunkAbsolutePosition.x, chunkAbsolutePosition.y, chunk), this));
+								{
+									Debug.Log("Generating");
+									if (Application.isPlaying)
+										StartCoroutine(GenerateChunkCoroutine(chunkAbsolutePosition.x, chunkAbsolutePosition.y, chunk));
+									else
+										generatedChunksEditorCoroutines.Add(chunk, EditorCoroutineUtility.StartCoroutine(GenerateChunkCoroutine(chunkAbsolutePosition.x, chunkAbsolutePosition.y, chunk), this));
+								}
 								Debug.Log($"Enabled {chunk}, {cameraChunkPosition} + {chunkLocalPosition} = {chunkAbsolutePosition}", chunk);
 							}
 							else
@@ -250,6 +270,7 @@ public class World : SerializedMonoBehaviour
 		}
 
 		generatedChunksEditorCoroutines.Clear();
+		isGenerating = false;
 	}
 
 	[Button]
@@ -295,6 +316,35 @@ public class World : SerializedMonoBehaviour
 
 		stopwatch1.Stop();
 		Debug.Log($"Generated all navMeshes in {stopwatch1.Elapsed.TotalMilliseconds}ms");
+	}
+
+	private IEnumerator LoadChunkCoroutine(int cx, int cz, Terrain chunk)
+	{
+		stopwatch1.Restart();
+		ChunkLoader.Load(cx, cz, out float[,] heights, out float[,,] layers);
+		stopwatch1.Stop();
+		Debug.Log($"Loaded in {stopwatch1.Elapsed.TotalMilliseconds}ms");
+
+		yield return null;
+
+		stopwatch1.Restart();
+		chunk.terrainData.SetHeights(0, 0, heights);
+		stopwatch1.Stop();
+		Debug.Log($"SetHeights in {stopwatch1.Elapsed.TotalMilliseconds}ms");
+
+		yield return null;
+
+		stopwatch1.Restart();
+		chunk.terrainData.SetAlphamaps(0, 0, layers);
+		stopwatch1.Stop();
+		Debug.Log($"SetAlphamaps in {stopwatch1.Elapsed.TotalMilliseconds}ms");
+
+		chunk.transform.position = new Vector3(chunk.transform.position.x, 0, chunk.transform.position.z);
+
+		stopwatch1.Restart();
+		yield return EditorCoroutineUtility.StartCoroutineOwnerless(chunk.GetComponent<NavMeshSurface>().BuildNavMeshAsync());
+		stopwatch1.Stop();
+		Debug.Log($"BuildNavMesh in {stopwatch1.Elapsed.TotalMilliseconds}ms");
 	}
 
 	private bool isGenerating;
@@ -375,7 +425,10 @@ public class World : SerializedMonoBehaviour
 		stopwatch1.Stop();
 		Debug.Log($"BuildNavMesh in {stopwatch1.Elapsed.TotalMilliseconds}ms");
 
-
+		stopwatch1.Restart();
+		ChunkLoader.Save(cx, cz, heights, splatmap);
+		stopwatch1.Stop();
+		Debug.Log($"Saved in {stopwatch1.Elapsed.TotalMilliseconds}ms");
 
 		generatedChunksEditorCoroutines.Remove(chunk);
 		isGenerating = false;

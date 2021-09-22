@@ -8,19 +8,30 @@ public class Noise
 {
 	public enum FalloffType { None, Square, Round }
 
-	[MinMaxSlider(0f, 1f, ShowFields = true)]
-	public Vector2 range = new Vector2(0, 1);
-	public float scale = 10;
 	public Vector2 offset;
+	public float scale = 10;
+
 	[Range(1, 16)]
 	public int octaves = 4;
+	[ShowIf(nameof(octavesMoreThan1))]
 	public float lacunarity = 2;
+	[ShowIf(nameof(octavesMoreThan1))]
 	public float persistence = 0.5f;
+
+	public AnimationCurve heightOverride = AnimationCurve.Linear(0, 0, 1, 1);
+
 	public FalloffType falloffType;
+	[HideIf(nameof(falloffTypeEqualsNone))]
 	public AnimationCurve falloffCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-	[Range(0, 2)]
+	[HideIf(nameof(falloffTypeEqualsNone)), Range(0, 2)]
 	public float falloffSize = 1;
-	
+
+	[MinMaxSlider(0f, 1f, ShowFields = true)]
+	public Vector2 range = new Vector2(0, 1);
+
+	private bool falloffTypeEqualsNone => falloffType == FalloffType.None;
+	private bool octavesMoreThan1 => octaves > 1;
+
 	public float Sample(float x, float y, int size)
 	{
 		float frequency = 1;
@@ -48,6 +59,9 @@ public class Noise
 
 		//Range
 		result = result * (range.y - range.x) + range.x;
+
+		//Height curve
+		result = heightOverride.Evaluate(result);
 
 		return result;
 	}

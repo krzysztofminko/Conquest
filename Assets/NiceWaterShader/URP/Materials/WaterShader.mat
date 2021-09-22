@@ -81,8 +81,8 @@ Material:
     - _AlphaCutoff: 0.5
     - _Blend: 0
     - _BumpScale: 1
-    - _ColorPosition0: 2.09
-    - _ColorPosition1: 2.14
+    - _ColorPosition0: 10
+    - _ColorPosition1: 10
     - _Cull: 2
     - _Cutoff: 0.5
     - _DepthOpacity: 82.49
@@ -138,9 +138,9 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DepthColor0: {r: 0.10587295, g: 0.5960784, b: 0.61960775, a: 1}
-    - _DepthColor1: {r: 0.058816478, g: 0.19606954, b: 0.46274477, a: 1}
-    - _DepthColor2: {r: 0, g: 0.08090382, b: 0.32074532, a: 1}
+    - _DepthColor0: {r: 0.10586833, g: 0.5960784, b: 0.61960775, a: 1}
+    - _DepthColor1: {r: 0.058813013, g: 0.19606516, b: 0.46274477, a: 1}
+    - _DepthColor2: {r: 0, g: 0.08090023, b: 0.3207407, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _FresnelColor: {r: 0.48627448, g: 0.8980393, b: 0.8705883, a: 1}

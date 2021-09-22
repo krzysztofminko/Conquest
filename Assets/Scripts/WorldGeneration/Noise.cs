@@ -28,28 +28,16 @@ public class Noise
 
 	[MinMaxSlider(0f, 1f, ShowFields = true)]
 	public Vector2 range = new Vector2(0, 1);
+	public float perturbFreq = 32;
+	public float perturbAmp = 32;
 
 	private bool falloffTypeEqualsNone => falloffType == FalloffType.None;
 	private bool octavesMoreThan1 => octaves > 1;
 
 	public float Sample(float x, float y, int size)
 	{
-		float frequency = 1;
-		float amplitude = 1;
-		float sumOfAmplitudes = 0;
-		float result = 0;
-
-		//Octaves
-		for (int octave = 0; octave < octaves; octave++)
-		{
-			frequency *= lacunarity;
-			amplitude *= persistence;
-			result += Mathf.PerlinNoise(offset.x + x * frequency * scale / size, offset.y + y * frequency * scale / size) * amplitude;
-			sumOfAmplitudes += amplitude;
-		}
-
-		//Normalize
-		result /= sumOfAmplitudes;
+		//Perturbation
+		float result = Perturb(x, y, perturbFreq, perturbAmp, size);
 
 		//Falloff
 		if (falloffType == FalloffType.Round)
@@ -65,6 +53,28 @@ public class Noise
 
 		return result;
 	}
+
+	private float SampleOctaves(float x, float y, int size)
+	{
+		float result = 0; 
+		float frequency = 1;
+		float amplitude = 1;
+		float sumOfAmplitudes = 0;
+
+		//Octaves
+		for (int octave = 0; octave < octaves; octave++)
+		{
+			frequency *= lacunarity;
+			amplitude *= persistence;
+			result += Mathf.PerlinNoise(offset.x + x * frequency * scale / size, offset.y + y * frequency * scale / size) * amplitude;
+			sumOfAmplitudes += amplitude;
+		}
+
+		//Normalize
+		result /= sumOfAmplitudes;
+
+		return result;
+	}
 	
 	public float[,] Generate(int size)
 	{
@@ -74,6 +84,11 @@ public class Noise
 				result[x,y] = Sample(x, y, size);
 
 		return result;
+	}
+
+	public float Perturb(float x, float y, float frequency, float amplitude, int size)
+	{				
+		return SampleOctaves(x + Mathf.PerlinNoise(frequency * x / size, frequency * y / size) * amplitude, y + Mathf.PerlinNoise(frequency * x / size, frequency * y / size) * amplitude, size);
 	}
 
 	public float[,] Perturb(float[,] noise, float f, float d)

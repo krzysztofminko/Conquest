@@ -3,8 +3,10 @@ using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+//TODO: Make Noise or ISampler to ScriptableObject
+//TODO: Merge SamplerMap with ISampler
 [Serializable]
-public class Noise
+public class Noise : ISampler
 {
 	public enum FalloffType { None, Square, Round }
 
@@ -26,8 +28,6 @@ public class Noise
 	[HideIf(nameof(falloffTypeEqualsNone)), Range(0, 2)]
 	public float falloffSize = 1;
 
-	[MinMaxSlider(0f, 1f, ShowFields = true)]
-	public Vector2 range = new Vector2(0, 1);
 	public float perturbFreq = 32;
 	public float perturbAmp = 32;
 
@@ -44,9 +44,6 @@ public class Noise
 			result *= falloffCurve.Evaluate(Mathf.Clamp01(2 - falloffSize - new Vector2(x - size * 0.5f, y - size * 0.5f).magnitude / Mathf.Max(Mathf.Abs(size), Mathf.Abs(size))));
 		else if (falloffType == FalloffType.Square)
 			result *= falloffCurve.Evaluate(Mathf.Clamp01(2 - falloffSize - Mathf.Max(Mathf.Abs(x - size * 0.5f), Mathf.Abs(y - size * 0.5f)) / Mathf.Max(Mathf.Abs(size), Mathf.Abs(size))));
-
-		//Range
-		result = result * (range.y - range.x) + range.x;
 
 		//Height curve
 		result = heightOverride.Evaluate(result);

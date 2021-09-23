@@ -34,7 +34,7 @@ public class World : SerializedMonoBehaviour
 	[SerializeField]
 	private NodeGraph noiseGraph;
 	[SerializeField]
-	private NoisePreview baseNoise;
+	private SamplerMap samplerMap;
 
 	public int ChunkMapSize { get => _chunkMapSize; private set => _chunkMapSize = value; }
 	public int ChunkWorldSize { get => _chunkWorldSize; private set => _chunkWorldSize = value; }
@@ -44,6 +44,8 @@ public class World : SerializedMonoBehaviour
 	public float MaxWorldHeight { get => _maxWorldHeight; private set => _maxWorldHeight = value; }
 	public float MapToWorld => 1f * ChunkWorldSize / ChunkMapSize;
 	public float WorldToMap => 1f * ChunkMapSize / ChunkWorldSize;
+	public float SplatmapToWorld => 1f * ChunkWorldSize / (ChunkMapSize - 1);
+	public float WorldToSplatmap => 1f * (ChunkMapSize - 1) / ChunkWorldSize;
 	public int Layers => terrainLayers.Length;
 
 	public Terrain[] chunks;
@@ -212,7 +214,7 @@ public class World : SerializedMonoBehaviour
 							stopwatch2.Restart();
 						}
 
-						heights[z, x] = baseNoise.noise.Sample((cx * ChunkMapSize + x) * MapToWorld, (cz * ChunkMapSize + z) * MapToWorld, (int)WorldSize);
+						heights[z, x] = samplerMap.sampler.Sample((cz * ChunkMapSize + z) * MapToWorld, (cx * ChunkMapSize + x) * MapToWorld, (int)WorldSize);
 					}
 
 				stopwatch2.Stop();
@@ -270,18 +272,18 @@ public class World : SerializedMonoBehaviour
 
 						float mapx = cx * (ChunkMapSize - 1) + x;
 						float mapz = cz * (ChunkMapSize - 1) + z;
-						float slopeX = MaxWorldHeight * (baseNoise.noise.Sample((mapx + 1) * MapToWorld , mapz * MapToWorld, (int)WorldSize) - baseNoise.noise.Sample((mapx - 1) * MapToWorld, mapz * MapToWorld, (int)WorldSize));
-						float slopeZ = MaxWorldHeight * (baseNoise.noise.Sample(mapx * MapToWorld, (mapz + 1) * MapToWorld, (int)WorldSize) - baseNoise.noise.Sample(mapx * MapToWorld, (mapz - 1) * MapToWorld, (int)WorldSize));
+						float slopeX = MaxWorldHeight * (samplerMap.sampler.Sample(mapz * SplatmapToWorld, (mapx + 1) * SplatmapToWorld, (int)WorldSize) - samplerMap.sampler.Sample(mapz * SplatmapToWorld, (mapx - 1) * SplatmapToWorld, (int)WorldSize));
+						float slopeZ = MaxWorldHeight * (samplerMap.sampler.Sample((mapz + 1) * SplatmapToWorld, mapx * SplatmapToWorld, (int)WorldSize) - samplerMap.sampler.Sample((mapz - 1) * SplatmapToWorld, mapx * SplatmapToWorld, (int)WorldSize));
 
-						Vector3 normal = new Vector3(-slopeX * MapToWorld, MapToWorld, -slopeZ * MapToWorld);					
+						Vector3 normal = new Vector3(-slopeX * SplatmapToWorld, SplatmapToWorld, -slopeZ * SplatmapToWorld);					
 						normal.Normalize();
 
 						steepness = Mathf.Acos(Vector3.Dot(normal, Vector3.up)) * 57.29578f;
 
 						if (debugNormals && (x == 0 || z == 0) && x < 100 && z < 100)
 						{
-							Vector3 point = new Vector3(mapx * MapToWorld, 0, mapz * MapToWorld);
-							point.y = MaxWorldHeight * baseNoise.noise.Sample(mapx * MapToWorld, mapz * MapToWorld, (int)WorldSize);
+							Vector3 point = new Vector3(mapx * SplatmapToWorld, 0, mapz * SplatmapToWorld);
+							point.y = transform.position.y + MaxWorldHeight * samplerMap.sampler.Sample(mapz * SplatmapToWorld, mapx * SplatmapToWorld, (int)WorldSize);
 							Debug.DrawLine(point, point + normal, Color.red, 4);
 						}
 
@@ -381,7 +383,7 @@ public class World : SerializedMonoBehaviour
 					yield return null;
 				}
 
-				heights[z, x] = baseNoise.noise.Sample((cx * ChunkMapSize + x) * MapToWorld, (cz * ChunkMapSize + z) * MapToWorld, (int)WorldSize);
+				heights[z, x] = samplerMap.sampler.Sample((cx * ChunkMapSize + x) * MapToWorld, (cz * ChunkMapSize + z) * MapToWorld, (int)WorldSize);
 			}
 		yield return null;
 
@@ -406,8 +408,8 @@ public class World : SerializedMonoBehaviour
 
 				float mapx = cx * (ChunkMapSize - 1) + x;
 				float mapz = cz * (ChunkMapSize - 1) + z;
-				float slopeX = MaxWorldHeight * (baseNoise.noise.Sample((mapx + 1) * MapToWorld, mapz * MapToWorld, (int)WorldSize) - baseNoise.noise.Sample((mapx - 1) * MapToWorld, mapz * MapToWorld, (int)WorldSize));
-				float slopeZ = MaxWorldHeight * (baseNoise.noise.Sample(mapx * MapToWorld, (mapz + 1) * MapToWorld, (int)WorldSize) - baseNoise.noise.Sample(mapx * MapToWorld, (mapz - 1) * MapToWorld, (int)WorldSize));
+				float slopeX = MaxWorldHeight * (samplerMap.sampler.Sample((mapx + 1) * MapToWorld, mapz * MapToWorld, (int)WorldSize) - samplerMap.sampler.Sample((mapx - 1) * MapToWorld, mapz * MapToWorld, (int)WorldSize));
+				float slopeZ = MaxWorldHeight * (samplerMap.sampler.Sample(mapx * MapToWorld, (mapz + 1) * MapToWorld, (int)WorldSize) - samplerMap.sampler.Sample(mapx * MapToWorld, (mapz - 1) * MapToWorld, (int)WorldSize));
 
 				Vector3 normal = new Vector3(-slopeX * MapToWorld, MapToWorld, -slopeZ * MapToWorld);
 				normal.Normalize();
@@ -417,7 +419,7 @@ public class World : SerializedMonoBehaviour
 				if (debugNormals && (x == 0 || z == 0) && x < 100 && z < 100)
 				{
 					Vector3 point = new Vector3(mapx * MapToWorld, 0, mapz * MapToWorld);
-					point.y = MaxWorldHeight * baseNoise.noise.Sample(mapx * MapToWorld, mapz * MapToWorld, (int)WorldSize);
+					point.y = MaxWorldHeight * samplerMap.sampler.Sample(mapx * MapToWorld, mapz * MapToWorld, (int)WorldSize);
 					Debug.DrawLine(point, point + normal, Color.red, 4);
 				}
 

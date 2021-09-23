@@ -114,7 +114,7 @@ public class World : SerializedMonoBehaviour
 				terrain.transform.localPosition = new Vector3(x * ChunkWorldSize, 0, z * ChunkWorldSize);
 				terrain.drawTreesAndFoliage = false;
 				terrain.bakeLightProbesForTrees = false;
-				terrain.basemapDistance = 100;
+				terrain.basemapDistance = 800;
 				terrain.drawInstanced = true;
 
 				NavMeshSurface nms = terrain.gameObject.AddComponent<NavMeshSurface>();
